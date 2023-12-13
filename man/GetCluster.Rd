@@ -4,10 +4,10 @@
 \alias{GetCluster}
 \title{Get broad and fine clusters}
 \usage{
-GetCluster(allcount, n1 = 50, n2 = 200)
+GetCluster(seuratlist, n1 = 50, n2 = 200)
 }
 \arguments{
-\item{allcount}{A list of Seurat objects, usually can be got by \code{SplitObject()}.}
+\item{seuratlist}{A list of Seurat objects, usually can be got by \code{SplitObject()}.}
 
 \item{n1}{If the number of cells was smaller than \code{n1}, then the cluster will remain unchanged called \verb{rare cluster}. The default value of \code{n1} is 50.}
 
@@ -18,4 +18,11 @@ A list of data frames.
 }
 \description{
 Get broad and fine clusters
+}
+\examples{
+\dontrun{
+Assuming 'seurat_object_list' is a list of Seurat objects
+seuratlist <- SplitObject(seuratobj, split.by = "Study")
+fullcluster <- GetCluster(seuratlist)
+}
 }
