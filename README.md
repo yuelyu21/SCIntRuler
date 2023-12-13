@@ -12,6 +12,17 @@ Integrating scRNA-seq datasets can be complex due to various factors, including 
 - **Robustness**: Enhances analytical robustness in joint analyses of merged or integrated scRNA-seq datasets.
 - **User-Friendly**: Streamlines decision-making processes, simplifying the complexities involved in scRNA-seq data integration.
 
+
+## Installation
+
+First, install the `batchelor` package from Bioconductor:
+
+```R
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("batchelor")
+
+
 ## Installation
 To install `SCIntRuler`, use the following command in R:
 ```R
@@ -19,6 +30,3 @@ To install `SCIntRuler`, use the following command in R:
 devtools::install_github("yuelyu21/SCIntRuler")
 # Load SCIntRuler
 library(SCIntRuler)
-
-
-
