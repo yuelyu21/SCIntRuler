@@ -24,7 +24,6 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("batchelor")
 
 # To install `SCIntRuler`, use the following command:
-# Install SCIntRuler from GitHub
 devtools::install_github("yuelyu21/SCIntRuler")
 # Load SCIntRuler
 library(SCIntRuler)
