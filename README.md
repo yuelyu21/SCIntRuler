@@ -18,13 +18,12 @@ Integrating scRNA-seq datasets can be complex due to various factors, including 
 First, install the `batchelor` package from Bioconductor:
 
 ```R
+## Installation
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("batchelor")
 
-
-## Installation
-# To install `SCIntRuler`, use the following command in R:
+# To install `SCIntRuler`, use the following command:
 # Install SCIntRuler from GitHub
 devtools::install_github("yuelyu21/SCIntRuler")
 # Load SCIntRuler
