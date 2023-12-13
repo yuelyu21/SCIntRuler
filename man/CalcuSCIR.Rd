@@ -29,4 +29,5 @@ fullcluster <- GetCluster(seuratist)
 testres <- PermTest(fullcluster,distmat,15)
 CalcuSCIR(fullcluster, seuratlist, testres)
 }
+
 }

@@ -9,14 +9,15 @@
 \item{m2}{Another numeric matrix.}
 }
 \value{
-A numeric matrix where the entry at \link{i, j} is the Euclidean distance between row i of \code{m1} and row j of \code{m2}.
+A numeric matrix where the entry at \verb{[i, j]} is the Euclidean distance between row i of \code{m1} and row j of \code{m2}.
 }
 \description{
 This function computes the pairwise Euclidean distance between rows of two matrices.
 }
 \examples{
+\dontrun{
 mat1 <- matrix(1:4, ncol = 2)
 mat2 <- matrix(5:8, ncol = 2)
 crossdist(mat1, mat2)
-
+}
 }

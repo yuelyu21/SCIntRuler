@@ -10,14 +10,14 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
-    BiocManager,
     batchelor,
+    base,
     Seurat,
     MatrixGenerics,
-    Rcpp (>= 1.0.11),
     dplyr,
     coin,
-    ggplot2
+    ggplot2,
+    magrittr
 LinkingTo: Rcpp
 URL: https://github.com/yuelyu21/SCIntRuler
 BugReports: https://github.com/yuelyu21/SCIntRuler/issues
