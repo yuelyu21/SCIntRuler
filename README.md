@@ -24,8 +24,7 @@ BiocManager::install("batchelor")
 
 
 ## Installation
-To install `SCIntRuler`, use the following command in R:
-```R
+# To install `SCIntRuler`, use the following command in R:
 # Install SCIntRuler from GitHub
 devtools::install_github("yuelyu21/SCIntRuler")
 # Load SCIntRuler
