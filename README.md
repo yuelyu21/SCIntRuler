@@ -20,8 +20,5 @@ devtools::install_github("yuelyu21/SCIntRuler")
 # Load SCIntRuler
 library(SCIntRuler)
 
-# Example usage
-# Assuming you have scRNA-seq datasets ready
-result <- SCIntRuler(dataset1, dataset2, ...)
 
 
