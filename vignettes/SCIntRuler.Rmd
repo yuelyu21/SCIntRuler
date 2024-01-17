@@ -1,0 +1,71 @@
+---
+title: "Get Started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+```{r}
+# Bcell <- AllCounts$B_cells[, sample(1:ncol(AllCounts$B_cells), 2000)]
+# CD14Mono <- AllCounts$cd14_monocytes[, sample(1:ncol(AllCounts$cd14_monocytes), 700)]
+# CD56NK <- AllCounts$cd56_NK[, sample(1:ncol(AllCounts$cd56_NK), 2000)]
+# 
+# CD4T <- AllCounts$CD4_T_helper[, sample(1:ncol(AllCounts$CD4_T_helper), 1200)]
+# 
+# sim2_Dat1 <- cbind(Bcell, CD4T[, 1:400])
+# sim2_Dat2 <- cbind(CD14Mono, CD4T[, 400+1:400])
+# sim2_Dat3 <- cbind(CD56NK, CD4T[, 800+1:400])
+# 
+# labels <- c(rep("Bcell", 2000), rep("CD4T", 400),
+#             rep("CD14Mono", 700), rep("CD4T", 400),
+#             rep("CD56NK", 2000), rep("CD4T", 400))
+# study <- c(rep("Study1", 2400),
+#           rep("Study2", 1100),
+#           rep("Study3", 2400))
+# 
+# sim2Data <- CreateSeuratObject(counts = cbind(sim2_Dat1, sim2_Dat2, sim2_Dat3), min.cells = 0, min.features = 0)
+```
+
+
+## Install the Package
+
+To install the package, you need to install the `batchelor` package from Bioconductor:
+```{r}
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# BiocManager::install("batchelor")
+```
+
+Then, to install SCIntRuler, use the following command:
+
+```{r}
+#devtools::install_github("yuelyu21/SCIntRuler") 
+```
+
+
+Load the package:
+
+```{r setup}
+library(SCIntRuler)
+```
+
+
+
+
+
+
+
+
+
+
+

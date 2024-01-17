@@ -19,5 +19,13 @@ Imports:
     ggplot2,
     magrittr
 LinkingTo: Rcpp
-URL: https://github.com/yuelyu21/SCIntRuler
+URL: https://github.com/yuelyu21/SCIntRuler, https://yuelyu21.github.io/SCIntRuler/
 BugReports: https://github.com/yuelyu21/SCIntRuler/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+LazyDataCompression: xz
