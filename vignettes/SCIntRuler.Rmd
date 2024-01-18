@@ -66,7 +66,7 @@ Let's start with an example data. This is data is generated from a large PBMC da
 
 ```{r}
 SCIntRuler::sim_data
-data("sim_data")
+data(SCIntRuler::sim_data)
 ```
 
 ```{r}
@@ -77,10 +77,10 @@ sim_data@meta.data
 
 
 ```{r}
-cell_names <- colnames(sim_data)
-set.seed(123)  # Setting a seed for reproducibility
-selected_cells <- sample(cell_names, size = 2000)
-sim_data <- subset(sim_data, cells = selected_cells)
+# cell_names <- colnames(sim_data)
+# set.seed(123)  # Setting a seed for reproducibility
+# selected_cells <- sample(cell_names, size = 200)
+# sim_data <- subset(sim_data, cells = selected_cells)
 ```
 
 
@@ -102,24 +102,23 @@ sim_data <- subset(sim_data, cells = selected_cells)
 
 
 ```{r}
-sim.list <- SplitObject(sim_data, split.by = "Study")
+sim.list <- Seurat::SplitObject(sim_data, split.by = "Study")
 
 
-fullcluster <- GetCluster(sim.list,50,200)
-print("Done")
-normCount <- NormData(sim.list)
+fullcluster <- SCIntRuler::GetCluster(sim.list,50,200)
 
-print("Done")
+normCount <- SCIntRuler::NormData(sim.list)
 
 distmat <- SCIntRuler::FindNNDist(fullcluster,
-                 normCount, 20)
+                 normCount, 
+                 meaningn = 10)
 ```
 
 
 
 ```{r}
-outres <- PermTest(fullcluster,distmat,15)
-PlotSCIR(fullcluster,sim.list,outres,"")
+outres <- SCIntRuler::PermTest(fullcluster,distmat,15)
+SCIntRuler::PlotSCIR(fullcluster,sim.list,outres,"")
 
 ```
 
