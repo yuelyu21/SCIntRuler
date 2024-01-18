@@ -57,15 +57,69 @@ Load the package:
 
 ```{r setup}
 library(SCIntRuler)
+library(Seurat)
+library(tidyverse)
+```
+
+## Explore with an example data
+Let's start with an example data. This is data is generated from a large PBMC data set. This data is already in Seurat format. This data is also the data we used in our Simulation 2, where we have three studies and 
+
+```{r}
+SCIntRuler::sim_data
+data("sim_data")
+```
+
+```{r}
+sim_data@meta.data
+```
+
+### Visulize data with Seurat
+
+
+```{r}
+cell_names <- colnames(sim_data)
+set.seed(123)  # Setting a seed for reproducibility
+selected_cells <- sample(cell_names, size = 2000)
+sim_data <- subset(sim_data, cells = selected_cells)
 ```
 
 
 
+```{r}
+# sim_data <- NormalizeData(sim_data)
+# sim_data <- FindVariableFeatures(sim_data, selection.method = "vst", nfeatures = 2000)
+# all.genes <- rownames(sim_data)
+# sim_data <- ScaleData(sim_data, features = all.genes)
+# sim_data <- RunPCA(sim_data, features = VariableFeatures(object = sim_data))
+# sim_data <- FindNeighbors(sim_data, dims = 1:20)
+# sim_data <- FindClusters(sim_data, resolution = 0.5)
+# sim_data <- RunUMAP(sim_data, dims = 1:20)
+# 
+# DimPlot(sim_data, reduction = "umap", label = FALSE, pt.size = .5, group.by = "Study", repel = TRUE)
+# DimPlot(sim_data, reduction = "umap", label = TRUE, pt.size = .8, group.by = "CellType", repel = TRUE)
+```
 
 
 
+```{r}
+sim.list <- SplitObject(sim_data, split.by = "Study")
+
+
+fullcluster <- GetCluster(sim.list,50,200)
+print("Done")
+normCount <- NormData(sim.list)
+
+print("Done")
+
+distmat <- SCIntRuler::FindNNDist(fullcluster,
+                 normCount, 20)
+```
 
 
 
+```{r}
+outres <- PermTest(fullcluster,distmat,15)
+PlotSCIR(fullcluster,sim.list,outres,"")
 
+```
 

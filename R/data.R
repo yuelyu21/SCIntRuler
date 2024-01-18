@@ -7,4 +7,5 @@
 #'   \item{assays}{Count matrix}
 #'   \item{meta.data}{Meta data for each cell}
 #' }
+#' @name sim_data
 "sim_data"
