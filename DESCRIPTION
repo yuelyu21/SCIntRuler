@@ -1,5 +1,5 @@
 Package: SCIntRuler
-Title: SCIntRuler: Guiding the integration of multiple single-cell RNA-seq datasets
+Title: Guiding the integration of multiple single-cell RNA-seq datasets
 Version: 0.0.1
 Authors@R: 
     person("Yue", "Lyu", , "yuelyu0521@gmail.com", role = c("aut", "cre"),
