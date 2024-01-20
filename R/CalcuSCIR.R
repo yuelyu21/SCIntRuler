@@ -20,6 +20,12 @@ utils::globalVariables(c("P.value", "V2","revDiff","finecluster","rarecluster"))
 #'
 
 CalcuSCIR <- function(fullcluster, seuratlist, testres, p = 0.1){
+  stopifnot(exprs = {
+    is.list(fullcluster)
+    is.list(seuratlist)
+    is.list(testres)
+  })
+
 
   SCout <- SummCluster(fullcluster)
   refindClust <- SCout$refindClust

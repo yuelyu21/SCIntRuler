@@ -1,11 +1,16 @@
 ---
 title: "Get Started"
+author: <a href="https://orcid.org/0000-0002-8912-6624">Yue Lyu <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
+description: >
+  Guiding the integration of multiple single-cell RNA-seq datasets with a novel statistical metric.
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get Started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -15,110 +20,356 @@ knitr::opts_chunk$set(
 ```
 
 
+
+## 1. Installation
+
+To install the package, you need to install the `batchelor` and `MatrixGenerics`package from Bioconductor.
 ```{r}
-# Bcell <- AllCounts$B_cells[, sample(1:ncol(AllCounts$B_cells), 2000)]
-# CD14Mono <- AllCounts$cd14_monocytes[, sample(1:ncol(AllCounts$cd14_monocytes), 700)]
-# CD56NK <- AllCounts$cd56_NK[, sample(1:ncol(AllCounts$cd56_NK), 2000)]
-# 
-# CD4T <- AllCounts$CD4_T_helper[, sample(1:ncol(AllCounts$CD4_T_helper), 1200)]
-# 
-# sim2_Dat1 <- cbind(Bcell, CD4T[, 1:400])
-# sim2_Dat2 <- cbind(CD14Mono, CD4T[, 400+1:400])
-# sim2_Dat3 <- cbind(CD56NK, CD4T[, 800+1:400])
-# 
-# labels <- c(rep("Bcell", 2000), rep("CD4T", 400),
-#             rep("CD14Mono", 700), rep("CD4T", 400),
-#             rep("CD56NK", 2000), rep("CD4T", 400))
-# study <- c(rep("Study1", 2400),
-#           rep("Study2", 1100),
-#           rep("Study3", 2400))
-# 
-# sim2Data <- CreateSeuratObject(counts = cbind(sim2_Dat1, sim2_Dat2, sim2_Dat3), min.cells = 0, min.features = 0)
+
+# Check if BioManager is installed, install if not
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+# Check if 'batchelor' is installed, install if not
+if (!requireNamespace("batchelor", quietly = TRUE)) 
+    BiocManager::install("batchelor")
+
+# Check if 'MatrixGenerics' is installed, install if not
+if (!requireNamespace("MatrixGenerics", quietly = TRUE)) 
+    BiocManager::install("MatrixGenerics")
+
 ```
 
-
-## Install the Package
-
-To install the package, you need to install the `batchelor` package from Bioconductor:
-```{r}
-# if (!requireNamespace("BiocManager", quietly = TRUE))
-#     install.packages("BiocManager")
-# BiocManager::install("batchelor")
-```
-
-Then, to install SCIntRuler, use the following command:
+The `SCIntRuler` can be installed using `devtools` by the following commands, the source code can be found at [GitHub](https://github.com/yuelyu21/SCIntRuler).
 
 ```{r}
-#devtools::install_github("yuelyu21/SCIntRuler") 
+# devtools::install_github("yuelyu21/SCIntRuler") 
 ```
 
+After the installation, the package can be loaded with
 
-Load the package:
-
-```{r setup}
+```{r setup, message=FALSE, warning=FALSE}
 library(SCIntRuler)
 library(Seurat)
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 ```
 
-## Explore with an example data
-Let's start with an example data. This is data is generated from a large PBMC data set. This data is already in Seurat format. This data is also the data we used in our Simulation 2, where we have three studies and 
+## 2. Explore with an example data
 
-```{r}
+Let's start with an example data. We conducted a series of simulation studies to assess the efficacy of `SCIntRuler` in guiding the integration selection under different scenarios with varying degrees of shared information among datasets. We generated the simulation data based on a real `Peripheral Blood Mononuclear Cells (PBMC)` scRNA-seq dataset. This dataset is what we used in our `Simulation 2`, where we have three studies. In each study, we randomly drew different numbers of CD4 T helper cells, B cells, CD14 monocytes, and CD56 NK cells to mimic four real-world scenarios with three data sources `Simulation 2` introduces a moderate overlap, with 20.3% cells sharing the same cell type identity. There are 2000 B cells and 400 CD4T cells in the first study, 700 CD14Mono cells and 400 CD4T cells in the second study, 2000 CD56NK cells and 400 CD4T cells in the third study. This data is already in `Seurat` format and can be found under `/data`.
+
+### Overview of the data
+
+```{r load the data, message=FALSE, warning=FALSE}
 SCIntRuler::sim_data
-data(SCIntRuler::sim_data)
+data("sim_data")
+
+labels <- c(rep("Bcell", 2000), rep("CD4T", 400),
+            rep("CD14Mono", 700), rep("CD4T", 400),
+            rep("CD56NK", 2000), rep("CD4T", 400))
+study <- c(rep("Study1", 2400),
+          rep("Study2", 1100),
+          rep("Study3", 2400))
+
+tmpMeta <- sim_data@meta.data
+tmpMeta["CellType"] <- labels
+tmpMeta["Study"] <- study
+# Add the metadata
+sim_data <- AddMetaData(sim_data, tmpMeta)
+
 ```
+
+
+There are 32738 genes and 5900 cells in this data.
+
+```{r show some data, message=FALSE, warning=FALSE}
+head(sim_data@meta.data)
+```
+
+### Data pre-process and visulization with Seurat
+
 
 ```{r}
-sim_data@meta.data
+mat1 <- matrix(1:4, ncol = 2)
+mat2 <- matrix(5:8, ncol = 2)
+dist_matrix <- crossdist(mat1, mat2)
+#dist_matrix <- crossdist2(mat1, mat2)
 ```
-
-### Visulize data with Seurat
 
 
 ```{r}
 # cell_names <- colnames(sim_data)
 # set.seed(123)  # Setting a seed for reproducibility
-# selected_cells <- sample(cell_names, size = 200)
+# selected_cells <- sample(cell_names, size = 2000)
 # sim_data <- subset(sim_data, cells = selected_cells)
 ```
 
+Followed by the tutorial of [Seurat](https://satijalab.org/seurat/articles/pbmc3k_tutorial), we first pro-processed the data by the functions `NormalizeData`, `FindVariableFeature`, `ScaleData`, `RunPCA`, `FindNeighbors`, `FinsClusters` and `RunUMAP` from `Seurat` and then draw the UMAP by using `DimPlot` stratified by `Study` and `Cell Type`.
+
+```{r pre-process , message=FALSE, warning=FALSE}
+# Normalize the data
+sim_data <- NormalizeData(sim_data)
+# Identify highly variable features
+sim_data <- FindVariableFeatures(sim_data, selection.method = "vst", nfeatures = 2000)
+# Scale the data
+all.genes <- rownames(sim_data)
+sim_data <- ScaleData(sim_data, features = all.genes)
+# Perfom linear dimensional reduction
+sim_data <- RunPCA(sim_data, features = VariableFeatures(object = sim_data))
+# Cluster the cells
+sim_data <- FindNeighbors(sim_data, dims = 1:20)
+sim_data <- FindClusters(sim_data, resolution = 0.5)
+sim_data <- RunUMAP(sim_data, dims = 1:20)
+```
+
+#### UMAP separated by Study 
+
+```{r UMAP , message=FALSE, warning=FALSE}
+p1 <- DimPlot(sim_data, reduction = "umap", label = FALSE, pt.size = .5, group.by = "Study", repel = TRUE)
+p1
+```
 
 
-```{r}
-# sim_data <- NormalizeData(sim_data)
-# sim_data <- FindVariableFeatures(sim_data, selection.method = "vst", nfeatures = 2000)
-# all.genes <- rownames(sim_data)
-# sim_data <- ScaleData(sim_data, features = all.genes)
-# sim_data <- RunPCA(sim_data, features = VariableFeatures(object = sim_data))
-# sim_data <- FindNeighbors(sim_data, dims = 1:20)
-# sim_data <- FindClusters(sim_data, resolution = 0.5)
-# sim_data <- RunUMAP(sim_data, dims = 1:20)
+#### UMAP separated by cell type 
+```{r UMAP2 , message=FALSE, warning=FALSE}
+
+p2 <- DimPlot(sim_data, reduction = "umap", label = TRUE, pt.size = .8, group.by = "CellType", repel = TRUE)
+p2
+
+```
+
+### Try different data integration methods
+To further illustrate which integration method is more suitable under different settings, we visualize
+the data without integration (simply merging the single cell objects) and after applying three popular data
+integration methods: CCA, Harmony and Scanorama. The UMAP visualizations across the simulations indicate that the choice of integration method significantly impacts the resulting data integration. 
+
+#### Run Seurat CCA
+Seurat CCA can be directly applied by functions `FindIntegrationAnchors` and `IntegrateData` in `Seurat` package. For more information, please see[Tutorial of SeuratCCA](https://satijalab.org/seurat/articles/integration_introduction.html).
+
+```{r CCA, message=FALSE, warning=FALSE}
+### CCA
+sim.list <- SplitObject(sim_data, split.by = "Study")
+sim.anchors <- FindIntegrationAnchors(object.list = sim.list, dims = 1:30, reduction = "cca")
+
+sim.int <- IntegrateData(anchorset = sim.anchors, dims = 1:30, new.assay.name = "CCA")
+# run standard anlaysis workflow
+sim.int <- ScaleData(sim.int, verbose = FALSE)
+sim.int <- RunPCA(sim.int, npcs = 30, verbose = FALSE)
+sim.int <- RunUMAP(sim.int, dims = 1:30, reduction.name = "umap_cca")
+
+```
+
+#### Run Harmony
+Harmony is an algorithm for performing integration of single cell genomics datasets. To run harmony, we need to install `harmony` package first. For more information, please see [Quick start to Harmony](https://portals.broadinstitute.org/harmony/articles/quickstart.html).
+
+
+```{r harmony, message=FALSE, warning=FALSE}
+### Harmony
+if (!requireNamespace("harmony", quietly = TRUE))
+  BiocManager::install("harmony", version = "3.8")
+
+library(harmony)
+sim.harmony <- RunHarmony(sim_data, group.by.vars = "Study", reduction.use = "pca",
+                                   #dims.use = 1:20, assay.use = "RNA"
+    )
+
+sim.int[["harmony"]] <- sim.harmony[["harmony"]]
+sim.int <- RunUMAP(sim.int, dims = 1:20, reduction = "harmony", reduction.name = "umap_harmony")
+
+```
+#### Run Scanorama
+To run Scanorama, we need to first load an virtual environment and install `scanorama` which can be directly imported in `R`. 
+
+```{r reticulate, message=FALSE, warning=FALSE}
+# create a new environment 
+reticulate::virtualenv_create("r-reticulate")
+
+# install SciPy
+reticulate::virtualenv_install("r-reticulate", "scanorama")
+
+reticulate::use_virtualenv("r-reticulate")
+
+# library(reticulate)
+scanorama <- reticulate::import('scanorama')
+```
+
+
+
+```{r scanorama, message=FALSE, warning=FALSE}
+### Scanorama
+counts <- sim_data@assays$RNA@counts
+dim(counts)
+sim_Dat1 <- counts[,1:2400]
+sim_Dat2 <- counts[,2400+1:1100]
+sim_Dat3 <- counts[,3500+1:2400]
+
+datasets <- list( t(as.matrix(sim_Dat1)), t(as.matrix(sim_Dat2)) ,t(as.matrix(sim_Dat3)))
+# List of gene lists:
+genes_list <- list()
+for(i in 1:3) {
+    genes_list[[i]] <- colnames(datasets[[i]])
+}
+
+integrated.data <- scanorama$integrate(datasets, genes_list)
+
+intdimred <- do.call(rbind, integrated.data[[1]])
+colnames(intdimred) <- paste0("PC_", 1:100)
+rownames(intdimred) <- colnames(sim.int)
+
+# Add standard deviations in order to draw Elbow Plots in Seurat
+stdevs <- apply(intdimred, MARGIN = 2, FUN = sd)
+
+sim.int[["scanorama"]] <- CreateDimReducObject(embeddings = intdimred, stdev = stdevs,
+    key = "scanorama_", assay = "RNA")
+
+sim.int <- RunUMAP(sim.int, dims = 1:100, reduction = "scanorama", reduction.name = "umap_scanorama")
+
+```
+
+
+#### UMAP figures for all integrated data
+
+```{r integration, fig.height=8, fig.width=8}
+p5 <- DimPlot(sim_data, reduction = "umap", group.by = "Study") +
+  theme(legend.position = "none",
+        # axis.line.y = element_line( size = 2, linetype = "solid"),
+        # axis.line.x = element_line( size = 2, linetype = "solid"),
+        axis.text.y = element_text( color="black", size=20),
+        axis.title.y = element_text(color="black", size=20),
+        axis.text.x = element_text( color="black", size=20),
+        axis.title.x = element_text(color="black", size=20))
+p6 <- DimPlot(sim.int, reduction = "umap_cca", group.by = "Study") +
+  theme(legend.position = "none",
+        # axis.line.y = element_line( size = 2, linetype = "solid"),
+        # axis.line.x = element_line( size = 2, linetype = "solid"),
+        axis.text.y = element_text( color="black", size=20),
+        axis.title.y = element_text(color="black", size=20),
+        axis.text.x = element_text( color="black", size=20),
+        axis.title.x = element_text(color="black", size=20))
+p7 <- DimPlot(sim.int, reduction = "umap_harmony", group.by = "Study") +
+  theme(legend.position = "none",
+        # axis.line.y = element_line( size = 2, linetype = "solid"),
+        # axis.line.x = element_line( size = 2, linetype = "solid"),
+        axis.text.y = element_text( color="black", size=20),
+        axis.title.y = element_text(color="black", size=20),
+        axis.text.x = element_text( color="black", size=20),
+        axis.title.x = element_text(color="black", size=20))
+p8 <- DimPlot(sim.int, reduction = "umap_scanorama", group.by = "Study") +
+  theme(legend.position = "none",
+        # axis.line.y = element_line( size = 2, linetype = "solid"),
+        # axis.line.x = element_line( size = 2, linetype = "solid"),
+        axis.text.y = element_text( color="black", size=20),
+        axis.title.y = element_text(color="black", size=20),
+        axis.text.x = element_text( color="black", size=20),
+        axis.title.x = element_text(color="black", size=20))
+
+leg <- cowplot::get_legend(p5)
+gridExtra::grid.arrange(gridExtra::arrangeGrob(p5 + NoLegend() + ggtitle("Unintegrated"), 
+                                               p6 + NoLegend() + ggtitle("Seurat CCA") , 
+                                               p7 + NoLegend() + ggtitle("Harmony"), 
+                                               p8 + NoLegend() + ggtitle("Scanorama"), nrow = 2),
+    leg, ncol = 2, widths = c(20, 5))
+
+```
+
+
+
+
+## 3. Applying SCIntRuler to example data
+
+We first split the `sim_data` by `Study` and then run `GetCluster` and `NormData` to get Louvain clusters and normalized count matrix for each study. Furthermore, to perform the permutation test of relative-between cluster distance, `FindNNDist` can be then applied. We also have another function `FindNNDistC` that based on `Rcpp` and `C++` for faster matrix calculation. 
+
+```{r step 1, warning=FALSE,message=FALSE}
+
+
+fullcluster <- GetCluster(sim.list,50,200)
+
+normCount <- NormData(sim.list)
+
+#distmat <- FindNNDist(fullcluster, normCount, 20)
+distmat <- FindNNDistC(fullcluster, normCount, 20)
+
+```
+
+
+### Calculate SCIntRuler and and an associated visualization
+
+
+
+```{r step 2, warning=FALSE,message=FALSE}
+
+outres <- PermTest(fullcluster,distmat,15)
+PlotSCIR(fullcluster,sim.list,outres,"")
+
+```
+
+
+## SessionInfo
+```{r,echo=FALSE}
+session_info()
+```
+
+
+```{r, echo=FALSE}
+
+# library(showtext)
+# library(hexSticker)
+# ## Loading Google fonts (http://www.google.com/fonts)
+# font_add_google("Gochi Hand", "gochi")
+# font_add_google("Bebas Neue", "bebas")
 # 
-# DimPlot(sim_data, reduction = "umap", label = FALSE, pt.size = .5, group.by = "Study", repel = TRUE)
-# DimPlot(sim_data, reduction = "umap", label = TRUE, pt.size = .8, group.by = "CellType", repel = TRUE)
+# ## Automatically use showtext to render text for future devices
+# showtext_auto()
+# 
+# 
+#   SCout <- SummCluster(fullcluster)
+#   refindClust <- SCout$refindClust
+#   nbroad <- SCout$nbroad
+#   allrevDiff <- outres$allrevDiff
+#   allP <- outres$allP
+# 
+# 
+#   Sample <- c()
+#   for (i in 1:length(allP)){
+#     l <- length(allP[[i]])
+#     ll <- rep(names(sim.list)[i],l)
+#     Sample <- c(Sample,ll)
+#   }
+# 
+#   res <- data.frame("P value"=unlist(allP), revDiff = na.omit(c(allrevDiff)), Sample)
+#   ratio <- dim(subset(res, P.value <0.1 & revDiff >0))[1]/length(Sample)
+# 
+#   plot <- res %>%
+#     ggplot2::ggplot() +
+#     ggplot2::geom_point(ggplot2::aes(revDiff,`P.value`,color = factor(Sample)), size = 1, alpha = 0.9) +
+#     ggplot2::theme_test()+
+#     ggplot2::scale_color_brewer(palette= "Dark2") +
+#     ggplot2::geom_hline(yintercept=0.1, linetype="dashed", color = "blue") +
+#     ggplot2::geom_vline(xintercept=0, linetype="dashed", color = "red")+
+#     ggplot2::ylab("P-value") + ggplot2::xlab("Within-between Cluster Relative Distance")+
+#     ggplot2::annotate("text", x = max(allrevDiff, na.rm = T), y = max(unlist(allP)/2, na.rm = T),
+#              label= paste("=",round(ratio,2)),hjust=1, vjust= 1.5, fontface="bold", size = 8)+
+#     ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(size=2)))+
+#     ggplot2::theme(
+#      #axis.line.y = element_line(size = 2, linetype = "solid"),
+#      #axis.line.x = element_line(size = 2, linetype = "solid"),
+#     axis.text.y = ggplot2::element_text( color="black", size=15, face="bold"),
+#     axis.title.y = ggplot2::element_text(color="black", size=15, face="bold"),
+#     axis.text.x = ggplot2::element_text( color="black", size=15, face="bold"),
+#     axis.title.x = ggplot2::element_text(color="black", size=15, face="bold") )+
+#     ggplot2::theme(legend.position = "none")+ theme_transparent() 
+# 
+# sticker(plot, package="SCIntRuler", p_size=18, p_x = 1,p_y = 1,
+#         s_x=0.88, s_y=0.9, s_width=1.5, s_height=1.5,
+#         p_fontface = "plain",
+#         h_fill="#C1E1C1", h_color="#5F9EA0",dpi = 600,
+#         # url = "https://github.com/yuelyu21/SCIntRuler",u_color = "grey",u_size = 4,
+#         # p_family = "gochi",  spotlight = T,
+#         filename="inst/figures/SCIntRuler.png")
+
 ```
 
 
 
-```{r}
-sim.list <- Seurat::SplitObject(sim_data, split.by = "Study")
-
-
-fullcluster <- SCIntRuler::GetCluster(sim.list,50,200)
-
-normCount <- SCIntRuler::NormData(sim.list)
-
-distmat <- SCIntRuler::FindNNDist(fullcluster,
-                 normCount, 
-                 meaningn = 10)
-```
-
-
-
-```{r}
-outres <- SCIntRuler::PermTest(fullcluster,distmat,15)
-SCIntRuler::PlotSCIR(fullcluster,sim.list,outres,"")
-
-```
 

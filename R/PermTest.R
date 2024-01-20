@@ -17,6 +17,12 @@
 #' }
 PermTest <- function(fullcluster, distmat, firstn){
 
+  stopifnot(exprs = {
+    is.list(fullcluster)
+    is.list(distmat)
+    is.numeric(firstn)
+  })
+
 
   allP <- list()
 

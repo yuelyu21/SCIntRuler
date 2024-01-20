@@ -16,6 +16,12 @@
 
 GetCluster <- function(seuratlist,n1 = 50,n2 = 200) {
 
+  stopifnot(exprs = {
+    is.list(seuratlist)
+    is.numeric(n1)
+    is.numeric(n2)
+  })
+
   allcluster <- list()
 
   for(i in 1:length(seuratlist)) {

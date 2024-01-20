@@ -31,8 +31,15 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
 
   dist_mat <- list()
 
+  pb <- utils::txtProgressBar(min = 0,      # Minimum value of the progress bar
+                              max = length(fullcluster), # Maximum value of the progress bar
+                              style = 3,    # Progress bar style (also available style = 1 and style = 2)
+                              width = 60,   # Progress bar width. Defaults to getOption("width")
+                              char = "=")
+
   for(j in 1:length(fullcluster)) {
-    cat("j = ", j,"; ")
+    utils::setTxtProgressBar(pb, j)
+    #cat("j = ", j,"; ")
 
     onecount <- normCount[[j]]
     onemeta <- fullcluster[[j]]
@@ -55,7 +62,6 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
     allCT <- sort(unique(onemeta$finecluster))
 
     onep_internal = onep_external = list()
-
 
     for(q in 1:length(allCT)) {
 
@@ -92,6 +98,7 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
     dist_mat[[j]] <- list(onep_internal,onep_external)
 
   }
+  close(pb)
 
   names(dist_mat) <- paste0("sample-",seq(1:length(fullcluster)))
   return(dist_mat)

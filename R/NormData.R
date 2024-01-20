@@ -13,6 +13,10 @@
 #' }
 
 NormData <- function(seuratlist) {
+  stopifnot(exprs = {
+    is.list(seuratlist)
+  })
+
   genelist <- c()
   for(i in 1:length(seuratlist)) {
     onecount <- seuratlist[[i]]@assays$RNA@counts

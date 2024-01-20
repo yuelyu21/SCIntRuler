@@ -22,6 +22,11 @@
 
 FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
   #### find nearest neighbour
+  stopifnot(exprs = {
+    is.list(fullcluster)
+    is.list(normCount)
+    is.numeric(meaningn)
+  })
 
   # allksP <- list()
   nclust <- rep(NA, length(fullcluster))
@@ -36,8 +41,15 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
 
   dist_mat <- list()
 
+  pb <- utils::txtProgressBar(min = 0,      # Minimum value of the progress bar
+                              max = length(fullcluster), # Maximum value of the progress bar
+                              style = 3,    # Progress bar style (also available style = 1 and style = 2)
+                              width = 60,   # Progress bar width. Defaults to getOption("width")
+                              char = "=")
+
   for(j in 1:length(fullcluster)) {
-    cat("j = ", j,"; ")
+    utils::setTxtProgressBar(pb, j)
+    #cat("j = ", j,"; ")
 
     onecount <- normCount[[j]] # 9763 x 2400
     onemeta <- fullcluster[[j]] # 2400 * 3
@@ -119,6 +131,7 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
     #allrevDiff[1:nclust[j], j] <- revDiff
     # allksP[[j]] <- onep_vec
   }
+  close(pb)
 
   names(dist_mat) <- paste0("sample-",seq(1:length(fullcluster)))
   return(dist_mat)
