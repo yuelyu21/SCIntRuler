@@ -278,7 +278,7 @@ distmat <- FindNNDistC(fullcluster, normCount, 20)
 
 ### Calculate SCIntRuler and and an associated visualization
 
-In Simulation 2, we got a SCIntRuler score of 0.71, there is a noticeable but not large overlap of cell types across the datasets, showing a moderate level of shared information. The integration is essential to adjust for these effects and align the shared cell populations, ensuring that the integrated dataset accurately reflects the biological composition. Thus, the methods which can offer a balance between correcting for batch effects and maintaining biological variation would be the best. 
+In Simulation 2, we got a SCIntRuler score of 0.71, there is a noticeable but not large overlap of cell types across the datasets, showing a moderate level of shared information. The integration is essential to adjust for these effects and align the shared cell populations, ensuring that the integrated dataset accurately reflects the biological composition. Thus, the methods which can offer a balance between correcting for batch effects and maintaining biological variation would be the best. The UMAP visualizations across the simulations indicate that the choice of integration method significantly impacts the resulting data integration. 
 
 ```{r step 2, warning=FALSE,message=FALSE}
 
