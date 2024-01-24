@@ -40,10 +40,6 @@ jobs:
         with:
           extra-packages: pkgdown
 
-      - name: Install package
-        run: Rscript -e 'devtools::install_deps(dependencies = TRUE)'
-        shell: bash
-
       - name: Build site
         run: Rscript -e 'pkgdown::build_site()'
         shell: bash
