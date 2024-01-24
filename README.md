@@ -26,3 +26,4 @@ BiocManager::install("batchelor")
 devtools::install_github("yuelyu21/SCIntRuler")
 # Load SCIntRuler
 library(SCIntRuler)
+```
