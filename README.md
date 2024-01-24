@@ -27,3 +27,8 @@ devtools::install_github("yuelyu21/SCIntRuler")
 # Load SCIntRuler
 library(SCIntRuler)
 ```
+## Run an Example 
+
+To try our new method, please refer to our [getting started with SCIntRuler](articles/SCIntRuler.html) article for user instructions.
+
+

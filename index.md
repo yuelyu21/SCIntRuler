@@ -1,5 +1,5 @@
 
-# SCIntRuler: Single-Cell Integration Ruler <a href='https://yuelyu21.github.io/SCIntRuler/'><img src="man/figures/SCIntRuler.png" align="right" height="139"/></a>
+# SCIntRuler: Single-Cell Integration Ruler <a href='https://yuelyu21.github.io/SCIntRuler/'><img src="man/figures/SCIntRuler.png" align="right" height="10"/></a>
 
 
 ## About SCIntRuler
