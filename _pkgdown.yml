@@ -1,5 +1,43 @@
-url: https://yuelyu21.github.io/SCIntRuler/
+authors:
+  Yue Lyu:
+    href: https://scholar.google.com/citations?hl=en&user=PFjMl6sAAAAJ
+url: https://github.com/yuelyu21/SCIntRuler
+title: SCIntRuler
 template:
-  bootstrap: 5
+  params:
+    bootswatch: flatly
+
+development:
+  mode: unreleased
+
+navbar:
+  title: "SCIntRuler"
+  left:
+    - text: "Getting Started"
+      menu:
+        - text: Computational Resources
+        - text: "SCIntRuler Package"
+          href: articles/SCIntRuler.html
+    - text: "Reference"
+      href: reference/index.html
+  right:
+    - icon: fa-github
+      href: https://github.com/yuelyu21/SCIntRuler
 
 
+
+reference:
+
+- contents:
+  - CalcuSCIR
+  - crossdist
+  - crossdist2
+  - FindCell
+  - FindNNDist
+  - FindNNDistC
+  - GetCluster
+  - NormData
+  - PermTest
+  - PlotSCIR
+  - sim_data
+  - SummCluster
