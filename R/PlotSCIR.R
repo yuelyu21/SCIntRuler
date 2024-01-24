@@ -18,6 +18,14 @@
 #' PlotSCIR(fullcluster, seuratlist, testres)
 #' }
 PlotSCIR <- function(fullcluster,seuratlist,testres,legendtitle= NULL,title = NULL) {
+
+  stopifnot(exprs = {
+    is.list(fullcluster)
+    is.list(seuratlist)
+    is.list(testres)
+  })
+
+
   SCout <- SummCluster(fullcluster)
   refindClust <- SCout$refindClust
   nbroad <- SCout$nbroad

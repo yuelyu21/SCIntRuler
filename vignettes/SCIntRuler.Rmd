@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 ## 1. Installation
 
-To install the package, you need to install the `batchelor` and `MatrixGenerics`package from Bioconductor.
+To install the package, you need to install the `batchelor` and `MatrixGenerics` package from Bioconductor.
 ```{r}
 
 # Check if BioManager is installed, install if not
@@ -57,9 +57,10 @@ library(ggplot2)
 
 ## 2. Explore with an example data
 
-Let's start with an example data. We conducted a series of simulation studies to assess the efficacy of `SCIntRuler` in guiding the integration selection under different scenarios with varying degrees of shared information among datasets. We generated the simulation data based on a real `Peripheral Blood Mononuclear Cells (PBMC)` scRNA-seq dataset. This dataset is what we used in our `Simulation 2`, where we have three studies. In each study, we randomly drew different numbers of CD4 T helper cells, B cells, CD14 monocytes, and CD56 NK cells to mimic four real-world scenarios with three data sources `Simulation 2` introduces a moderate overlap, with 20.3% cells sharing the same cell type identity. There are 2000 B cells and 400 CD4T cells in the first study, 700 CD14Mono cells and 400 CD4T cells in the second study, 2000 CD56NK cells and 400 CD4T cells in the third study. This data is already in `Seurat` format and can be found under `/data`.
+Let's start with an example data. We conducted a series of simulation studies to assess the efficacy of `SCIntRuler` in guiding the integration selection under different scenarios with varying degrees of shared information among datasets. We generated the simulation data based on a real `Peripheral Blood Mononuclear Cells (PBMC)` scRNA-seq dataset. 
 
 ### Overview of the data
+This dataset is what we used in our **Simulation 2**, where we have three studies. In each study, we randomly drew different numbers of CD4 T helper cells, B cells, CD14 monocytes, and CD56 NK cells to mimic four real-world scenarios with three data sources **Simulation 2** introduces a moderate overlap, with 20.3% cells sharing the same cell type identity. There are 2000 B cells and 400 CD4T cells in the first study, 700 CD14Mono cells and 400 CD4T cells in the second study, 2000 CD56NK cells and 400 CD4T cells in the third study. This data is already in `Seurat` format and can be found under `/data`.
 
 ```{r load the data, message=FALSE, warning=FALSE}
 SCIntRuler::sim_data
@@ -89,23 +90,7 @@ head(sim_data@meta.data)
 
 ### Data pre-process and visulization with Seurat
 
-
-```{r}
-mat1 <- matrix(1:4, ncol = 2)
-mat2 <- matrix(5:8, ncol = 2)
-dist_matrix <- crossdist(mat1, mat2)
-#dist_matrix <- crossdist2(mat1, mat2)
-```
-
-
-```{r}
-# cell_names <- colnames(sim_data)
-# set.seed(123)  # Setting a seed for reproducibility
-# selected_cells <- sample(cell_names, size = 2000)
-# sim_data <- subset(sim_data, cells = selected_cells)
-```
-
-Followed by the tutorial of [Seurat](https://satijalab.org/seurat/articles/pbmc3k_tutorial), we first pro-processed the data by the functions `NormalizeData`, `FindVariableFeature`, `ScaleData`, `RunPCA`, `FindNeighbors`, `FinsClusters` and `RunUMAP` from `Seurat` and then draw the UMAP by using `DimPlot` stratified by `Study` and `Cell Type`.
+Followed by the tutorial of [Seurat](https://satijalab.org/seurat/articles/pbmc3k_tutorial), we first pre-processed the data by the functions `NormalizeData`, `FindVariableFeature`, `ScaleData`, `RunPCA`, `FindNeighbors`, `FinsClusters` and `RunUMAP` from `Seurat` and then draw the UMAP by using `DimPlot` stratified by **Study** and **Cell Type**.
 
 ```{r pre-process , message=FALSE, warning=FALSE}
 # Normalize the data
@@ -161,13 +146,12 @@ sim.int <- RunUMAP(sim.int, dims = 1:30, reduction.name = "umap_cca")
 ```
 
 #### Run Harmony
-Harmony is an algorithm for performing integration of single cell genomics datasets. To run harmony, we need to install `harmony` package first. For more information, please see [Quick start to Harmony](https://portals.broadinstitute.org/harmony/articles/quickstart.html).
+Harmony is an algorithm for performing integration of single cell genomics datasets. To run harmony, we need to install `harmony` package. For more information, please see [Quick start to Harmony](https://portals.broadinstitute.org/harmony/articles/quickstart.html).
 
 
 ```{r harmony, message=FALSE, warning=FALSE}
 ### Harmony
-if (!requireNamespace("harmony", quietly = TRUE))
-  BiocManager::install("harmony", version = "3.8")
+# install.packages("harmony")
 
 library(harmony)
 sim.harmony <- RunHarmony(sim_data, group.by.vars = "Study", reduction.use = "pca",
@@ -194,7 +178,7 @@ reticulate::use_virtualenv("r-reticulate")
 scanorama <- reticulate::import('scanorama')
 ```
 
-
+Then, we can run scanorama integration and UMAP based on scanorama projection. 
 
 ```{r scanorama, message=FALSE, warning=FALSE}
 ### Scanorama
@@ -230,7 +214,7 @@ sim.int <- RunUMAP(sim.int, dims = 1:100, reduction = "scanorama", reduction.nam
 
 #### UMAP figures for all integrated data
 
-```{r integration, fig.height=8, fig.width=8}
+```{r integration, fig.height=8, fig.width=14}
 p5 <- DimPlot(sim_data, reduction = "umap", group.by = "Study") +
   theme(legend.position = "none",
         # axis.line.y = element_line( size = 2, linetype = "solid"),
@@ -282,7 +266,7 @@ We first split the `sim_data` by `Study` and then run `GetCluster` and `NormData
 
 ```{r step 1, warning=FALSE,message=FALSE}
 
-
+sim.list <- SplitObject(sim_data, split.by = "Study")
 fullcluster <- GetCluster(sim.list,50,200)
 
 normCount <- NormData(sim.list)
@@ -295,7 +279,7 @@ distmat <- FindNNDistC(fullcluster, normCount, 20)
 
 ### Calculate SCIntRuler and and an associated visualization
 
-
+In Simulation 2, we got a SCIntRuler score of 0.71, there is a noticeable but not large overlap of cell types across the datasets, showing a moderate level of shared information. The integration is essential to adjust for these effects and align the shared cell populations, ensuring that the integrated dataset accurately reflects the biological composition. Thus, the methods which can offer a balance between correcting for batch effects and maintaining biological variation would be the best. 
 
 ```{r step 2, warning=FALSE,message=FALSE}
 
@@ -307,20 +291,20 @@ PlotSCIR(fullcluster,sim.list,outres,"")
 
 ## SessionInfo
 ```{r,echo=FALSE}
-session_info()
+devtools::session_info()
 ```
 
 
 ```{r, echo=FALSE}
 
-# library(showtext)
+# # library(showtext)
 # library(hexSticker)
 # ## Loading Google fonts (http://www.google.com/fonts)
-# font_add_google("Gochi Hand", "gochi")
-# font_add_google("Bebas Neue", "bebas")
+# # font_add_google("Gochi Hand", "gochi")
+# # font_add_google("Bebas Neue", "bebas")
 # 
 # ## Automatically use showtext to render text for future devices
-# showtext_auto()
+# # showtext_auto()
 # 
 # 
 #   SCout <- SummCluster(fullcluster)
@@ -348,8 +332,8 @@ session_info()
 #     ggplot2::geom_hline(yintercept=0.1, linetype="dashed", color = "blue") +
 #     ggplot2::geom_vline(xintercept=0, linetype="dashed", color = "red")+
 #     ggplot2::ylab("P-value") + ggplot2::xlab("Within-between Cluster Relative Distance")+
-#     ggplot2::annotate("text", x = max(allrevDiff, na.rm = T), y = max(unlist(allP)/2, na.rm = T),
-#              label= paste("=",round(ratio,2)),hjust=1, vjust= 1.5, fontface="bold", size = 8)+
+#     # ggplot2::annotate("text", x = max(allrevDiff, na.rm = T), y = max(unlist(allP)/2, na.rm = T),
+#     #          label= paste("=",round(ratio,2)),hjust=1, vjust= 1.5, fontface="bold", size = 8)+
 #     ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(size=2)))+
 #     ggplot2::theme(
 #      #axis.line.y = element_line(size = 2, linetype = "solid"),
@@ -358,17 +342,34 @@ session_info()
 #     axis.title.y = ggplot2::element_text(color="black", size=15, face="bold"),
 #     axis.text.x = ggplot2::element_text( color="black", size=15, face="bold"),
 #     axis.title.x = ggplot2::element_text(color="black", size=15, face="bold") )+
-#     ggplot2::theme(legend.position = "none")+ theme_transparent() 
+#     ggplot2::theme(legend.position = "none")+ theme_transparent()
 # 
-# sticker(plot, package="SCIntRuler", p_size=18, p_x = 1,p_y = 1,
+# sticker(plot, package="SCIntRuler", p_size=20, p_x = 1.05,p_y = 1,p_color = "#5F9EA0",
 #         s_x=0.88, s_y=0.9, s_width=1.5, s_height=1.5,
 #         p_fontface = "plain",
 #         h_fill="#C1E1C1", h_color="#5F9EA0",dpi = 600,
 #         # url = "https://github.com/yuelyu21/SCIntRuler",u_color = "grey",u_size = 4,
-#         # p_family = "gochi",  spotlight = T,
+#         # p_family = "gochi",  spotlight = T
 #         filename="inst/figures/SCIntRuler.png")
 
 ```
+
+
+```{r echo=FALSE}
+mat1 <- matrix(1:4, ncol = 2)
+mat2 <- matrix(5:8, ncol = 2)
+dist_matrix <- crossdist(mat1, mat2)
+#dist_matrix <- crossdist2(mat1, mat2)
+```
+
+
+```{r echo=FALSE}
+# cell_names <- colnames(sim_data)
+# set.seed(123)  # Setting a seed for reproducibility
+# selected_cells <- sample(cell_names, size = 2000)
+# sim_data <- subset(sim_data, cells = selected_cells)
+```
+
 
 
 
