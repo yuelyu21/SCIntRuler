@@ -18,6 +18,9 @@ Imports:
     MatrixGenerics,
     dplyr,
     coin,
+    devtools,
+    harmony,
+    reticulate,
     ggplot2,
     magrittr
 LinkingTo: Rcpp
@@ -26,8 +29,6 @@ BugReports: https://github.com/yuelyu21/SCIntRuler/issues
 Suggests: 
     knitr,
     rmarkdown,
-    reticulate,
-    harmony,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Depends: 
