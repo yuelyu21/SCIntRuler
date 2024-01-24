@@ -162,51 +162,50 @@ sim.int <- RunUMAP(sim.int, dims = 1:20, reduction = "harmony", reduction.name =
 
 ```
 #### Run Scanorama
-To run Scanorama, we need to first load an virtual environment and install `scanorama` which can be directly imported in `R`. 
+To run Scanorama, we need to first load an virtual environment and install `scanorama` which can be directly imported in `R`. Then, we can run scanorama integration and UMAP based on scanorama projection. 
 
 ```{r reticulate, message=FALSE, warning=FALSE}
-# create a new environment 
-reticulate::virtualenv_create("r-reticulate")
-
-# install SciPy
-reticulate::virtualenv_install("r-reticulate", "scanorama")
-
-reticulate::use_virtualenv("r-reticulate")
-
-# library(reticulate)
-scanorama <- reticulate::import('scanorama')
+# # create a new environment 
+# reticulate::virtualenv_create("r-reticulate")
+# 
+# # install SciPy
+# reticulate::virtualenv_install("r-reticulate", "scanorama")
+# 
+# reticulate::use_virtualenv("r-reticulate")
+# 
+# # library(reticulate)
+# scanorama <- reticulate::import('scanorama')
 ```
 
-Then, we can run scanorama integration and UMAP based on scanorama projection. 
 
 ```{r scanorama, message=FALSE, warning=FALSE}
 ### Scanorama
-counts <- sim_data@assays$RNA@counts
-dim(counts)
-sim_Dat1 <- counts[,1:2400]
-sim_Dat2 <- counts[,2400+1:1100]
-sim_Dat3 <- counts[,3500+1:2400]
-
-datasets <- list( t(as.matrix(sim_Dat1)), t(as.matrix(sim_Dat2)) ,t(as.matrix(sim_Dat3)))
-# List of gene lists:
-genes_list <- list()
-for(i in 1:3) {
-    genes_list[[i]] <- colnames(datasets[[i]])
-}
-
-integrated.data <- scanorama$integrate(datasets, genes_list)
-
-intdimred <- do.call(rbind, integrated.data[[1]])
-colnames(intdimred) <- paste0("PC_", 1:100)
-rownames(intdimred) <- colnames(sim.int)
-
-# Add standard deviations in order to draw Elbow Plots in Seurat
-stdevs <- apply(intdimred, MARGIN = 2, FUN = sd)
-
-sim.int[["scanorama"]] <- CreateDimReducObject(embeddings = intdimred, stdev = stdevs,
-    key = "scanorama_", assay = "RNA")
-
-sim.int <- RunUMAP(sim.int, dims = 1:100, reduction = "scanorama", reduction.name = "umap_scanorama")
+# counts <- sim_data@assays$RNA@counts
+# dim(counts)
+# sim_Dat1 <- counts[,1:2400]
+# sim_Dat2 <- counts[,2400+1:1100]
+# sim_Dat3 <- counts[,3500+1:2400]
+# 
+# datasets <- list( t(as.matrix(sim_Dat1)), t(as.matrix(sim_Dat2)) ,t(as.matrix(sim_Dat3)))
+# # List of gene lists:
+# genes_list <- list()
+# for(i in 1:3) {
+#     genes_list[[i]] <- colnames(datasets[[i]])
+# }
+# 
+# integrated.data <- scanorama$integrate(datasets, genes_list)
+# 
+# intdimred <- do.call(rbind, integrated.data[[1]])
+# colnames(intdimred) <- paste0("PC_", 1:100)
+# rownames(intdimred) <- colnames(sim.int)
+# 
+# # Add standard deviations in order to draw Elbow Plots in Seurat
+# stdevs <- apply(intdimred, MARGIN = 2, FUN = sd)
+# 
+# sim.int[["scanorama"]] <- CreateDimReducObject(embeddings = intdimred, stdev = stdevs,
+#     key = "scanorama_", assay = "RNA")
+# 
+# sim.int <- RunUMAP(sim.int, dims = 1:100, reduction = "scanorama", reduction.name = "umap_scanorama")
 
 ```
 
@@ -238,20 +237,21 @@ p7 <- DimPlot(sim.int, reduction = "umap_harmony", group.by = "Study") +
         axis.title.y = element_text(color="black", size=20),
         axis.text.x = element_text( color="black", size=20),
         axis.title.x = element_text(color="black", size=20))
-p8 <- DimPlot(sim.int, reduction = "umap_scanorama", group.by = "Study") +
-  theme(legend.position = "none",
-        # axis.line.y = element_line( size = 2, linetype = "solid"),
-        # axis.line.x = element_line( size = 2, linetype = "solid"),
-        axis.text.y = element_text( color="black", size=20),
-        axis.title.y = element_text(color="black", size=20),
-        axis.text.x = element_text( color="black", size=20),
-        axis.title.x = element_text(color="black", size=20))
+# p8 <- DimPlot(sim.int, reduction = "umap_scanorama", group.by = "Study") +
+#   theme(legend.position = "none",
+#         # axis.line.y = element_line( size = 2, linetype = "solid"),
+#         # axis.line.x = element_line( size = 2, linetype = "solid"),
+#         axis.text.y = element_text( color="black", size=20),
+#         axis.title.y = element_text(color="black", size=20),
+#         axis.text.x = element_text( color="black", size=20),
+#         axis.title.x = element_text(color="black", size=20))
 
 leg <- cowplot::get_legend(p5)
 gridExtra::grid.arrange(gridExtra::arrangeGrob(p5 + NoLegend() + ggtitle("Unintegrated"), 
                                                p6 + NoLegend() + ggtitle("Seurat CCA") , 
-                                               p7 + NoLegend() + ggtitle("Harmony"), 
-                                               p8 + NoLegend() + ggtitle("Scanorama"), nrow = 2),
+                                               p7 + NoLegend() + ggtitle("Harmony"),
+                                               #p8 + NoLegend() + ggtitle("Scanorama"), 
+                                               nrow = 2),
     leg, ncol = 2, widths = c(20, 5))
 
 ```
