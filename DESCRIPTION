@@ -11,6 +11,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.0
 Imports: 
     Rcpp,
+    harmony,
+    reticulate,
     Matrix,
     batchelor,
     base,
