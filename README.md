@@ -1,4 +1,4 @@
-# SCIntRuler: Single-Cell Integration Ruler <a href='https://yuelyu21.github.io/SCIntRuler/'><img src="man/figures/SCIntRuler.png" align="right" height="139"/></a>
+# SCIntRuler: Single-Cell Integration Ruler <a href='https://yuelyu21.github.io/SCIntRuler/'><img src="man/figures/SCIntRuler2.png" align="right" height="139"/></a>
 
 The accumulation of single-cell RNA-seq (scRNA-seq) studies highlights the potential benefits of integrating multiple datasets. By augmenting sample sizes and enhancing analytical robustness, integration can lead to more insightful biological conclusions. However, challenges arise due to the inherent diversity and batch discrepancies within and across studies. `SCIntRuler`, a novel R package, addresses these challenges by guiding the integration of multiple scRNA-seq datasets.
 

@@ -371,5 +371,20 @@ dist_matrix <- crossdist(mat1, mat2)
 
 
 
+```{r}
+
+
+library(hexSticker)
+i <- magick::image_read("~/Desktop/SCIntegration/SCIntRuler/inst/figures/ruler2.png")
+
+
+sticker(i, package="SCIntRuler", p_size=20, p_x = 1.05,p_y = 1.5,p_color = "#5F9EA0",
+        s_x=0.93, s_y=0.8, s_width=1.5, s_height=1.5,
+        p_fontface = "plain",
+        h_fill="#C1E1C1", h_color="#5F9EA0",
+        # url = "https://github.com/yuelyu21/SCIntRuler",u_color = "grey",u_size = 4,
+        # p_family = "gochi",  spotlight = T
+        filename="inst/figures/SCIntRuler2.png")
+```
 
 
