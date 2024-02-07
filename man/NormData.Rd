@@ -16,9 +16,8 @@ A list of matrix.
 Normalized RNA data matrix
 }
 \examples{
-\dontrun{
+data(sim_data)
 # Assuming 'seurat_object_list' is a list of Seurat objects
-seuratlist <- SplitObject(seuratobj, split.by = "Study")
+seuratlist <- SplitObject(sim_data, split.by = "Study")
 normCount <- NormData(seuratlist)
-}
 }

@@ -10,14 +10,13 @@ utils::globalVariables(c("P.value", "V2","revDiff","finecluster","rarecluster"))
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' data(sim_result)
+#' data(sim_data)
 #' # Create example data for fullcluster (mock data)
-#' seuratlist <- SplitObject(seuratobj, split.by = "Study")
-#' fullcluster <- GetCluster(seuratist)
-#' testres <- PermTest(fullcluster,distmat,15)
-#' CalcuSCIR(fullcluster, seuratlist, testres)
-#' }
-#'
+#' seuratlist <- SplitObject(sim_data, split.by = "Study")
+#' # fullcluster <- GetCluster(seuratlist)
+#' # testres <- PermTest(fullcluster,distmat,15)
+#' CalcuSCIR(sim_result[[1]], seuratlist, sim_result[[4]])
 
 CalcuSCIR <- function(fullcluster, seuratlist, testres, p = 0.1){
   stopifnot(exprs = {
@@ -35,13 +34,20 @@ CalcuSCIR <- function(fullcluster, seuratlist, testres, p = 0.1){
 
 
   Sample <- c()
-  for (i in 1:length(allP)){
+  # for (i in 1:length(allP)){
+  #   l <- length(allP[[i]])
+  #   ll <- rep(names(seuratlist)[i],l)
+  #   Sample <- c(Sample,ll)
+  # }
+
+  for (i in seq_along(allP)) {
     l <- length(allP[[i]])
-    ll <- rep(names(seuratlist)[i],l)
-    Sample <- c(Sample,ll)
+    ll <- rep(names(seuratlist)[i], l)
+    Sample <- c(Sample, ll)
   }
 
-  res <- data.frame("P value"=unlist(allP), revDiff = na.omit(c(allrevDiff)), Sample)
+  res <- data.frame("P value"=unlist(allP),
+                    revDiff = na.omit(c(allrevDiff)), Sample)
   ratio <- dim(subset(res, P.value <= p & revDiff > 0))[1]/length(Sample)
 
   return(ratio)

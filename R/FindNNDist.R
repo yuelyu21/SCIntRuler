@@ -8,16 +8,17 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' data(sim_result)
 #' # Create example data for fullcluster (mock data)
-#' fullcluster <- GetCluster(seuratlist)
+#' # fullcluster <- GetCluster(seuratlist)
 #' # Create example data for normCount (mock data)
-#' normCount <- NormData(seuratlist)
+#' # normCount <- NormData(seuratlist)
 #' # Define meaningn
 #' meaningn <- 20
 #'
-#' FindNNDist(fullcluster, normCount, meaningn = meaningn)
-#' }
+#' FindNNDist(sim_result[[1]], sim_result[[2]], meaningn = meaningn)
+
+
 
 
 FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
@@ -31,7 +32,7 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
   # allksP <- list()
   nclust <- rep(NA, length(fullcluster))
 
-  for(i in 1:length(fullcluster)) {
+  for(i in seq_along(fullcluster)) {
     nclust[i] <- max(fullcluster[[i]]$finecluster)
   }
 
@@ -47,7 +48,7 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
                               width = 60,   # Progress bar width. Defaults to getOption("width")
                               char = "=")
 
-  for(j in 1:length(fullcluster)) {
+  for (j in seq_along(fullcluster)) {
     utils::setTxtProgressBar(pb, j)
     #cat("j = ", j,"; ")
 
@@ -60,7 +61,7 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
     # when j = 1, the dimension of othercount is 9763 3500 study 3+ study 2
     # when j = 2, the dimension of othercount is 9763 4800 study 1+ study 3
     # when j = 3, the dimension of othercount is 9763 4800 study 2+ study 3
-    for(qqq in 1:length(fullcluster)) {
+    for(qqq in seq_along(fullcluster)) {
       if(qqq != j) {
         if(newcounter == 1) {
           othercount = normCount[[qqq]]
@@ -80,7 +81,7 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
     # onep_vec <- rep(NA, length(allCT))
 
 
-    for(q in 1:length(allCT)) {
+    for(q in seq_along(allCT)) {
       # print(q)
 
       ct = allCT[q]
@@ -99,7 +100,7 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
       otherc_external <- as.matrix(othercount[,sample(1:ncol(othercount), min(500*length(normCount[-j]), ncol(othercount))) ])
       #                                        sample(1: 3500           , min(500* 2                   ,   3500.   )
 
-      for(nnn in 1:ncol(subc)) {
+      for(nnn in seq_along(ncol(subc))) {
         ## tmp dim 1 * 500
         tmp <- sort(sqrt(Matrix::colSums(sweep(otherc, 1, subc[,nnn], "-")^2)))[1:meaningn]
         onecdist_internal[[nnn]] <- tmp
@@ -108,6 +109,7 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
         tmp1 <- sort(sqrt(Matrix::colSums(sweep(otherc_external, 1, subc[,nnn], "-")^2)))[1:meaningn]
         onecdist_external[[nnn]] <- tmp1
       }
+
 
       # convert to a dataframe is better
       # dist1 <- onecdist_internal

@@ -7,11 +7,10 @@
 #' @return A numeric matrix where the entry at `[i, j]` is the Euclidean distance between row i of `m1` and row j of `m2`.
 #' @export
 #' @examples
-#' \dontrun{
 #' mat1 <- matrix(1:4, ncol = 2)
 #' mat2 <- matrix(5:8, ncol = 2)
-#' crossdist(mat1, mat2)
-#'}
+#' crossdist2(mat1, mat2)
+
 Rcpp::cppFunction('NumericMatrix crossdist2(NumericMatrix m1, NumericMatrix m2) {
     int nrow1 = m1.nrow();
     int nrow2 = m2.nrow();

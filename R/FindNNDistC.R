@@ -8,16 +8,16 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' data(sim_result)
 #' # Create example data for fullcluster (mock data)
-#' fullcluster <- GetCluster(seuratlist)
+#' # fullcluster <- GetCluster(seuratlist)
 #' # Create example data for normCount (mock data)
-#' normCount <- NormData(seuratlist)
+#' # normCount <- NormData(seuratlist)
 #' # Define meaningn
 #' meaningn <- 20
 #'
-#' FindNNDistC(fullcluster, normCount, meaningn = meaningn)
-#' }
+#' FindNNDistC(sim_result[[1]], sim_result[[2]], meaningn = meaningn)
+
 
 
 
@@ -25,7 +25,7 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
 
   nclust <- rep(NA, length(fullcluster))
 
-  for(i in 1:length(fullcluster)) {
+  for(i in seq_along(fullcluster)) {
     nclust[i] <- max(fullcluster[[i]]$finecluster)
   }
 
@@ -37,7 +37,7 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
                               width = 60,   # Progress bar width. Defaults to getOption("width")
                               char = "=")
 
-  for(j in 1:length(fullcluster)) {
+  for(j in seq_along(fullcluster)) {
     utils::setTxtProgressBar(pb, j)
     #cat("j = ", j,"; ")
 
@@ -47,7 +47,7 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
     tmpvec <- c()
     newcounter = 1
 
-    for(qqq in 1:length(fullcluster)) {
+    for(qqq in seq_along(fullcluster)) {
       if(qqq != j) {
         if(newcounter == 1) {
           othercount = normCount[[qqq]]
@@ -63,7 +63,7 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
 
     onep_internal = onep_external = list()
 
-    for(q in 1:length(allCT)) {
+    for(q in seq_along(allCT)) {
 
       ct = allCT[q]
 

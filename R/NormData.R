@@ -6,11 +6,10 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' data(sim_data)
 #' # Assuming 'seurat_object_list' is a list of Seurat objects
-#' seuratlist <- SplitObject(seuratobj, split.by = "Study")
+#' seuratlist <- SplitObject(sim_data, split.by = "Study")
 #' normCount <- NormData(seuratlist)
-#' }
 
 NormData <- function(seuratlist) {
   stopifnot(exprs = {
@@ -18,7 +17,7 @@ NormData <- function(seuratlist) {
   })
 
   genelist <- c()
-  for(i in 1:length(seuratlist)) {
+  for(i in seq_along(seuratlist)) {
     onecount <- seuratlist[[i]]@assays$RNA@counts
     if(i == 1) {
       genelist <- rownames(onecount[(MatrixGenerics::rowSums(onecount>0) >= 3),])
@@ -27,7 +26,7 @@ NormData <- function(seuratlist) {
     }
   }
   normCount <- list()
-  for(i in 1:length(seuratlist)) {
+  for(i in seq_along(seuratlist)) {
     onecount <- seuratlist[[i]]@assays$RNA@counts[genelist, ]
     normCount[[i]] <- batchelor::cosineNorm(onecount, mode = "matrix")
   }

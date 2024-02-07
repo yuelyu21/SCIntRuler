@@ -22,12 +22,11 @@ SCIntRuler
 Calculate SCIntRuler
 }
 \examples{
-\dontrun{
+data(sim_result)
+data(sim_data)
 # Create example data for fullcluster (mock data)
-seuratlist <- SplitObject(seuratobj, split.by = "Study")
-fullcluster <- GetCluster(seuratist)
-testres <- PermTest(fullcluster,distmat,15)
-CalcuSCIR(fullcluster, seuratlist, testres)
-}
-
+seuratlist <- SplitObject(sim_data, split.by = "Study")
+# fullcluster <- GetCluster(seuratlist)
+# testres <- PermTest(fullcluster,distmat,15)
+CalcuSCIR(sim_result[[1]], seuratlist, sim_result[[4]])
 }

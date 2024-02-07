@@ -8,13 +8,13 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' data(sim_result)
 #' # Assuming 'fullcluster' is a list of clusters
-#' fullcluster <- GetCluster(seuratlist)
+#' # fullcluster <- GetCluster(seuratlist)
 #' # Assuming 'distmat' is a list of normalized gene count matrix
-#' distmat <- FindNNDist(fullcluster, normCount, meaningn = 20)
-#' PermTest(fullcluster,distmat,15)
-#' }
+#' # distmat <- FindNNDist(fullcluster, normCount, meaningn = 20)
+#' testres <- PermTest(sim_result[[1]], sim_result[[3]],15)
+
 PermTest <- function(fullcluster, distmat, firstn){
 
   stopifnot(exprs = {

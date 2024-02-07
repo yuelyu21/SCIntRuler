@@ -1,11 +1,12 @@
 Package: SCIntRuler
 Title: Guiding the integration of multiple single-cell RNA-seq datasets
-Version: 0.0.1
+Version: 0.99.0
 Authors@R: 
     person("Yue", "Lyu", , "yuelyu0521@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8912-6624"))
-Description: SCIntRuler helps researchers make informed decisions regarding the necessity of data integration and the selection of an appropriate integration method.
+Description: The accumulation of single-cell RNA-seq (scRNA-seq) studies highlights the potential benefits of integrating multiple datasets. By augmenting sample sizes and enhancing analytical robustness, integration can lead to more insightful biological conclusions. However, challenges arise due to the inherent diversity and batch discrepancies within and across studies. SCIntRuler, a novel R package, addresses these challenges by guiding the integration of multiple scRNA-seq datasets.
 License: MIT + file LICENSE
+biocViews: Sequencing, GeneticVariability, SingleCell
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.0
@@ -20,9 +21,10 @@ Imports:
     coin,
     devtools,
     harmony,
-    reticulate,
     ggplot2,
-    magrittr
+    magrittr,
+    stats,
+    devtools
 LinkingTo: Rcpp
 URL: https://github.com/yuelyu21/SCIntRuler, https://yuelyu21.github.io/SCIntRuler/
 BugReports: https://github.com/yuelyu21/SCIntRuler/issues
@@ -32,7 +34,7 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Depends: 
-    R (>= 2.10)
+    R (>= 4.3.0)
 LazyData: true
 LazyDataCompression: xz
 Config/testthat/edition: 3

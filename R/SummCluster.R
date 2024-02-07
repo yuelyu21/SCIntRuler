@@ -6,15 +6,15 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' data(sim_result)
 #' # Assuming 'fullcluster' is a list of clusters
-#' fullcluster <- GetCluster(seuratlist)
-#' SCout <- SummCluster(fullcluster)
-#' }
+#' # fullcluster <- GetCluster(seuratlist)
+#' SCout <- SummCluster(sim_result[[1]])
+
 SummCluster <- function(fullcluster) {
   nbroad <- c()
   refindClust <- list()
-  for(i in 1:length(fullcluster)) {
+  for(i in seq_along(fullcluster)) {
     nbroad <- c(nbroad, length(unique(fullcluster[[i]]$broadcluster)))
 
     onetmp <- fullcluster[[i]][which(!duplicated(fullcluster[[i]][,2])), ]

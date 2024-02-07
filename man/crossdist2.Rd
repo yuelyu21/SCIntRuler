@@ -15,9 +15,7 @@ A numeric matrix where the entry at \verb{[i, j]} is the Euclidean distance betw
 This function computes the pairwise Euclidean distance between rows of two matrices.
 }
 \examples{
-\dontrun{
 mat1 <- matrix(1:4, ncol = 2)
 mat2 <- matrix(5:8, ncol = 2)
-crossdist(mat1, mat2)
-}
+crossdist2(mat1, mat2)
 }

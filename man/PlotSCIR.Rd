@@ -24,11 +24,11 @@ A ggplot2 object
 Plot SCIntRuler
 }
 \examples{
-\dontrun{
 # Create example data for fullcluster (mock data)
+data(sim_data)
+data(sim_result)
 seuratlist <- SplitObject(seuratobj, split.by = "Study")
-fullcluster <- GetCluster(seurat_object_list)
-testres <- PermTest(fullcluster,distmat,15)
-PlotSCIR(fullcluster, seuratlist, testres)
-}
+# fullcluster <- GetCluster(seurat_object_list)
+# testres <- PermTest(fullcluster,distmat,15)
+PlotSCIR(sim_result[[1]], seuratlist, sim_result[[4]])
 }

@@ -20,14 +20,13 @@ A list of distance vectors
 Find the nearest neighbors
 }
 \examples{
-\dontrun{
+data(sim_result)
 # Create example data for fullcluster (mock data)
-fullcluster <- GetCluster(seuratlist)
+# fullcluster <- GetCluster(seuratlist)
 # Create example data for normCount (mock data)
-normCount <- NormData(seuratlist)
+# normCount <- NormData(seuratlist)
 # Define meaningn
 meaningn <- 20
 
-FindNNDist(fullcluster, normCount, meaningn = meaningn)
-}
+FindNNDist(sim_result[[1]], sim_result[[2]], meaningn = meaningn)
 }

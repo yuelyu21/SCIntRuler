@@ -26,17 +26,17 @@ knitr::opts_chunk$set(
 To install the package, you need to install the `batchelor` and `MatrixGenerics` package from Bioconductor.
 ```{r}
 
-# Check if BioManager is installed, install if not
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-
-# Check if 'batchelor' is installed, install if not
-if (!requireNamespace("batchelor", quietly = TRUE)) 
-    BiocManager::install("batchelor")
-
-# Check if 'MatrixGenerics' is installed, install if not
-if (!requireNamespace("MatrixGenerics", quietly = TRUE)) 
-    BiocManager::install("MatrixGenerics")
+# # Check if BioManager is installed, install if not
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# 
+# # Check if 'batchelor' is installed, install if not
+# if (!requireNamespace("batchelor", quietly = TRUE)) 
+#     BiocManager::install("batchelor")
+# 
+# # Check if 'MatrixGenerics' is installed, install if not
+# if (!requireNamespace("MatrixGenerics", quietly = TRUE)) 
+#     BiocManager::install("MatrixGenerics")
 
 ```
 
@@ -66,18 +66,18 @@ This dataset is what we used in our **Simulation 2**, where we have three studie
 SCIntRuler::sim_data
 data("sim_data")
 
-labels <- c(rep("Bcell", 2000), rep("CD4T", 400),
-            rep("CD14Mono", 700), rep("CD4T", 400),
-            rep("CD56NK", 2000), rep("CD4T", 400))
-study <- c(rep("Study1", 2400),
-          rep("Study2", 1100),
-          rep("Study3", 2400))
-
-tmpMeta <- sim_data@meta.data
-tmpMeta["CellType"] <- labels
-tmpMeta["Study"] <- study
-# Add the metadata
-sim_data <- AddMetaData(sim_data, tmpMeta)
+# labels <- c(rep("Bcell", 2000), rep("CD4T", 400),
+#             rep("CD14Mono", 700), rep("CD4T", 400),
+#             rep("CD56NK", 2000), rep("CD4T", 400))
+# study <- c(rep("Study1", 2400),
+#           rep("Study2", 1100),
+#           rep("Study3", 2400))
+# 
+# tmpMeta <- sim_data[[]]
+# tmpMeta["CellType"] <- labels
+# tmpMeta["Study"] <- study
+# # Add the metadata
+# sim_data <- AddMetaData(sim_data, tmpMeta)
 
 ```
 
@@ -85,7 +85,7 @@ sim_data <- AddMetaData(sim_data, tmpMeta)
 There are 32738 genes and 5900 cells in this data.
 
 ```{r show some data, message=FALSE, warning=FALSE}
-head(sim_data@meta.data)
+head(sim_data[[]])
 ```
 
 ### Data pre-process and visulization with Seurat

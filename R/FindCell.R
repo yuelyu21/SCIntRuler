@@ -11,31 +11,32 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' # Create example Seurat object
-#' seuratobj <- CreateSeuratObject(...)
+#' data(sim_data)
+#' data(sim_result)
 #' # Create example list of Seurat objects
-#' seuratlistseuratlist <- SplitObject(seuratobj, split.by = "Study")
+#' seuratlist <- SplitObject(sim_data, split.by = "Study")
 #' # Create example fullcluster (mock data)
-#' fullcluster <- GetCluster(seuratlist)
+#' # fullcluster <- GetCluster(seuratlist)
 #' # Create example distmat (mock data)
-#' distmat <- FindNNDist(fullcluster, normCount, meaningn = 20)
+#' # distmat <- FindNNDist( fullcluster, distmat, meaningn = 20)
 #'
-#' FindCell(seuratobj, seuratlist, fullcluster, distmat, 15)
-#' }
+#' FindCell(sim_data, seuratlist, sim_result[[1]], sim_result[[2]], 15)
+
+
 
 FindCell <- function(seuratobj,seuratlist,fullcluster, distmat,firstn = 15){
 
   sample_cluster <- c()
 
-  for (i in 1:length(seuratlist)){
+  for (i in seq_along(seuratlist)){
 
     nclust <- max(fullcluster[[i]]$finecluster)
     testres <- matrix(NA,nrow = nclust, ncol = 2)
     disttest <- list()
     attid <- c()
 
-    for (q in 1:nclust){
+    for (q in seq_len(nclust)){
       dist1 <- as.vector(do.call(cbind, distmat[[i]][[1]][[q]])[,1:firstn])
       dist2 <- as.vector(do.call(cbind, distmat[[i]][[2]][[q]])[,1:firstn])
       disttest[[q]] <- data.frame(rbind(cbind(dist1,rep("Internal Dist",length(dist1))),
@@ -63,7 +64,7 @@ FindCell <- function(seuratobj,seuratlist,fullcluster, distmat,firstn = 15){
 
   fullcluster1 <- fullcluster
 
-  for (i in 1:length(fullcluster)){
+  for (i in seq_along(fullcluster)) {
     fullcluster1[[i]] <- fullcluster[[i]] %>%
       dplyr::mutate(finecluster = factor(finecluster),
              rarecluster = factor(rarecluster))
@@ -84,7 +85,8 @@ FindCell <- function(seuratobj,seuratlist,fullcluster, distmat,firstn = 15){
 
   plotc <- sample_cluster
 
-  meta <- meta %>% dplyr::mutate(plot_cluster = dplyr::if_else(finecluster %in% plotc,finecluster, NA))
+  meta <- meta %>% dplyr::mutate(
+    plot_cluster = dplyr::if_else(finecluster %in% plotc,finecluster, NA))
 
   seuratobj@meta.data <- meta
 

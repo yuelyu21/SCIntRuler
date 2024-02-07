@@ -20,9 +20,8 @@ A list of data frames.
 Get broad and fine clusters
 }
 \examples{
-\dontrun{
+data(sim_data)
 # Assuming 'seuratlist' is a list of Seurat objects
-seuratlist <- SplitObject(seuratobj, split.by = "Study")
+seuratlist <- SplitObject(sim_data, split.by = "Study")
 fullcluster <- GetCluster(seuratlist)
-}
 }

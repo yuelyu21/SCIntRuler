@@ -8,11 +8,11 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' data(sim_data)
 #' # Assuming 'seuratlist' is a list of Seurat objects
-#' seuratlist <- SplitObject(seuratobj, split.by = "Study")
+#' seuratlist <- SplitObject(sim_data, split.by = "Study")
 #' fullcluster <- GetCluster(seuratlist)
-#' }
+
 
 GetCluster <- function(seuratlist,n1 = 50,n2 = 200) {
 
@@ -24,13 +24,14 @@ GetCluster <- function(seuratlist,n1 = 50,n2 = 200) {
 
   allcluster <- list()
 
-  for(i in 1:length(seuratlist)) {
+  for(i in seq_along(seuratlist)) {
     onedata <- seuratlist[[i]]
     onedata <- Seurat::NormalizeData(onedata)
     onedata <- Seurat::FindVariableFeatures(onedata, selection.method = "vst", nfeatures = 2000)
     all.genes <- rownames(onedata)
     onedata <- Seurat::ScaleData(onedata, features = all.genes)
-    onedata <- Seurat::RunPCA(onedata, features = Seurat::VariableFeatures(object = onedata),seed.use = sample(1000,1))
+    onedata <- Seurat::RunPCA(onedata,
+                              features = Seurat::VariableFeatures(object = onedata),seed.use = sample(1000,1))
     onedata <- Seurat::FindNeighbors(onedata, dims = 1:20)
     onedata <- Seurat::FindClusters(onedata, resolution = 0.5)
     allcluster[[i]] <- onedata$seurat_clusters
@@ -38,13 +39,13 @@ GetCluster <- function(seuratlist,n1 = 50,n2 = 200) {
 
 
   allcluster2 <- list()
-  for(i in 1:length(seuratlist)) {
+  for(i in seq_along(seuratlist)) {
     ncount = 1
     thisc <- allcluster[[i]]
     sumtab <- table(thisc)
     idx <- names(sumtab)
     finecluster = rarecluster = rep(NA, length(thisc))
-    for(k in 1:length(sumtab)) {
+    for(k in seq_along(sumtab)) {
       if( sumtab[k] < n1 ) {
         finecluster[thisc == idx[k]] <- ncount
         rarecluster[thisc == idx[k]] <- 1

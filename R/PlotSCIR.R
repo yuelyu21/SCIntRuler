@@ -10,13 +10,14 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' # Create example data for fullcluster (mock data)
+#' data(sim_data)
+#' data(sim_result)
 #' seuratlist <- SplitObject(seuratobj, split.by = "Study")
-#' fullcluster <- GetCluster(seurat_object_list)
-#' testres <- PermTest(fullcluster,distmat,15)
-#' PlotSCIR(fullcluster, seuratlist, testres)
-#' }
+#' # fullcluster <- GetCluster(seurat_object_list)
+#' # testres <- PermTest(fullcluster,distmat,15)
+#' PlotSCIR(sim_result[[1]], seuratlist, sim_result[[4]])
+
 PlotSCIR <- function(fullcluster,seuratlist,testres,legendtitle= NULL,title = NULL) {
 
   stopifnot(exprs = {
@@ -34,7 +35,7 @@ PlotSCIR <- function(fullcluster,seuratlist,testres,legendtitle= NULL,title = NU
 
 
   Sample <- c()
-  for (i in 1:length(allP)){
+  for (i in seq_along(allP)){
     l <- length(allP[[i]])
     ll <- rep(names(seuratlist)[i],l)
     Sample <- c(Sample,ll)
@@ -51,7 +52,7 @@ PlotSCIR <- function(fullcluster,seuratlist,testres,legendtitle= NULL,title = NU
     ggplot2::geom_hline(yintercept=0.1, linetype="dashed", color = "blue") +
     ggplot2::geom_vline(xintercept=0, linetype="dashed", color = "red")+
     ggplot2::ylab("P-value") + ggplot2::xlab("Within-between Cluster Relative Distance")+
-    ggplot2::annotate("text", x = max(allrevDiff, na.rm = T), y = max(unlist(allP)/2, na.rm = T),
+    ggplot2::annotate("text", x = max(allrevDiff, na.rm = TRUE), y = max(unlist(allP)/2, na.rm = TRUE),
              label= paste("SCIntRuler =",round(ratio,2)),hjust=1, fontface="bold")+
     ggplot2::labs(color= legendtitle) +
     ggplot2::ggtitle(title)+

@@ -20,11 +20,10 @@ A list of two lists, one is the relative within-between distance and another is 
 Permutation Test
 }
 \examples{
-\dontrun{
+data(sim_result)
 # Assuming 'fullcluster' is a list of clusters
-fullcluster <- GetCluster(seuratlist)
+# fullcluster <- GetCluster(seuratlist)
 # Assuming 'distmat' is a list of normalized gene count matrix
-distmat <- FindNNDist(fullcluster, normCount, meaningn = 20)
-PermTest(fullcluster,distmat,15)
-}
+# distmat <- FindNNDist(fullcluster, normCount, meaningn = 20)
+testres <- PermTest(sim_result[[1]], sim_result[[3]],15)
 }
