@@ -78,6 +78,10 @@ data("sim_data")
 # tmpMeta["Study"] <- study
 # # Add the metadata
 # sim_data <- AddMetaData(sim_data, tmpMeta)
+# sim_s <- subset(x = sim_data, downsample = 800)
+# sim_cs <- sim_s@assays$RNA@counts[sample(32738,3000),]
+# sim_data <- CreateSeuratObject(counts = sim_cs)
+# sim_data <- AddMetaData(sim_data, sim_s[[]])
 
 ```
 
@@ -282,8 +286,10 @@ In Simulation 2, we got a SCIntRuler score of 0.71, there is a noticeable but no
 
 ```{r step 2, warning=FALSE,message=FALSE}
 
-outres <- PermTest(fullcluster,distmat,15)
-PlotSCIR(fullcluster,sim.list,outres,"")
+testres <- PermTest(fullcluster,distmat,15)
+PlotSCIR(fullcluster,sim.list,testres,"")
+
+sim_result <- list(fullcluster,normCount,distmat,testres)
 
 ```
 

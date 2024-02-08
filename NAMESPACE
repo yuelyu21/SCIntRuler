@@ -18,5 +18,3 @@ importFrom(magrittr,"%>%")
 importFrom(stats,na.omit)
 importFrom(harmony,RunHarmony)
 importFrom(devtools,session_info)
-
-
