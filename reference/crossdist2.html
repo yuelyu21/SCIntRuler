@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.0</span>
       </span>
     </div>
 
@@ -80,11 +80,10 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="va">mat1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mat1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mat2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">8</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="crossdist.html">crossdist</a></span><span class="op">(</span><span class="va">mat1</span>, <span class="va">mat2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="fu">crossdist2</span><span class="op">(</span><span class="va">mat1</span>, <span class="va">mat2</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .Call(&lt;pointer: (nil)&gt;, m1, m2):</span> NULL value passed as symbol address</span>
 </code></pre></div>
     </div>
   </div>
@@ -95,7 +94,7 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://scholar.google.com/citations?hl=en&amp;user=PFjMl6sAAAAJ" class="external-link">Yue Lyu</a>.</p>
+  <p></p><p>Developed by Yue Lyu.</p>
 </div>
 
 <div class="pkgdown">

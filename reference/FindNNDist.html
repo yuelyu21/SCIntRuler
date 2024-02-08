@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.0</span>
       </span>
     </div>
 
@@ -87,16 +87,428 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_result</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Create example data for fullcluster (mock data)</span></span></span>
-<span class="r-in"><span><span class="va">fullcluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="GetCluster.html">GetCluster</a></span><span class="op">(</span><span class="va">seuratlist</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># fullcluster &lt;- GetCluster(seuratlist)</span></span></span>
 <span class="r-in"><span><span class="co"># Create example data for normCount (mock data)</span></span></span>
-<span class="r-in"><span><span class="va">normCount</span> <span class="op">&lt;-</span> <span class="fu"><a href="NormData.html">NormData</a></span><span class="op">(</span><span class="va">seuratlist</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># normCount &lt;- NormData(seuratlist)</span></span></span>
 <span class="r-in"><span><span class="co"># Define meaningn</span></span></span>
 <span class="r-in"><span><span class="va">meaningn</span> <span class="op">&lt;-</span> <span class="fl">20</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">FindNNDist</span><span class="op">(</span><span class="va">fullcluster</span>, <span class="va">normCount</span>, meaningn <span class="op">=</span> <span class="va">meaningn</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="fu">FindNNDist</span><span class="op">(</span><span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, meaningn <span class="op">=</span> <span class="va">meaningn</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                    |                                                            |   0%  |                                                                    |====================                                        |  33%</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                    |========================================                    |  67%  |                                                                    |============================================================| 100%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-1-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-1-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GCCAACCTTTTCAC-1 AGAGCGGAGTCCTC-1 TCATGTACTGCTGA-1 TAAATGTGGTTGGT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4168781        0.4215551        0.4333821        0.4401978 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGAACGCTAAGGGC-1 TATACAGATCCTAT-1 ATTTGCACCTATGG-1 ATACCTACGTACGT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4411233        0.4424682        0.4488208        0.4528544 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CAATATGATGGTGT-1 TAGTACCTACCTTT-1 AGTTTCACAGAATG-1 AAATTCGATCAGTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4536055        0.4539784        0.4552600        0.4606758 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CTTAAAGATGACAC-1 AATAGGGAGAGCTT-1 TCCCATCTTTCGCC-1 GAACCAACCATGAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4631657        0.4633491        0.4697549        0.4720871 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TACTCTGAGTCTTT-1 TACGTTACGGACGA-1 TATACAGATTGACG-1 GAAGCTTGATTCTC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4727638        0.4754392        0.4772885        0.4784777 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-2-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-2-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTATCACCACTAG-1 CGATCCACTGGCAT-1 CTCGCATGAGAATG-1 CTTAAAGATGACAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4599904        0.4807713        0.4859972        0.4898388 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CGATACGAGTAGGG-1 TATGTGCTAACGAA-1 GCCAACCTTTTCAC-1 CGAAGACTACCATG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4935778        0.4997122        0.5007467        0.5061022 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATTGGGTGGCTCCT-1 AGTGAAGAGAGAGC-1 TATACAGATTGACG-1 TACGTTACGGACGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5081902        0.5121016        0.5133797        0.5142443 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTTGACTCACCAA-1 AGCGGCTGCCGTTC-1 TGCAAGACCTCCCA-1 ATGAAGGAACTCTT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5170036        0.5192142        0.5232809        0.5240128 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CAATATGATGGTGT-1 TGAACCGATGGAAA-1 CTTTGATGAAGGTA-1 GCAGCTCTAGCATC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5261657        0.5269322        0.5273094        0.5278297 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-3-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-3-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATTGAATGTCGTGA-1 ATACCTACGTACGT-1 CTGACCACAGTCGT-1 AGAACAGATGGAGG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.3620963        0.3866080        0.3944249        0.3986115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AACAGCACCTCGCT-1 TAATCCACCTCAGA-1 CGCACTACACTACG-1 AAACGGCTTGTCAG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4050980        0.4152952        0.4250580        0.4270574 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GCCAACCTTTTCAC-1 TCACCTCTTTACTC-1 GGGTTATGGTTCGA-1 CTTTGATGAAGGTA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4307117        0.4349739        0.4359791        0.4368478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TACTCTGAGTCTTT-1 ACACGTGAAGTCAC-1 TCGGCACTCCAAGT-1 ATTTGCACCTATGG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4450020        0.4462582        0.4473503        0.4514155 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACCGAAACTGACCA-1 TAACTAGAACGGAG-1 ACATACCTAGAATG-1 TTCACAACCTAGCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4548215        0.4628485        0.4654928        0.4666477 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-4-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-4-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CACCGTACCTGATG-1 CGATACGAGTAGGG-1 ACTTGACTCACCAA-1 CTTAAAGATGACAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4210493        0.4226300        0.4339561        0.4395891 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CAATATGATGGTGT-1 TACGCAGAGCCCTT-1 ATGTCACTCGATAC-1 ACCTGAGACCTATT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4480610        0.4528170        0.4607824        0.4661475 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GTAATAACTGTCCC-1 CTGCAGCTTCTTAC-1 TGAACCGATGGAAA-1 CGATCCACTGGCAT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4677114        0.4684416        0.4721682        0.4730187 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AATAGGGAGAGCTT-1 GTCACAGAGAGACG-1 TCTAACTGCTGAAC-1 TACTCTGAGTCTTT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4749907        0.4782087        0.4792429        0.4796281 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TCGAATCTGAACCT-1 CGAAGACTACCATG-1 TAGGTCGAACCCTC-1 AGTGAAGAGAGAGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4822638        0.4833109        0.4838850        0.4866095 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-5-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[1]]$`Cluster-5-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CCAATGGAAAAGCA-1 TGCAAGACCTCCCA-1 TAGTACCTACCTTT-1 CTGCAGCTTCTTAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.3278194        0.3604714        0.3605006        0.3621706 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GCCTGACTCAACCA-1 ATATAGTGTAAGCC-1 CGTCCATGCAGAAA-1 AGAGCGGAGTCCTC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.3654373        0.3654696        0.3655998        0.3699514 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TACTCTGAGTCTTT-1 CGATCCACTGGCAT-1 TAGGTTCTCAGTTG-1 AGTGAAGAGAGAGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.3727114        0.3752159        0.3753730        0.3769974 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATTTCTCTGGACAG-1 TGTGAGTGCTTCGC-1 TCGGCACTCCAAGT-1 TTGTCATGTGCACA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.3774480        0.3796217        0.3817795        0.3825988 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GGTGATACGATAAG-1 TAAAGACTGGGAGT-1 ATACTCTGAACCAC-1 TCTAACTGCTGAAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.3837904        0.3851200        0.3868061        0.3919519 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-1-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-1-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CAGTGATGGGGTGA-1 TGACACGACTGACA-1 AGCTTTACTTACCT-1 ACTCCTCTCCACAA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4771121        0.5059837        0.5092528        0.5164490 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TGAATAACGAATGA-1 ACTACTACGTGTAC-1 GGAGAGACCCTAAG-1 CATTGTTGTCACCC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5205269        0.5215301        0.5237750        0.5292047 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACAGTGTGGGTGAG-1 CCAGCGGATCCTAT-1 ATATACGACCTCCA-1 ATTCTTCTAGAAGT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5300332        0.5313788        0.5317262        0.5323156 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GTGATCGAGTCTGA-1 ACCACAGACCTTGC-1 CTATGTACTTCTAC-1 TTCCCACTTTGAGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5335802        0.5349248        0.5407381        0.5413669 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CCAGTGCTGGTGAG-1 GACTACGATCTGGA-1 TGCAAGTGCCGAAT-1 TGTGACGAATGCCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5414521        0.5436474        0.5446657        0.5475028 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-2-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-2-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TACAAATGTCAGTG-1 AAGATGGAACCACA-1 CGCTACTGAAGAAC-1 ACTCCTCTCCACAA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5219750        0.5337952        0.5345218        0.5494597 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CCAGCGGATCCTAT-1 ACTCGAGAACGGGA-1 TGGTCAGATCCAAG-1 GCCCAGGATTTCTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5516277        0.5564354        0.5591036        0.5592527 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GGCGCATGGGGAGT-1 ACCCGTTGGCTTCC-1 CACTGCACCTCCAC-1 GCCACGGACATGAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5600749        0.5606460        0.5631716        0.5635609 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TAGAATTGCCGCTT-1 CCAAGTGATGACTG-1 ACGAGGGAGTTGTG-1 ACCACAGACCTTGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5669398        0.5680507        0.5707782        0.5727053 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CTGAAGTGGGTTTG-1 TACGGAACTGGCAT-1 GAGTACTGCAAAGA-1 GACTACGATCTGGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5733548        0.5739455        0.5755971        0.5761036 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-3-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-3-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   TGACACGACTGACA-1   ACTCCTCTCCACAA-1   AGCTTTACTTACCT-1   CTTACATGTGGGAG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4404934          0.4432893          0.4518118          0.4541242 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   CATTGTTGTCACCC-1   ACGCCGGACAGCTA-1   CTTGAGGATCAGAC-1   CTCTAAACAGGAGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4559921          0.4611345          0.4675702          0.4702524 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ATATACGACCTCCA-1   CCCGGAGATTGAGC-1   GGAGAGACCCTAAG-1   AGCGCTCTGAGGCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4786793          0.4805195          0.4879885          0.4901373 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ACTACTACGTGTAC-1   CTGTAACTAGAACA-1   CGTTAACTGGGAGT-1   AGCGATACGCGAGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4914950          0.4943729          0.4987184          0.5175823 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   AATTGATGCTAGTG-1   CAGTGATGGGGTGA-1 GCTACGCTTGCCTC-1.1   CGAGAACTCTGTAG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.5256908          0.5275410          0.5360202          0.5434981 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-4-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-4-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GACTACGATCTGGA-1 GACGTAACCGCAAT-1 TAGAATTGCCGCTT-1 CGCTACTGAAGAAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4251482        0.4352175        0.4516675        0.4551821 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CCACTGTGGCGAGA-1 ACTCCTCTCCACAA-1 ACTCGAGAACGGGA-1 AAGATGGAACCACA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4578682        0.4582179        0.4617831        0.4618111 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TGAATAACGAATGA-1 GTAATAACTAGACC-1 TTCCCACTTTGAGC-1 CACTGCACCTCCAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4634936        0.4661847        0.4718190        0.4722351 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CTCCATCTATACCG-1 TACAAATGTCAGTG-1 CTTGAGGATCAGAC-1 GCCCAGGATTTCTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4730657        0.4787441        0.4791487        0.4798559 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CCAGTGCTGGTGAG-1 CGAGGCTGATTTCC-1 TAGCCGCTTATCGG-1 GTTATGCTTGGATC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4803495        0.4816987        0.4824719        0.4825255 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-5-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-1`[[2]]$`Cluster-5-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ATTCTTCTAGAAGT-1   TGAATAACGAATGA-1   GCGTAAACCTCGAA-1 GCTACGCTTGCCTC-1.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.3998998          0.4179401          0.4277619          0.4309251 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   TTCCCACTTTGAGC-1   CCAGTGCTGGTGAG-1   CGAGAACTGGAGGT-1   ACTCGAGAACGGGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4360768          0.4364278          0.4457862          0.4464064 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   CGAGGCTGATTTCC-1   GAATGCACCACCAA-1   CCGGAGACAGAGGC-1   AGCGCTCTGAGGCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4478324          0.4579576          0.4583528          0.4613972 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   AAGATGGAACCACA-1   AGCTTTACTTACCT-1   GCCACGGACATGAC-1   GTGATCGAGTCTGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4626850          0.4637686          0.4708285          0.4725515 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   TGCCCAACGCTACA-1   GACTACGATCTGGA-1   TCGAGCCTTGGTGT-1   CAGTGATGGGGTGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4754313          0.4784781          0.4800536          0.4808187 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]$`Cluster-1-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]$`Cluster-1-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ACTCGAGACCTGTC-1   CAAGAAGACATACG-1   ACTTGACTAACTGC-1   ATTCAAGACCATGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.2720574          0.3205915          0.3430173          0.3465420 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   GACAACACCTCTTA-1   GGAGACGAGCTGAT-1   AACTGTCTTCTAGG-1 CCTCATCTGATGAA-1.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4146176          0.4244988          0.4370714          0.5186654 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ATAGCCGATTTGGG-1   TGGAGACTGTCTTT-1   CGCTACACACACGT-1   CGGTCACTTCACGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.6815880          0.6853387          0.6874049          0.6942292 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   AAACATTGTTTGTC-1   CTTGTATGGTTTCT-1   ATCACTTGTGTTTC-1   ATGTCACTAACTGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.7189480          0.7203206          0.7372022          0.7696705 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   AAGTTCCTAGATCC-1   TACGTACTGTCGAT-1   CAAATTGAAGAACA-1   TCTATGTGCGTGTA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.7772963          0.7872017          0.7910273          0.8138759 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]$`Cluster-2-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]$`Cluster-2-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTTTGTGCCTCCA-1 ATTTCGTGAACAGA-1 ACAAATTGAACCAC-1 GGAGGATGGGACTT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8062220        0.8267056        0.8273775        0.8348757 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATCGGAACTACGCA-1 GATCATCTTTCCAT-1 CTGAATCTGCTAAC-1 GGAGTTACTGCCAA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8371288        0.8420493        0.8571019        0.8590669 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATTGCTTGCAAGCT-1 GACAACTGGTCGTA-1 ACAGTGTGGGTGAG-1 ATCTCAACAGAGTA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8604953        0.8627658        0.8635034        0.8717439 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TGCTGAGATGAGCT-1 TGTTAAGAGTAGCT-1 AGTTTGCTATCACG-1 GACCATGACTGGAT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8774194        0.8793628        0.8801783        0.8816786 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TATCACTGGCATCA-1 CGAGAACTGGAGGT-1 TCATCATGGCGGAA-1 GGCAAGGACCCTAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8854787        0.8862833        0.8947336        0.8964509 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]$`Cluster-3-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]$`Cluster-3-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CGTCCAACGGTTTG-1 CAGCTCACAACGAA-1 CGTGATGAATAAGG-1 GATCATCTTTCCAT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6353424        0.6588655        0.7114498        0.7298076 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CGAGAACTGGAGGT-1 GCGCACGAGAGATA-1 GAAGTGCTTCTCAT-1 GGGAAGACCGTAGT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7302941        0.7671644        0.7738742        0.7772165 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AAAGATCTGTTGCA-1 GTGTGATGGTTGAC-1 ATTGCACTGGGACA-1 AGCGCTCTGAGGCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7854527        0.7914432        0.7919198        0.7923953 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTCAGGATGCTAG-1 AGGTTGTGCCTAAG-1 CCGGAGACAGAGGC-1 TCCACGTGGGAGTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7967486        0.8046064        0.8049309        0.8070283 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GACCATGACTGGAT-1 CCAGTGCTGTGCTA-1 GTGGATTGTGCATG-1 GGAGTTACTGCCAA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8082819        0.8111021        0.8111046        0.8196229 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]$`Cluster-4-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[1]]$`Cluster-4-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ACAGTGTGGGTGAG-1   CAAGGTTGAGATCC-1   ACCACAGACCTTGC-1   ACAGACACTTTGGG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.5747485          0.6272156          0.6292295          0.6366617 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   TGTGACGAATGCCA-1   CTTTAGACTGTCAG-1   CCACTGTGGCGAGA-1   CAGACATGACCTCC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.6434184          0.6438520          0.6535688          0.6581712 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   GCAGTTGATCAAGC-1 GCTACGCTTGCCTC-1.1   TACTACACTTGTCT-1   ACTTTGTGCCTCCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.6715013          0.6764733          0.6866992          0.6911193 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   GACACTGACGTAGT-1   GACAACTGGTCGTA-1   CGAGAACTCTGTAG-1   CGTCCAACGGTTTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.6995181          0.6998991          0.7030791          0.7035389 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   CGAGGCTGATTTCC-1   ACTACTACGTGTAC-1   TATCACTGGCATCA-1   TATAAGTGGTGTCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.7193728          0.7252628          0.7270709          0.7277194 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]$`Cluster-1-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]$`Cluster-1-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CAATTCTGGTCAAC-1 CGTGTAGAAGACTC-1 TCCCGAACACGGAG-1 GCCTACACGGTCAT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4268877        0.5122497        0.5140131        0.5249173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GGCGACTGCTCCAC-1 GTAGCAACCACTTT-1 CTCCATCTCCTAAG-1 GTCAATCTGGCAAG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5303750        0.5305595        0.5364657        0.5459833 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CGAGAACTGTTTGG-1 AGCCTCTGGTACGT-1 GTGGATTGGCCAAT-1 TTCTTACTGGTACT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5809843        0.5814966        0.5827208        0.6055539 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CTCGCATGAGAATG-1 GTAAGCTGTGTCTT-1 TCAATAGAAGTAGA-1 GGCCAGACTTCCAT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6057463        0.6153616        0.6313984        0.6577433 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GTAGCCCTACCTTT-1 TGCAAGACCTCCCA-1 GCGATATGCTCATT-1 AGATATACGCGGAA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6609702        0.6619806        0.6641168        0.6679245 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]$`Cluster-2-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]$`Cluster-2-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TACGACGAAGCCAT-1 CGACTGCTGGACGA-1 TTCTTACTGGTACT-1 ACCCAGCTGAGGAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7951862        0.8126720        0.8146142        0.8148469 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGTTCTACATTCTC-1 GGCCGAACAATCGC-1 CATCATACGGACAG-1 GGTACAACGACTAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8169812        0.8216883        0.8239391        0.8283370 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GGATTGTGGAGGGT-1 TGTTACTGAGATGA-1 CGGACCGACTCCAC-1 ATACGGACAGCTAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8293670        0.8317821        0.8333292        0.8333561 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGAGAATGTGACAC-1 ATTGCTTGCGGTAT-1 GTATCACTTCATTC-1 AGTATAACCAGTTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8351760        0.8371530        0.8388341        0.8414956 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAGATAGACGCAAT-1 TTGTCATGTGCACA-1 GGATTTCTGACGAG-1 ATCTTGACCGCCTT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8420345        0.8420345        0.8426105        0.8430965 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]$`Cluster-3-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]$`Cluster-3-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGCGAACTGTACAC-1 TAATCGCTGGGTGA-1 ACTCCCGATACTCT-1 TATGAATGATGTCG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6672200        0.6713036        0.6853796        0.6872885 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATGATATGAAGAGT-1 AGTTTAGATCTCGC-1 GATTTAGAATCTTC-1 TCGCACTGCTGACA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7001162        0.7034074        0.7054610        0.7058255 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GGCCGAACGTGCAT-1 TAGATCCTAGTACC-1 TAGGTTCTCAGTTG-1 ACAGTTCTTACGCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7104648        0.7119194        0.7119399        0.7173488 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTTAAGATCAGAC-1 GCCACGGACATGAC-1 CATCCCGACACTCC-1 GAGTGACTTGGAGG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7188141        0.7191639        0.7193662        0.7203257 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GTAATAACTAGACC-1 ATTCTTCTAGAAGT-1 GTTATGCTTGGATC-1 CACCGTACCTGATG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7235182        0.7302403        0.7337376        0.7349482 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]$`Cluster-4-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-2`[[2]]$`Cluster-4-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TTCAGTACCCTTAT-1 ATTCTTCTAGAAGT-1 GGATGTTGAGCACT-1 AGTTCTACGAGGTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5108015        0.5243684        0.5301985        0.5324557 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATACGGACAGCTAC-1 TGTTACTGAGATGA-1 TGAATAACGAATGA-1 ACCTGAGACCTATT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5331417        0.5365981        0.5662472        0.5707880 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CGACGTCTACAGCT-1 CGCATAGACTACTT-1 CGAAGACTACCATG-1 GGATTGTGGAGGGT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5712202        0.5732817        0.5797302        0.5860055 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TTCCCACTTTGAGC-1 CGTGCACTACGGTT-1 TATACGCTCGTGAT-1 GTATCACTTCATTC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5868472        0.5878540        0.5881835        0.5933831 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TGCAAGACCCCAAA-1 ATGATATGAAGAGT-1 AATCTAGACTACCC-1 TAGTCACTCGTTAG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5934808        0.5944956        0.5945965        0.5969122 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-1-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-1-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACCCAAGATTAGGC-1 GAGTACTGCAAAGA-1 GTAGCATGTGTCTT-1 ACTTAAGAACTGTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5188665        0.5480534        0.5490973        0.5607969 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAAGAATGGCTTCC-1 GAGGGATGCCATAG-1 GAGTGACTTGGAGG-1 AAGAAGACGTGTCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5623195        0.5628841        0.5716142        0.5757672 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATTTCTCTTGCCCT-1 AGTACTCTAGTCGT-1 GCCTACACTTTGGG-1 CCAGCGGATCCTAT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5871152        0.5878080        0.5879343        0.5897171 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CTCGACTGATTTCC-1 GCCCAGGATTTCTG-1 GGACCCGAATGCTG-1 AAATACTGCTTGTT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5904493        0.5909479        0.5912867        0.5939080 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GTTAAAACGGAAAT-1 GTGACAACTACGAC-1 CTATGTACTTCTAC-1 TTGTAGCTGATAAG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5972331        0.5979124        0.5994133        0.5999087 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-2-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-2-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATATACGACCTCCA-1 TAAGAACTTAGAGA-1 CCAGCGGATCCTAT-1 GAATGCACCACCAA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4582329        0.4718779        0.4933438        0.4994470 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGCGAACTTGTAGC-1 AGGATAGACCGAAT-1 GGAGGATGAGCTAC-1 CAAGGTTGAACCGT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4996848        0.5015787        0.5029141        0.5044784 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CATTGTTGTCACCC-1 ACGCTGCTCAGCTA-1 CTCCATCTATACCG-1 GACCTAGACCTAAG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5049082        0.5147647        0.5149352        0.5183054 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAGTGACTTGGAGG-1 GCAGCCGAGTCTGA-1 GTCGACCTACCTGA-1 ACTTAAGAACTGTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5244204        0.5285276        0.5297468        0.5336752 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GATAATACTGGCAT-1 CTCTAATGTGGGAG-1 GTGGATTGTCTTAC-1 GAGTACTGCAAAGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5390897        0.5411767        0.5419274        0.5422313 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-3-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-3-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TTAACCACGCATAC-1 GTTACGGAGGTGAG-1 CGCTACTGAAGAAC-1 TACAAATGTCAGTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6774819        0.6915117        0.7271765        0.7307254 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CGCCATTGCTACGA-1 CATCCCGATTCGCC-1 GCAGCCGAGTCTGA-1 CGTGCACTTGACAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7311125        0.7421082        0.7483895        0.7519949 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GGAGCCACGCATCA-1 GCGAAGGAGTAAAG-1 ACGACAACTTCTTG-1 ATTCTGACCTAGAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7526287        0.7601791        0.7624755        0.7648011 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GTAATAACTAGACC-1 CTAACTACAAGAAC-1 ATGTAAACGAGCAG-1 GCATGTGACGTGTA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7656720        0.7717603        0.7766987        0.7774167 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TCTACAACTGGTGT-1 TGTGGATGTCTCTA-1 TCCTAATGTAGTCG-1 GGACTATGCCGCTT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7778520        0.7825989        0.7838049        0.7856336 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-4-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-4-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CTCGACTGATTTCC-1 ATTCTTCTAGAAGT-1 AAGATGGAACCACA-1 TTCCCACTTTGAGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5133656        0.5197666        0.5221534        0.5330723 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CAGTGATGGGGTGA-1 TGCAAGTGCCGAAT-1 GACTACGATCTGGA-1 ACTCGAGAACGGGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5331206        0.5470221        0.5475329        0.5502270 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGCGAACTTGTAGC-1 CTCCATCTATACCG-1 GCCACGGACATGAC-1 GAATGCACCACCAA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5519753        0.5527183        0.5533464        0.5579289 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TCGAGCCTTGGTGT-1 GTTATGCTTGGATC-1 GTAGGTACGTTGAC-1 GAGTACTGCAAAGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5592937        0.5635569        0.5698735        0.5712583 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACGCTGCTCAGCTA-1 TATGTGCTAGTGTC-1 GACGTAACCGCAAT-1 GCCCAGGATTTCTG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5748533        0.5761488        0.5774108        0.5777036 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-5-dist1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[1]]$`Cluster-5-dist1`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTCCCGAGTGTCA-1 GTGGATTGTCTTAC-1 TGAATAACGAATGA-1 GCTATACTCATGCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5383948        0.5813815        0.5820160        0.5941744 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACGCCGGACAGCTA-1 CCAGCGGATCCTAT-1 AACACTCTACTAGC-1 CTTGAGGATCAGAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5970663        0.6149323        0.6178011        0.6214520 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AACAATACCCCTAC-1 AGCGAACTTGTAGC-1 TTCCAAACGATGAA-1 ACTCCTCTCCACAA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6231395        0.6301978        0.6337673        0.6342416 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGCGATACGCGAGA-1 CTAACTACAAGAAC-1 ACTTGACTCGCTAA-1 TGAATAACCCAACA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6378634        0.6420228        0.6421799        0.6424283 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CTGTAACTAGAACA-1 TGACCGCTAGTCAC-1 GAATGCACCACCAA-1 TAATGATGCGCAAT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6433933        0.6543339        0.6573612        0.6580093 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-1-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-1-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAAGGTCTTTGACG-1 TGAACCGATCACGA-1 ATTAACGATCCAAG-1 GCAGTTGATCAAGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5356463        0.5700782        0.5703599        0.5736609 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TTCAGACTGTCTGA-1 GTATTCACCAGGAG-1 GAAACAGATTCATC-1 TGTGACGAATGCCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5736657        0.5830493        0.5927145        0.5946173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTTGACTCACCAA-1 GTATCACTTCATTC-1 CGCACTTGATTCTC-1 TGACGCCTACACCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5982439        0.6013820        0.6047366        0.6058019 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACCCACTGACACGT-1 CGAAGACTACCATG-1 TAACCGGACAGTCA-1 TAGGTCGAACCCTC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6101928        0.6107579        0.6144317        0.6145092 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CCCTGAACGAACTC-1 ACCACAGACCTTGC-1 TTTCGAACACCCAA-1 ACCTGAGACCTATT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.6150798        0.6155167        0.6156981        0.6170923 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-2-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-2-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TACTCTGAGTCTTT-1 CTTAGACTCTGTTT-1 ACCGAAACTGACCA-1 TGTAAAACGGTAGG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4739577        0.4776483        0.4864887        0.4951033 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TCGGCACTCCAAGT-1 GCCAACCTTTTCAC-1 CGGATAACCACAAC-1 CACCGTACCTGATG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4973338        0.4986628        0.5048768        0.5128501 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TCATGTACTGCTGA-1 GTCCCATGCTCAGA-1 CGTGATGAATAAGG-1 ACACGTGAAGTCAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5141681        0.5142934        0.5211514        0.5231725 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGAGCGGAGTCCTC-1 TGTCAGGAATGCTG-1 AAACGGCTTGTCAG-1 AACCACGAATTTCC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5232360        0.5246671        0.5255635        0.5278311 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTTCCCTTTTCGT-1 CGTCCATGCAGAAA-1 TTTCGAACACCCAA-1 TGACGCCTACACCA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5299772        0.5338010        0.5339434        0.5354578 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-3-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-3-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTTGACTCACCAA-1 AGCGGCTGCCGTTC-1 CGTACCACCTGCTC-1 TCGCACTGCTGACA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.7415713        0.8042380        0.8051522        0.8110260 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CATAGTCTGACGAG-1 CCAGTGCTGGTGAG-1 ATGCGCCTCCCACT-1 TACGGAACTGGCAT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8118001        0.8231643        0.8236726        0.8236941 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CACCGTACCTGATG-1 CGAAGACTACCATG-1 TAGTCACTCGTTAG-1 CTACGCACTACGAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8248783        0.8269987        0.8290155        0.8290773 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CATACTACAACGAA-1 TAACCGGAACCCTC-1 AGGGTTTGAACCAC-1 CCGGAGACAGAGGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8317504        0.8339239        0.8360113        0.8370452 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATGTCACTGGTACT-1 TCGCAAGAATTCTC-1 ACAAGAGATCGACA-1 CGTTAACTGGGAGT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.8400257        0.8427462        0.8449216        0.8457391 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-4-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-4-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TGTGACGAATGCCA-1 ACCTGAGACCTATT-1 TACGCAGAGCCCTT-1 CCGGAGACAGAGGC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4642844        0.4658289        0.4868201        0.4873037 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CCAGTGCTGGTGAG-1 CGAGGCTGATTTCC-1 CAATATGATGGTGT-1 ATACGGACAGCTAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.4915663        0.4928963        0.5047070        0.5073031 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CGAGAACTGGAGGT-1 AGCGGCTGCCGTTC-1 TCGCACTGCTGACA-1 AATCTCTGGCCCTT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5087385        0.5087486        0.5220418        0.5246607 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TACTCTGAGTCTTT-1 TAACCGGACAGTCA-1 AATCTAGACTACCC-1 ACTTCCCTTTTCGT-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5250308        0.5261223        0.5270697        0.5273376 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TGCAAGACCCCAAA-1 GTATTCACCAGGAG-1 TAGTCACTCGTTAG-1 CTGCAGCTTCTTAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        0.5285829        0.5288249        0.5291874        0.5324764 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-5-dist2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`sample-3`[[2]]$`Cluster-5-dist2`[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   CGGTCACTTACAGC-1   AATCTCTGCGAATC-1   AAGATTACCCCACT-1   CACCGTACCTGATG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.4859089          0.5079568          0.5124337          0.5287385 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   TAACCGGAACCCTC-1   CCCGGAGATTGAGC-1   TAAGCGTGCGATAC-1   CTATGACTGTGTAC-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.5303050          0.5501528          0.5529128          0.5541263 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   TATAAGTGGTGTCA-1   GCGCACGAGAGATA-1 GCTACGCTTGCCTC-1.1   ATTGAAACATCACG-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.5548599          0.5587877          0.5589549          0.5595663 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   CGGATAACCACAAC-1   CCAGCACTCCATGA-1   AGCGCTCTGAGGCA-1   TAGAGCACCCTTTA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.5615023          0.5627303          0.5722292          0.5736845 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   CTATTGTGGGTACT-1   TTCTACGACTGTAG-1   CTTACATGTGGGAG-1   TAATCCACCTCAGA-1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          0.5739826          0.5756303          0.5794227          0.5797350 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </div>
@@ -107,7 +519,7 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://scholar.google.com/citations?hl=en&amp;user=PFjMl6sAAAAJ" class="external-link">Yue Lyu</a>.</p>
+  <p></p><p>Developed by Yue Lyu.</p>
 </div>
 
 <div class="pkgdown">

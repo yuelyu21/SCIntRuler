@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.0</span>
       </span>
     </div>
 
@@ -95,18 +95,19 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># Create example Seurat object</span></span></span>
-<span class="r-in"><span><span class="va">seuratobj</span> <span class="op">&lt;-</span> <span class="fu">CreateSeuratObject</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create example Seurat object</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_result</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Create example list of Seurat objects</span></span></span>
-<span class="r-in"><span><span class="va">seuratlistseuratlist</span> <span class="op">&lt;-</span> <span class="fu">SplitObject</span><span class="op">(</span><span class="va">seuratobj</span>, split.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">seuratlist</span> <span class="op">&lt;-</span> <span class="fu">SplitObject</span><span class="op">(</span><span class="va">sim_data</span>, split.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in SplitObject(sim_data, split.by = "Study"):</span> could not find function "SplitObject"</span>
 <span class="r-in"><span><span class="co"># Create example fullcluster (mock data)</span></span></span>
-<span class="r-in"><span><span class="va">fullcluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="GetCluster.html">GetCluster</a></span><span class="op">(</span><span class="va">seuratlist</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># fullcluster &lt;- GetCluster(seuratlist)</span></span></span>
 <span class="r-in"><span><span class="co"># Create example distmat (mock data)</span></span></span>
-<span class="r-in"><span><span class="va">distmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="FindNNDist.html">FindNNDist</a></span><span class="op">(</span><span class="va">fullcluster</span>, <span class="va">normCount</span>, meaningn <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># distmat &lt;- FindNNDist( fullcluster, distmat, meaningn = 20)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">FindCell</span><span class="op">(</span><span class="va">seuratobj</span>, <span class="va">seuratlist</span>, <span class="va">fullcluster</span>, <span class="va">distmat</span>, <span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="fu">FindCell</span><span class="op">(</span><span class="va">sim_data</span>, <span class="va">seuratlist</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, <span class="fl">15</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'seuratlist' not found</span>
 </code></pre></div>
     </div>
   </div>
@@ -117,7 +118,7 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://scholar.google.com/citations?hl=en&amp;user=PFjMl6sAAAAJ" class="external-link">Yue Lyu</a>.</p>
+  <p></p><p>Developed by Yue Lyu.</p>
 </div>
 
 <div class="pkgdown">
