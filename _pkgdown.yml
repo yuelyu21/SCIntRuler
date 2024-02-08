@@ -1,6 +1,6 @@
 authors:
   Yue Lyu:
-    href: https://scholar.google.com/citations?hl=en&user=PFjMl6sAAAAJ
+href: https://scholar.google.com/citations?hl=en&user=PFjMl6sAAAAJ
 url: https://github.com/yuelyu21/SCIntRuler
 title: SCIntRuler
 template:
@@ -38,4 +38,5 @@ reference:
   - PermTest
   - PlotSCIR
   - sim_data
+  - sim_result
   - SummCluster

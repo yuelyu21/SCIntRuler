@@ -10,6 +10,7 @@ An result example data
 \item{sim_result[\link{1}]}{fullcluster}
 \item{sim_result[\link{2}]}{normCount}
 \item{sim_result[\link{3}]}{distmat}
+\item{sim_result[\link{4}]}{testres}
 }
 }
 \usage{
