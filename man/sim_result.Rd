@@ -7,16 +7,23 @@
 \format{
 An result example data
 \describe{
-\item{sim_result[\link{1}]}{fullcluster}
-\item{sim_result[\link{2}]}{normCount}
-\item{sim_result[\link{3}]}{distmat}
-\item{sim_result[\link{4}]}{testres}
+\item{\code{fullcluster}}{A runable example of fullcluster, which is a list of clusters for each study.}
+\item{\code{normCount}}{A runable example of normCount, which is a list of normalized RNA expression matrixs for each study.}
+\item{\code{distmat}}{A runable example of distmat, which is a list of distance matrixs for each study.}
+\item{\code{testres}}{A runable example of testres,  which is a list of test results for each study.}
 }
 }
 \usage{
 sim_result
 }
+\value{
+Simulation data to examplify the usage of the method.
+}
 \description{
 A short description of your dataset.
+}
+\examples{
+# Load the data
+data("sim_result")
 }
 \keyword{datasets}

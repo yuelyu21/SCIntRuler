@@ -25,9 +25,12 @@ Plot SCIntRuler
 }
 \examples{
 # Create example data for fullcluster (mock data)
-data(sim_data)
+data(sim_data_sce)
 data(sim_result)
-seuratlist <- SplitObject(seuratobj, split.by = "Study")
+# Assuming 'seuratlist' is a list of Seurat objects
+# if(is(sim_data_sce, "SingleCellExperiment")){ sim_data <- as.Seurat(sim_data_sce) }
+sim_data <- SCEtoSeurat(sim_data_sce)
+seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
 # fullcluster <- GetCluster(seurat_object_list)
 # testres <- PermTest(fullcluster,distmat,15)
 PlotSCIR(sim_result[[1]], seuratlist, sim_result[[4]])

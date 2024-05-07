@@ -1,15 +1,18 @@
 ---
-title: "Get Started"
-author: <a href="https://orcid.org/0000-0002-8912-6624">Yue Lyu <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
+title: "Get Started with SCIntRuler"
+author: 
+- name: <a href="https://orcid.org/0000-0002-8912-6624">Yue Lyu <img alt="ORCID logo"src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
+email: yuelyu0521@gmail.com
+package: SCIntRuler
 description: >
   Guiding the integration of multiple single-cell RNA-seq datasets with a novel statistical metric.
-output: rmarkdown::html_vignette
+output: 
+  BiocStyle::html_document
 vignette: >
   %\VignetteIndexEntry{Get Started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
 
 
 ```{r, include = FALSE}
@@ -19,7 +22,17 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Introducrtion
 
+The accumulation of single-cell RNA-seq (scRNA-seq) studies highlights the potential benefits of integrating multiple datasets. By augmenting sample sizes and enhancing analytical robustness, integration can lead to more insightful biological conclusions. However, challenges arise due to the inherent diversity and batch discrepancies within and across studies. **SCIntRuler**, a novel R package, addresses these challenges by guiding the integration of multiple scRNA-seq datasets.
+[SCIntRuler](https://github.com/yuelyu21/SCIntRuler) is an R package developed for single-cell RNA-seq analysis. It was designed using the [Seurat](https://satijalab.org/seurat/) framework, and offers existing and novel single-cell analytic work flows. 
+
+Integrating scRNA-seq datasets can be complex due to various factors, including batch effects and sample diversity. Key decisions – whether to integrate datasets, which method to choose for integration, and how to best handle inherent data discrepancies – are crucial. `SCIntRuler` offers a statistical metric to aid in these decisions, ensuring more robust and accurate analyses.
+
+- **Informed Decision Making**: Helps researchers decide on the necessity of data integration and the most suitable method.
+- **Flexibility**: Suitable for various scenarios, accommodating different levels of data heterogeneity.
+- **Robustness**: Enhances analytical robustness in joint analyses of merged or integrated scRNA-seq datasets.
+- **User-Friendly**: Streamlines decision-making processes, simplifying the complexities involved in scRNA-seq data integration.
 
 ## 1. Installation
 
@@ -63,8 +76,11 @@ Let's start with an example data. We conducted a series of simulation studies to
 This dataset is a subset of what we used in our **Simulation 2**, where we have three studies. In each study, we randomly drew different numbers of CD4 T helper cells, B cells, CD14 monocytes, and CD56 NK cells to mimic four real-world scenarios with three data sources **Simulation 2** introduces a moderate overlap, with 20.3% cells sharing the same cell type identity. There are 2000 B cells and 400 CD4T cells in the first study, 700 CD14Mono cells and 400 CD4T cells in the second study, 2000 CD56NK cells and 400 CD4T cells in the third study. This data is already in `Seurat` format and can be found under `/data`. There are 32738 genes and 5900 cells in simulation 2. Here, we subset 800 cells with 3000 genes.
 
 ```{r load the data, message=FALSE, warning=FALSE}
-SCIntRuler::sim_data
-data("sim_data")
+# SCIntRuler::sim_data
+SCIntRuler::sim_data_sce
+
+data("sim_data_sce")
+sim_data <- as.Seurat(sim_data_sce)
 
 # labels <- c(rep("Bcell", 2000), rep("CD4T", 400),
 #             rep("CD14Mono", 700), rep("CD4T", 400),
@@ -82,7 +98,7 @@ data("sim_data")
 # sim_cs <- sim_s@assays$RNA@counts[sample(32738,3000),]
 # sim_data <- CreateSeuratObject(counts = sim_cs)
 # sim_data <- AddMetaData(sim_data, sim_s[[]])
-
+# sim_data <- sim_data_se
 ```
 
 

@@ -7,7 +7,7 @@
 GetCluster(seuratlist, n1 = 50, n2 = 200)
 }
 \arguments{
-\item{seuratlist}{A list of Seurat objects, usually can be got by \code{SplitObject()}.}
+\item{seuratlist}{A list of Seurat objects, usually can be got by \code{SplitObject()}. We also accept the SingleCellExperiment object input.}
 
 \item{n1}{If the number of cells was smaller than \code{n1}, then the cluster will remain unchanged called \verb{rare cluster}. The default value of \code{n1} is 50.}
 
@@ -20,8 +20,11 @@ A list of data frames.
 Get broad and fine clusters
 }
 \examples{
-data(sim_data)
+data(sim_data_sce)
 # Assuming 'seuratlist' is a list of Seurat objects
-seuratlist <- SplitObject(sim_data, split.by = "Study")
+# if(is(sim_data_sce, "SingleCellExperiment")){ sim_data <- as.Seurat(sim_data_sce) }
+sim_data <- SCEtoSeurat(sim_data_sce)
+seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
+# seuratlist <- InputData(sim_data_sce,"Study")
 fullcluster <- GetCluster(seuratlist)
 }

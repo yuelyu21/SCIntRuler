@@ -6,9 +6,12 @@
 #' @export
 #'
 #' @examples
-#' data(sim_data)
-#' # Assuming 'seurat_object_list' is a list of Seurat objects
-#' seuratlist <- SplitObject(sim_data, split.by = "Study")
+#' data(sim_data_sce)
+#' # seuratlist <- InputData(sim_data_sce,"Study")
+#' # Assuming 'seuratlist' is a list of Seurat objects
+#' # if(is(sim_data_sce, "SingleCellExperiment")){ sim_data <- as.Seurat(sim_data_sce) }
+#' sim_data <- SCEtoSeurat(sim_data_sce)
+#' seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
 #' normCount <- NormData(seuratlist)
 
 NormData <- function(seuratlist) {

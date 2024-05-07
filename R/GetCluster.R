@@ -1,6 +1,6 @@
 #' Get broad and fine clusters
 #'
-#' @param seuratlist A list of Seurat objects, usually can be got by `SplitObject()`.
+#' @param seuratlist A list of Seurat objects, usually can be got by `SplitObject()`. We also accept the SingleCellExperiment object input.
 #' @param n1 If the number of cells was smaller than `n1`, then the cluster will remain unchanged called `rare cluster`. The default value of `n1` is 50.
 #' @param n2 If the count of cells within a broad cluster is more than `n2`, the cluster is subdivided randomly into three fine clusters. If the cell count falls within the range of `n1` to `n2`, two fine clusters are generated randomly. Default value is 200.
 #'
@@ -8,9 +8,12 @@
 #' @export
 #'
 #' @examples
-#' data(sim_data)
+#' data(sim_data_sce)
 #' # Assuming 'seuratlist' is a list of Seurat objects
-#' seuratlist <- SplitObject(sim_data, split.by = "Study")
+#' # if(is(sim_data_sce, "SingleCellExperiment")){ sim_data <- as.Seurat(sim_data_sce) }
+#' sim_data <- SCEtoSeurat(sim_data_sce)
+#' seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
+#' # seuratlist <- InputData(sim_data_sce,"Study")
 #' fullcluster <- GetCluster(seuratlist)
 
 

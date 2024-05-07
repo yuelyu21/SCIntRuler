@@ -4,10 +4,14 @@
 #'
 #' @format An result example data
 #' \describe{
-#'   \item{sim_result[[1]]}{fullcluster}
-#'   \item{sim_result[[2]]}{normCount}
-#'   \item{sim_result[[3]]}{distmat}
-#'   \item{sim_result[[4]]}{testres}
+#'   \item{\code{fullcluster}}{A runable example of fullcluster, which is a list of clusters for each study.}
+#'   \item{\code{normCount}}{A runable example of normCount, which is a list of normalized RNA expression matrixs for each study.}
+#'   \item{\code{distmat}}{A runable example of distmat, which is a list of distance matrixs for each study.}
+#'   \item{\code{testres}}{A runable example of testres,  which is a list of test results for each study.}
 #' }
+#' @return Simulation data to examplify the usage of the method.
+#' @examples
+#' # Load the data
+#' data("sim_result")
 #' @name sim_result
 "sim_result"

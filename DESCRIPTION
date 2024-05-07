@@ -16,12 +16,16 @@ Imports:
     batchelor,
     base,
     Seurat,
+    SeuratObject,
     MatrixGenerics,
+    SingleCellExperiment,
+    SummarizedExperiment,
     dplyr,
     coin,
-    devtools,
     harmony,
     ggplot2,
+    gridExtra,
+    cowplot,
     magrittr,
     stats,
     devtools
@@ -29,6 +33,7 @@ LinkingTo: Rcpp
 URL: https://github.com/yuelyu21/SCIntRuler, https://yuelyu21.github.io/SCIntRuler/
 BugReports: https://github.com/yuelyu21/SCIntRuler/issues
 Suggests: 
+    BiocStyle,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)

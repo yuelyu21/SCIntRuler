@@ -23,9 +23,12 @@ Calculate SCIntRuler
 }
 \examples{
 data(sim_result)
-data(sim_data)
+data(sim_data_sce)
 # Create example data for fullcluster (mock data)
-seuratlist <- SplitObject(sim_data, split.by = "Study")
+# Assuming 'seuratlist' is a list of Seurat objects
+sim_data <- SCEtoSeurat(sim_data_sce)
+seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
+# seuratlist <- InputData(sim_data_sce,"Study")
 # fullcluster <- GetCluster(seuratlist)
 # testres <- PermTest(fullcluster,distmat,15)
 CalcuSCIR(sim_result[[1]], seuratlist, sim_result[[4]])
