@@ -8,11 +8,11 @@
 An example PBMC data with SingleCellExperiment format
 \describe{
 \item{\code{int_elementMetadata}}{A DataFrame with 3000 rows and 1 column, storing simulated gene information.}
-\item{\code{int_colData}}{A DataFrame with 800 rows and 3 columns, representing metadata for each cell such as condition, cell type, and treatment group.}
+\item{\code{int_colData}}{A DataFrame with 800 rows and 3 columns, representing metadata for each cell.}
 \item{\code{int_metadata}}{A list containing two elements that provide additional global metadata about the experiment.}
 \item{\code{rowRanges}}{A CompressedGRangesList object providing genomic range data associated with each row/gene.}
-\item{\code{colData}}{A DataFrame with 800 rows and 8 columns, detailing cell-level metadata including phenotypic traits and experimental conditions.}
-\item{\code{assays}}{A SimpleAssay object with matrix dimensions 3000x800, representing the gene expression matrix with 3000 genes across 800 cells.}
+\item{\code{colData}}{A DataFrame with 800 rows and 8 columns, detailing cell-level metadata.}
+\item{\code{assays}}{A SimpleAssay object with matrix dimensions 3000x800, representing the gene expression matrix.}
 \item{\code{elementMetadata}}{A DataFrame linked with assays, providing gene-level metadata.}
 }
 }

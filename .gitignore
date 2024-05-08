@@ -5,6 +5,7 @@
 .DS_Store
 .quarto
 docs
-inst/doc
+inst/
 /doc/
 /Meta/
+

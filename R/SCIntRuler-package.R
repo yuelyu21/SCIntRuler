@@ -13,7 +13,7 @@
 #' robust and accurate analyses.
 #' @author Yue Lyu
 #'
-#'
+#' @return This is the main page for SCIntRuler package.
 #' @section Features:
 #' \itemize{
 #'   \item{Informed Decision Making: Helps researchers decide on the necessity

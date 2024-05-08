@@ -1,4 +1,3 @@
-library(S4Vectors)
 test_that("SCEtoSeurat", {
   data("sim_data_sce")
 

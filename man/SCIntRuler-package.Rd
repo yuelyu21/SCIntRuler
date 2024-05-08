@@ -4,6 +4,9 @@
 \alias{SCIntRuler-package}
 \alias{SCIntRuler}
 \title{SCIntRuler: Integration of Single-Cell RNA-seq Datasets}
+\value{
+This is the main page for SCIntRuler package.
+}
 \description{
 The SCIntRuler package addresses the challenges of integrating multiple
 single-cell RNA-seq (scRNA-seq) datasets. It provides tools to enhance

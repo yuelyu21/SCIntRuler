@@ -56,7 +56,7 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
     onemeta <- fullcluster[[j]] # 2400 * 3
 
     tmpvec <- c()
-    newcounter = 1
+    newcounter <-  1
 
     # when j = 1, the dimension of othercount is 9763 3500 study 3+ study 2
     # when j = 2, the dimension of othercount is 9763 4800 study 1+ study 3
@@ -64,10 +64,10 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
     for(qqq in seq_along(fullcluster)) {
       if(qqq != j) {
         if(newcounter == 1) {
-          othercount = normCount[[qqq]]
-          newcounter = newcounter + 1
+          othercount <-  normCount[[qqq]]
+          newcounter <-  newcounter + 1
         } else {
-          othercount = cbind(othercount, normCount[[qqq]])
+          othercount <-  cbind(othercount, normCount[[qqq]])
         }
       }
     }
@@ -84,9 +84,9 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
     for(q in seq_along(allCT)) {
       # print(q)
 
-      ct = allCT[q]
+      ct <-  allCT[q]
 
-      onecdist_internal = onecdist_external <- list()
+      onecdist_internal <-  onecdist_external <- list()
 
       max1 <- sum(onemeta$finecluster == ct)
       max2 <- sum(onemeta$finecluster != ct)
@@ -97,16 +97,16 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
       # onecount 9763 x 2400 othercount 9763 * 3500
 
       # otherc_external 9763 * 1000
-      otherc_external <- as.matrix(othercount[,sample(1:ncol(othercount), min(500*length(normCount[-j]), ncol(othercount))) ])
+      otherc_external <- as.matrix(othercount[,sample(seq_len(ncol(othercount)), min(500*length(normCount[-j]), ncol(othercount))) ])
       #                                        sample(1: 3500           , min(500* 2                   ,   3500.   )
 
       for(nnn in seq_along(ncol(subc))) {
         ## tmp dim 1 * 500
-        tmp <- sort(sqrt(Matrix::colSums(sweep(otherc, 1, subc[,nnn], "-")^2)))[1:meaningn]
+        tmp <- sort(sqrt(Matrix::colSums(sweep(otherc, 1, subc[,nnn], "-")^2)))[seq_len(meaningn)]
         onecdist_internal[[nnn]] <- tmp
 
         ## tmp1 dim 1 * 1000
-        tmp1 <- sort(sqrt(Matrix::colSums(sweep(otherc_external, 1, subc[,nnn], "-")^2)))[1:meaningn]
+        tmp1 <- sort(sqrt(Matrix::colSums(sweep(otherc_external, 1, subc[,nnn], "-")^2)))[seq_len(meaningn)]
         onecdist_external[[nnn]] <- tmp1
       }
 
@@ -125,8 +125,8 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
       # ksout <- t.test(dist1, dist2)
       # onep_vec[q] <- ksout$p.value
     }
-    names(onep_internal) <- paste0("Cluster-",seq(1:length(allCT)),"-dist1")
-    names(onep_external) <- paste0("Cluster-",seq(1:length(allCT)),"-dist2")
+    names(onep_internal) <- paste0("Cluster-",seq(seq_len(length(allCT))),"-dist1")
+    names(onep_external) <- paste0("Cluster-",seq(seq_len(length(allCT))),"-dist2")
 
     dist_mat[[j]] <- list(onep_internal,onep_external)
 
@@ -135,6 +135,6 @@ FindNNDist <- function(fullcluster,normCount, meaningn = 20) {
   }
   close(pb)
 
-  names(dist_mat) <- paste0("sample-",seq(1:length(fullcluster)))
+  names(dist_mat) <- paste0("sample-",seq(seq_len(length(fullcluster))))
   return(dist_mat)
 }

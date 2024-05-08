@@ -7,6 +7,6 @@
 ^\.github$
 ^doc$
 ^Meta$
-SCIntRuler.Rproj
-^inst$
+
+
 

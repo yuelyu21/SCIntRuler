@@ -22,6 +22,7 @@ utils::globalVariables(c("P.value", "revDiff", "V2", "finecluster", "rarecluster
 #' CalcuSCIR(sim_result[[1]], seuratlist, sim_result[[4]])
 
 CalcuSCIR <- function(fullcluster, seuratlist, testres, p = 0.1){
+
   stopifnot(exprs = {
     is.list(fullcluster)
     is.list(seuratlist)

@@ -40,8 +40,8 @@ FindCell <- function(seuratobj,seuratlist,fullcluster, distmat,firstn = 15){
     attid <- c()
 
     for (q in seq_len(nclust)){
-      dist1 <- as.vector(do.call(cbind, distmat[[i]][[1]][[q]])[,1:firstn])
-      dist2 <- as.vector(do.call(cbind, distmat[[i]][[2]][[q]])[,1:firstn])
+      dist1 <- as.vector(do.call(cbind, distmat[[i]][[1]][[q]])[,seq_len(firstn)])
+      dist2 <- as.vector(do.call(cbind, distmat[[i]][[2]][[q]])[,seq_len(firstn)])
       disttest[[q]] <- data.frame(rbind(cbind(dist1,rep("Internal Dist",length(dist1))),
                                         cbind(dist2,rep("External Dist",length(dist1)))))%>%
         dplyr::mutate(dist = as.numeric(dist1),group = factor(V2)) %>% dplyr::select(3,4)
@@ -52,7 +52,7 @@ FindCell <- function(seuratobj,seuratlist,fullcluster, distmat,firstn = 15){
       testres[q,2] <- round((mean(dist2) - mean(dist1))/max(mean(dist2),mean(dist1)),4)
 
       if(testres[q,1] > 0.9 & testres[q,2] < 0){
-        print(paste0("Sample",i,"_",q))
+        # print(paste0("Sample",i,"_",q))
         attid <- c(attid,paste0("Sample",i,"_",q))
       }
 
