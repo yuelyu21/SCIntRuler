@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Started • SCIntRuler</title>
+<title>Get Started with SCIntRuler • SCIntRuler</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Get Started">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Get Started with SCIntRuler">
 <meta property="og:description" content="Guiding the integration of multiple single-cell RNA-seq datasets with a novel statistical metric.
 ">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -77,11 +77,11 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Get Started</h1>
+      <h1 data-toc-skip>Get Started with SCIntRuler</h1>
                         <h4 data-toc-skip class="author"><a href="https://orcid.org/0000-0002-8912-6624" class="external-link">Yue
 Lyu
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16"></a></h4>
-            
+                        
       
       <small class="dont-index">Source: <a href="https://github.com/yuelyu21/SCIntRuler/blob/HEAD/vignettes/SCIntRuler.Rmd"><code>vignettes/SCIntRuler.Rmd</code></a></small>
       <div class="hidden name"><code>SCIntRuler.Rmd</code></div>
@@ -90,6 +90,42 @@ Lyu
 
     
     
+<div class="section level2">
+<h2 id="introducrtion">Introducrtion<a class="anchor" aria-label="anchor" href="#introducrtion"></a>
+</h2>
+<p>The accumulation of single-cell RNA-seq (scRNA-seq) studies
+highlights the potential benefits of integrating multiple datasets. By
+augmenting sample sizes and enhancing analytical robustness, integration
+can lead to more insightful biological conclusions. However, challenges
+arise due to the inherent diversity and batch discrepancies within and
+across studies. <strong>SCIntRuler</strong>, a novel R package,
+addresses these challenges by guiding the integration of multiple
+scRNA-seq datasets. <a href="https://github.com/yuelyu21/SCIntRuler">SCIntRuler</a> is an R
+package developed for single-cell RNA-seq analysis. It was designed
+using the <a href="https://satijalab.org/seurat/" class="external-link">Seurat</a> framework,
+and offers existing and novel single-cell analytic work flows.</p>
+<p>Integrating scRNA-seq datasets can be complex due to various factors,
+including batch effects and sample diversity. Key decisions – whether to
+integrate datasets, which method to choose for integration, and how to
+best handle inherent data discrepancies – are crucial.
+<code>SCIntRuler</code> offers a statistical metric to aid in these
+decisions, ensuring more robust and accurate analyses.</p>
+<ul>
+<li>
+<strong>Informed Decision Making</strong>: Helps researchers decide
+on the necessity of data integration and the most suitable method.</li>
+<li>
+<strong>Flexibility</strong>: Suitable for various scenarios,
+accommodating different levels of data heterogeneity.</li>
+<li>
+<strong>Robustness</strong>: Enhances analytical robustness in joint
+analyses of merged or integrated scRNA-seq datasets.</li>
+<li>
+<strong>User-Friendly</strong>: Streamlines decision-making
+processes, simplifying the complexities involved in scRNA-seq data
+integration.</li>
+</ul>
+</div>
 <div class="section level2">
 <h2 id="installation">1. Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -145,13 +181,24 @@ study. This data is already in <code>Seurat</code> format and can be
 found under <code>/data</code>. There are 32738 genes and 5900 cells in
 simulation 2. Here, we subset 800 cells with 3000 genes.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">SCIntRuler</span><span class="fu">::</span><span class="va"><a href="../reference/sim_data.html">sim_data</a></span></span>
-<span><span class="co">#&gt; An object of class Seurat </span></span>
-<span><span class="co">#&gt; 3000 features across 800 samples within 1 assay </span></span>
-<span><span class="co">#&gt; Active assay: RNA (3000 features, 1244 variable features)</span></span>
-<span><span class="co">#&gt;  3 layers present: counts, data, scale.data</span></span>
-<span><span class="co">#&gt;  2 dimensional reductions calculated: pca, umap</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sim_data"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># SCIntRuler::sim_data</span></span>
+<span><span class="fu">SCIntRuler</span><span class="fu">::</span><span class="va"><a href="../reference/sim_data_sce.html">sim_data_sce</a></span></span>
+<span><span class="co">#&gt; class: SingleCellExperiment </span></span>
+<span><span class="co">#&gt; dim: 3000 800 </span></span>
+<span><span class="co">#&gt; metadata(0):</span></span>
+<span><span class="co">#&gt; assays(3): counts logcounts scaledata</span></span>
+<span><span class="co">#&gt; rownames(3000): ENSG00000269089 AP003733.1 ENSG00000172733 PURG ...</span></span>
+<span><span class="co">#&gt;   ENSG00000087589 CASS4 ENSG00000213741 RPS29</span></span>
+<span><span class="co">#&gt; rowData names(0):</span></span>
+<span><span class="co">#&gt; colnames(800): AATTACGAATCGGT-1 AGAGCGGAGTCCTC-1 ... CAGTGATGGGGTGA-1</span></span>
+<span><span class="co">#&gt;   GCCACGGACATGAC-1</span></span>
+<span><span class="co">#&gt; colData names(8): orig.ident nCount_RNA ... seurat_clusters ident</span></span>
+<span><span class="co">#&gt; reducedDimNames(2): PCA UMAP</span></span>
+<span><span class="co">#&gt; mainExpName: RNA</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sim_data_sce"</span><span class="op">)</span></span>
+<span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SeuratObject/man/as.Seurat.html" class="external-link">as.Seurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># labels &lt;- c(rep("Bcell", 2000), rep("CD4T", 400),</span></span>
 <span><span class="co">#             rep("CD14Mono", 700), rep("CD4T", 400),</span></span>
@@ -168,7 +215,8 @@ simulation 2. Here, we subset 800 cells with 3000 genes.</p>
 <span><span class="co"># sim_s &lt;- subset(x = sim_data, downsample = 800)</span></span>
 <span><span class="co"># sim_cs &lt;- sim_s@assays$RNA@counts[sample(32738,3000),]</span></span>
 <span><span class="co"># sim_data &lt;- CreateSeuratObject(counts = sim_cs)</span></span>
-<span><span class="co"># sim_data &lt;- AddMetaData(sim_data, sim_s[[]])</span></span></code></pre></div>
+<span><span class="co"># sim_data &lt;- AddMetaData(sim_data, sim_s[[]])</span></span>
+<span><span class="co"># sim_data &lt;- sim_data_se</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sim_data</span><span class="op">[[</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                     orig.ident nCount_RNA nFeature_RNA CellType  Study</span></span>
@@ -178,13 +226,13 @@ simulation 2. Here, we subset 800 cells with 3000 genes.</p>
 <span><span class="co">#&gt; TGACGCCTACACCA-1 SeuratProject       1801          644    Bcell Study1</span></span>
 <span><span class="co">#&gt; ATTTGCACCTATGG-1 SeuratProject       2501          749    Bcell Study1</span></span>
 <span><span class="co">#&gt; AGAACAGATGGAGG-1 SeuratProject       1113          391    Bcell Study1</span></span>
-<span><span class="co">#&gt;                  RNA_snn_res.0.5 seurat_clusters</span></span>
-<span><span class="co">#&gt; AATTACGAATCGGT-1               0               0</span></span>
-<span><span class="co">#&gt; AGAGCGGAGTCCTC-1               0               0</span></span>
-<span><span class="co">#&gt; TTCTTACTGGTACT-1               0               0</span></span>
-<span><span class="co">#&gt; TGACGCCTACACCA-1               0               0</span></span>
-<span><span class="co">#&gt; ATTTGCACCTATGG-1               0               0</span></span>
-<span><span class="co">#&gt; AGAACAGATGGAGG-1               0               0</span></span></code></pre></div>
+<span><span class="co">#&gt;                  RNA_snn_res.0.5 seurat_clusters ident</span></span>
+<span><span class="co">#&gt; AATTACGAATCGGT-1               0               0     0</span></span>
+<span><span class="co">#&gt; AGAGCGGAGTCCTC-1               0               0     0</span></span>
+<span><span class="co">#&gt; TTCTTACTGGTACT-1               0               0     0</span></span>
+<span><span class="co">#&gt; TGACGCCTACACCA-1               0               0     0</span></span>
+<span><span class="co">#&gt; ATTTGCACCTATGG-1               0               0     0</span></span>
+<span><span class="co">#&gt; AGAACAGATGGAGG-1               0               0     0</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="data-pre-process-and-visulization-with-seurat">Data pre-process and visulization with Seurat<a class="anchor" aria-label="anchor" href="#data-pre-process-and-visulization-with-seurat"></a>
@@ -463,7 +511,7 @@ impacts the resulting data integration.</p>
 <span><span class="co">#&gt;  collate  C.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    C.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2024-05-06</span></span>
+<span><span class="co">#&gt;  date     2024-05-08</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.11 @ /opt/hostedtoolcache/pandoc/3.1.11/x64/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -473,9 +521,12 @@ impacts the resulting data integration.</p>
 <span><span class="co">#&gt;  beachmat               2.20.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  Biobase                2.64.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  BiocGenerics           0.50.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
+<span><span class="co">#&gt;  BiocManager            1.30.23  <span style="color: #555555;">2024-05-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  BiocNeighbors          1.22.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  BiocParallel           1.38.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  BiocSingular           1.20.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
+<span><span class="co">#&gt;  BiocStyle            * 2.32.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
+<span><span class="co">#&gt;  bookdown               0.39     <span style="color: #555555;">2024-04-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  bslib                  0.7.0    <span style="color: #555555;">2024-03-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cachem                 1.0.8    <span style="color: #555555;">2023-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cli                    3.6.2    <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -540,7 +591,7 @@ impacts the resulting data integration.</p>
 <span><span class="co">#&gt;  listenv                0.9.1    <span style="color: #555555;">2024-01-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  lmtest                 0.9-40   <span style="color: #555555;">2022-03-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  magrittr               2.0.3    <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  MASS                   7.3-60.2 <span style="color: #555555;">2024-04-24</span> <span style="color: #555555;">[3]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  MASS                   7.3-60.2 <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[3]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  Matrix                 1.7-0    <span style="color: #555555;">2024-03-22</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  MatrixGenerics         1.16.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  matrixStats            1.3.0    <span style="color: #555555;">2024-04-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -569,7 +620,7 @@ impacts the resulting data integration.</p>
 <span><span class="co">#&gt;  promises               1.3.0    <span style="color: #555555;">2024-04-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  purrr                  1.0.2    <span style="color: #555555;">2023-08-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  R6                     2.5.1    <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ragg                   1.3.0    <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  ragg                   1.3.1    <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  RANN                   2.6.1    <span style="color: #555555;">2019-01-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  RColorBrewer           1.1-3    <span style="color: #555555;">2022-04-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  Rcpp                   1.0.12   <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -593,7 +644,7 @@ impacts the resulting data integration.</p>
 <span><span class="co">#&gt;  ScaledMatrix           1.12.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  scales                 1.3.0    <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  scattermore            1.2      <span style="color: #555555;">2023-06-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  SCIntRuler           * 0.99.0   <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  SCIntRuler           * 0.99.0   <span style="color: #555555;">2024-05-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  sctransform            0.4.1    <span style="color: #555555;">2023-10-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  scuttle                1.14.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  sessioninfo            1.2.2    <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -603,7 +654,7 @@ impacts the resulting data integration.</p>
 <span><span class="co">#&gt;  SingleCellExperiment   1.26.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  sp                   * 2.1-4    <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  spam                   2.10-0   <span style="color: #555555;">2023-10-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  SparseArray            1.4.0    <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
+<span><span class="co">#&gt;  SparseArray            1.4.1    <span style="color: #555555;">2024-05-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  sparseMatrixStats      1.16.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  spatstat.data          3.0-4    <span style="color: #555555;">2024-01-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  spatstat.explore       3.2-7    <span style="color: #555555;">2024-03-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -611,7 +662,7 @@ impacts the resulting data integration.</p>
 <span><span class="co">#&gt;  spatstat.random        3.2-3    <span style="color: #555555;">2024-02-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  spatstat.sparse        3.0-3    <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  spatstat.utils         3.0-4    <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  stringi                1.8.3    <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  stringi                1.8.4    <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  stringr                1.5.1    <span style="color: #555555;">2023-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  SummarizedExperiment   1.34.0   <span style="color: #555555;">2024-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
 <span><span class="co">#&gt;  survival               3.5-8    <span style="color: #555555;">2024-02-14</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>

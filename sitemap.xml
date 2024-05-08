@@ -46,19 +46,22 @@
     <loc>https://github.com/yuelyu21/SCIntRuler/reference/PlotSCIR.html</loc>
   </url>
   <url>
+    <loc>https://github.com/yuelyu21/SCIntRuler/reference/SCEtoSeurat.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/yuelyu21/SCIntRuler/reference/SCIntRuler-package.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/yuelyu21/SCIntRuler/reference/SummCluster.html</loc>
   </url>
   <url>
     <loc>https://github.com/yuelyu21/SCIntRuler/reference/crossdist.html</loc>
   </url>
   <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/crossdist2.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/yuelyu21/SCIntRuler/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/sim_data.html</loc>
+    <loc>https://github.com/yuelyu21/SCIntRuler/reference/sim_data_sce.html</loc>
   </url>
   <url>
     <loc>https://github.com/yuelyu21/SCIntRuler/reference/sim_result.html</loc>
