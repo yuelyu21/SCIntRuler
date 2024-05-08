@@ -27,9 +27,9 @@ navbar:
 reference:
 
 - contents:
+  - SCIntRuler-package
   - CalcuSCIR
   - crossdist
-  - crossdist2
   - FindCell
   - FindNNDist
   - FindNNDistC
@@ -37,6 +37,7 @@ reference:
   - NormData
   - PermTest
   - PlotSCIR
-  - sim_data
+  - SCEtoSeurat
+  - sim_data_sce
   - sim_result
   - SummCluster
