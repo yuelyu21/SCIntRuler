@@ -35,7 +35,7 @@ GetCluster <- function(seuratlist,n1 = 50,n2 = 200) {
     onedata <- Seurat::ScaleData(onedata, features = all.genes)
     onedata <- Seurat::RunPCA(onedata,
                               features = Seurat::VariableFeatures(object = onedata),seed.use = sample(1000,1))
-    onedata <- Seurat::FindNeighbors(onedata, dims = seq_len(20))
+    onedata <- Seurat::FindNeighbors(onedata, dims = 1:20)
     onedata <- Seurat::FindClusters(onedata, resolution = 0.5)
     allcluster[[i]] <- onedata$seurat_clusters
   }

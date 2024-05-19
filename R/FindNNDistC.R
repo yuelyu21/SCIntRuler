@@ -45,15 +45,15 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
     onemeta <- fullcluster[[j]]
 
     tmpvec <- c()
-    newcounter <-  1
+    newcounter = 1
 
     for(qqq in seq_along(fullcluster)) {
       if(qqq != j) {
         if(newcounter == 1) {
-          othercount <-  normCount[[qqq]]
-          newcounter <-  newcounter + 1
+          othercount = normCount[[qqq]]
+          newcounter = newcounter + 1
         } else {
-          othercount <-  cbind(othercount, normCount[[qqq]])
+          othercount = cbind(othercount, normCount[[qqq]])
         }
       }
     }
@@ -61,13 +61,13 @@ FindNNDistC <- function(fullcluster,normCount, meaningn = 20) {
 
     allCT <- sort(unique(onemeta$finecluster))
 
-    onep_internal <-  onep_external = list()
+    onep_internal = onep_external = list()
 
     for(q in seq_along(allCT)) {
 
       ct = allCT[q]
 
-      onecdist_internal <-  onecdist_external <- list()
+      onecdist_internal = onecdist_external <- list()
 
       max1 <- sum(onemeta$finecluster == ct)
       max2 <- sum(onemeta$finecluster != ct)
