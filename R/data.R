@@ -1,6 +1,6 @@
 #' My Example Dataset
 #'
-#' A short description of your dataset.
+#' An example PBMC data with SingleCellExperiment format, including 3000 cells and 800 genes.
 #'
 #' @format An example PBMC data with SingleCellExperiment format
 #' \describe{

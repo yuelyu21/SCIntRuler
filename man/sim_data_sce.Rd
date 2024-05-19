@@ -23,7 +23,7 @@ sim_data_sce
 Simulation data to examplify the usage of the method.
 }
 \description{
-A short description of your dataset.
+An example PBMC data with SingleCellExperiment format, including 3000 cells and 800 genes.
 }
 \details{
 The \code{sim_data_sce} object is designed to serve as a teaching and development aid for methods that require complex
