@@ -67,15 +67,15 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>seuratlist</dt>
-<dd><p>A list of Seurat objects, usually can be got by <code>SplitObject()</code>. We also accept the SingleCellExperiment object input.</p></dd>
+<dd><p>A list of Seurat objects, usually can be got by SplitObject(). We also accept the SingleCellExperiment object input.</p></dd>
 
 
 <dt>n1</dt>
-<dd><p>If the number of cells was smaller than <code>n1</code>, then the cluster will remain unchanged called <code>rare cluster</code>. The default value of <code>n1</code> is 50.</p></dd>
+<dd><p>If the number of cells was smaller than n1, then the cluster will remain unchanged called rare cluster. The default value of n1 is 50.</p></dd>
 
 
 <dt>n2</dt>
-<dd><p>If the count of cells within a broad cluster is more than <code>n2</code>, the cluster is subdivided randomly into three fine clusters. If the cell count falls within the range of <code>n1</code> to <code>n2</code>, two fine clusters are generated randomly. Default value is 200.</p></dd>
+<dd><p>If the count of cells within a broad cluster is more than n2, the cluster is subdivided randomly into three fine clusters. If the cell count falls within the range of n1 to n2, two fine clusters are generated randomly. Default value is 200.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -88,7 +88,7 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># Assuming 'seuratlist' is a list of Seurat objects</span></span></span>
+<span class="r-in"><span><span class="co"># Assuming "seuratlist" is a list of Seurat objects</span></span></span>
 <span class="r-in"><span><span class="co"># if(is(sim_data_sce, "SingleCellExperiment")){ sim_data &lt;- as.Seurat(sim_data_sce) }</span></span></span>
 <span class="r-in"><span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="SCEtoSeurat.html">SCEtoSeurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in cbind(seurat[["RNA"]]@meta.features, gene_metadata):</span> no slot of name "meta.features" for this object of class "Assay5"</span>

@@ -67,7 +67,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>seuratlist</dt>
-<dd><p>A list of Seurat objects, usually can be got by <code>SplitObject()</code>.</p></dd>
+<dd><p>A list of Seurat objects, usually can be got by SplitObject().</p></dd>
 
 </dl></div>
     <div id="value">
@@ -81,7 +81,6 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># seuratlist &lt;- InputData(sim_data_sce,"Study")</span></span></span>
-<span class="r-in"><span><span class="co"># Assuming 'seuratlist' is a list of Seurat objects</span></span></span>
 <span class="r-in"><span><span class="co"># if(is(sim_data_sce, "SingleCellExperiment")){ sim_data &lt;- as.Seurat(sim_data_sce) }</span></span></span>
 <span class="r-in"><span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="SCEtoSeurat.html">SCEtoSeurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in cbind(seurat[["RNA"]]@meta.features, gene_metadata):</span> no slot of name "meta.features" for this object of class "Assay5"</span>
