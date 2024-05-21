@@ -1,6 +1,6 @@
 #' Normalized RNA data matrix
 #'
-#' @param seuratlist A list of Seurat objects, usually can be got by `SplitObject()`.
+#' @param seuratlist A list of Seurat objects, usually can be got by SplitObject().
 #'
 #' @return A list of matrix.
 #' @export
@@ -8,7 +8,6 @@
 #' @examples
 #' data(sim_data_sce)
 #' # seuratlist <- InputData(sim_data_sce,"Study")
-#' # Assuming 'seuratlist' is a list of Seurat objects
 #' # if(is(sim_data_sce, "SingleCellExperiment")){ sim_data <- as.Seurat(sim_data_sce) }
 #' sim_data <- SCEtoSeurat(sim_data_sce)
 #' seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")

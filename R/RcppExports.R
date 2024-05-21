@@ -13,6 +13,5 @@
 #' mat2 <- matrix(5:8, ncol = 2)
 #' dist_matrix <- crossdist(mat1, mat2)
 crossdist <- function(m1, m2) {
-    .Call('_SCIntRuler_crossdist', PACKAGE = 'SCIntRuler', m1, m2)
+  .Call('_SCIntRuler_crossdist', PACKAGE = 'SCIntRuler', m1, m2)
 }
-

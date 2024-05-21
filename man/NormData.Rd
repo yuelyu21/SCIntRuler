@@ -7,7 +7,7 @@
 NormData(seuratlist)
 }
 \arguments{
-\item{seuratlist}{A list of Seurat objects, usually can be got by \code{SplitObject()}.}
+\item{seuratlist}{A list of Seurat objects, usually can be got by SplitObject().}
 }
 \value{
 A list of matrix.
@@ -18,7 +18,6 @@ Normalized RNA data matrix
 \examples{
 data(sim_data_sce)
 # seuratlist <- InputData(sim_data_sce,"Study")
-# Assuming 'seuratlist' is a list of Seurat objects
 # if(is(sim_data_sce, "SingleCellExperiment")){ sim_data <- as.Seurat(sim_data_sce) }
 sim_data <- SCEtoSeurat(sim_data_sce)
 seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")

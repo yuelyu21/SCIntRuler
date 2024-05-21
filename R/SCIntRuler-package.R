@@ -1,16 +1,8 @@
 #' SCIntRuler: Integration of Single-Cell RNA-seq Datasets
 #'
-#' The SCIntRuler package addresses the challenges of integrating multiple
-#' single-cell RNA-seq (scRNA-seq) datasets. It provides tools to enhance
-#' analytical robustness by augmenting sample sizes and reducing batch discrepancies.
-#' Developed using the Seurat framework, SCIntRuler includes both existing and novel
-#' workflows for single-cell analysis.
+#' The SCIntRuler package addresses the challenges of integrating multiple single-cell RNA-seq (scRNA-seq) datasets. It provides tools to enhance analytical robustness by augmenting sample sizes and reducing batch discrepancies. Developed using the Seurat framework, SCIntRuler includes both existing and novel workflows for single-cell analysis.
 #'
-#' @section Why SCIntRuler?:
-#' Integrating scRNA-seq datasets can be complex due to various factors such as
-#' batch effects and sample diversity. SCIntRuler provides a statistical metric
-#' to aid in crucial decisions regarding dataset integration, ensuring more
-#' robust and accurate analyses.
+#' @section Why SCIntRuler? Integrating scRNA-seq datasets can be complex due to various factors such as batch effects and sample diversity. SCIntRuler provides a statistical metric to aid in crucial decisions regarding dataset integration, ensuring more robust and accurate analyses.
 #' @author Yue Lyu
 #'
 #' @return This is the main page for SCIntRuler package.
@@ -26,9 +18,7 @@
 #'        complexities involved in scRNA-seq data integration.}
 #' }
 #'
-#' @section Getting Started:
-#' Refer to the "Getting Started with SCIntRuler" article in the package vignettes
-#' for detailed user instructions.
+#' @section Getting Started:Refer to the "Getting Started with SCIntRuler" article in the package vignettes for detailed user instructions.
 #'
 #' @name SCIntRuler-package
 #' @aliases SCIntRuler

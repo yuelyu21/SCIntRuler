@@ -7,6 +7,15 @@
 ^\.github$
 ^doc$
 ^Meta$
-
+^src/.*\.o$
+^src/.*\.so$
+^src/.*\.dll$
+^src/symbols\.rds$
+^.*\.pdf$
+^.*\.DS_Store$
+^.*\.Rproj$
+^.*\.Rproj\.user$
+^\.git$
+^\.gitignore$
 
 

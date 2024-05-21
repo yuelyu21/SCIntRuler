@@ -7,10 +7,10 @@
 \format{
 An result example data
 \describe{
-\item{\code{fullcluster}}{A runable example of GetCluster, which is a list of clusters for each study.}
-\item{\code{normCount}}{A runable example of NormData, which is a list of normalized RNA expression matrixs for each study.}
-\item{\code{distmat}}{A runable example of FindNNDist, which is a list of distance matrixs for each study.}
-\item{\code{testres}}{A runable example of CalcuSCIR,  which is a list of test results for each study.}
+\item{fullcluster}{A runable example of GetCluster, which is a list of clusters for each study.}
+\item{normCount}{A runable example of NormData, which is a list of normalized RNA expression matrixs for each study.}
+\item{distmat}{A runable example of FindNNDist, which is a list of distance matrixs for each study.}
+\item{testres}{A runable example of CalcuSCIR, which is a list of test results for each study.}
 }
 }
 \usage{
