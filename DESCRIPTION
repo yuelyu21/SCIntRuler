@@ -1,8 +1,9 @@
 Package: SCIntRuler
-Title: Guiding the integration of multiple single-cell RNA-seq datasets
+Type: Package
+Title: Guiding the Integration of Multiple Single-Cell RNA-Seq Datasets
 Version: 0.99.0
 Authors@R: 
-    person("Yue", "Lyu", , "yuelyu0521@gmail.com", role = c("aut", "cre"),
+    person("Yue", "Lyu",  ,"yuelyu0521@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8912-6624"))
 Description: The accumulation of single-cell RNA-seq (scRNA-seq) studies highlights the potential benefits of integrating multiple datasets. By augmenting sample sizes and enhancing analytical robustness, integration can lead to more insightful biological conclusions. However, challenges arise due to the inherent diversity and batch discrepancies within and across studies. SCIntRuler, a novel R package, addresses these challenges by guiding the integration of multiple scRNA-seq datasets.
 License: MIT + file LICENSE

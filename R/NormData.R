@@ -20,7 +20,7 @@ NormData <- function(seuratlist) {
 
   genelist <- c()
   for(i in seq_along(seuratlist)) {
-    onecount <- seuratlist[[i]]@assays$RNA@counts
+    onecount <- Seurat::GetAssayData(seuratlist[[i]], slot = "counts")
     if(i == 1) {
       genelist <- rownames(onecount[(MatrixGenerics::rowSums(onecount>0) >= 3),])
     } else {
@@ -29,7 +29,7 @@ NormData <- function(seuratlist) {
   }
   normCount <- list()
   for(i in seq_along(seuratlist)) {
-    onecount <- seuratlist[[i]]@assays$RNA@counts[genelist, ]
+    onecount <- Seurat::GetAssayData(seuratlist[[i]], slot = "counts")[genelist, ]
     normCount[[i]] <- batchelor::cosineNorm(onecount, mode = "matrix")
   }
   return(normCount)
