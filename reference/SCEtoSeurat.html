@@ -84,7 +84,7 @@ converts it to a Seurat object, and then splits it according to the specified va
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># seuratlist &lt;- InputData(sim_data_sce,"Study")</span></span></span>
 <span class="r-in"><span><span class="va">seuratobj</span> <span class="op">&lt;-</span> <span class="fu">SCEtoSeurat</span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in cbind(seurat[["RNA"]]@meta.features, gene_metadata):</span> no slot of name "meta.features" for this object of class "Assay5"</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No gene metadata columns found to add to Seurat object.</span>
 </code></pre></div>
     </div>
   </div>
