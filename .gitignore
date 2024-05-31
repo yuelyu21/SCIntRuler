@@ -8,4 +8,7 @@ docs
 inst/
 /doc/
 /Meta/
+*.o
+*.so
+
 
