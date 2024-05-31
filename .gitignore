@@ -8,7 +8,10 @@ docs
 inst/
 /doc/
 /Meta/
-*.o
-*.so
+# Ignore compiled object files
+src/*.o
+
+# Ignore shared library files
+src/*.so
 
 
