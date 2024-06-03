@@ -16,3 +16,11 @@ src/*.o
 src/*.so
 
 
+# Ignore RStudio project file
+*.Rproj
+
+# Ignore compiled object files
+src/*.o
+
+# Ignore shared library files
+src/*.so

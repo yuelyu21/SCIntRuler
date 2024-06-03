@@ -1,7 +1,7 @@
 Package: SCIntRuler
 Type: Package
 Title: Guiding the Integration of Multiple Single-Cell RNA-Seq Datasets
-Version: 0.99.0
+Version: 0.99.2
 Authors@R: 
     person("Yue", "Lyu",  ,"yuelyu0521@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8912-6624"))
