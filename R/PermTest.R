@@ -45,9 +45,22 @@ PermTest <- function(fullcluster, distmat, firstn){
 
       revDiff[q] <- (mean(dist2) - mean(dist1))/max(mean(dist2),mean(dist1))
 
-      disttest <- data.frame(rbind(cbind(dist1,rep("Internal Dist",length(dist1))),
-                                   cbind(dist2,rep("External Dist",length(dist2)))))%>%
-        dplyr::mutate(dist = as.numeric(dist1),group = factor(V2)) %>% dplyr::select(3,4)
+      # disttest <- data.frame(rbind(cbind(dist1,rep("Internal Dist",length(dist1))),
+      #                              cbind(dist2,rep("External Dist",length(dist2)))))%>%
+      #   dplyr::mutate(dist = as.numeric(dist1),group = factor(V2)) %>% dplyr::select(3,4)
+
+      # Using Native Pipe
+      # disttest <- data.frame(rbind(cbind(dist1, rep("Internal Dist", length(dist1))),
+      #                              cbind(dist2, rep("External Dist", length(dist2))))) |>
+      #   (\(df) dplyr::mutate(df, dist = as.numeric(dist1), group = factor(V2)))() |>
+      #   (\(df) dplyr::select(df, 3, 4))()
+
+      # Without Pipes
+      dist_combined <- data.frame(rbind(cbind(dist1, rep("Internal Dist", length(dist1))),
+                                        cbind(dist2, rep("External Dist", length(dist2)))))
+      disttest <- dplyr::mutate(dist_combined, dist = as.numeric(dist1), group = factor(V2))
+      disttest <- dplyr::select(disttest, 3, 4)
+
 
       onep_vec[q] <- round(coin::pvalue(coin::independence_test(dist ~ group, data = disttest,
                                                     alternative = "greater")),3)

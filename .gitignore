@@ -1,5 +1,4 @@
 .Rproj.user
-*.Rproj
 .Rhistory
 .Rdata
 .httr-oauth
@@ -9,6 +8,9 @@ docs
 inst/
 /doc/
 /Meta/
+# Ignore RStudio project file
+*.Rproj
+
 # Ignore compiled object files
 src/*.o
 

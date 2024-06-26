@@ -9,7 +9,7 @@ description: >
 output: 
   BiocStyle::html_document
 vignette: >
-  %\VignetteIndexEntry{Get Started}
+  %\VignetteIndexEntry{Integrating Single-Cell RNA-seq Datasets with SCIntRuler}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -24,39 +24,39 @@ knitr::opts_chunk$set(
 
 ## Introducrtion
 
-The accumulation of single-cell RNA-seq (scRNA-seq) studies highlights the potential benefits of integrating multiple datasets. By augmenting sample sizes and enhancing analytical robustness, integration can lead to more insightful biological conclusions. However, challenges arise due to the inherent diversity and batch discrepancies within and across studies. **SCIntRuler**, a novel R package, addresses these challenges by guiding the integration of multiple scRNA-seq datasets.
+The accumulation of single-cell RNA-seq (scRNA-seq) studies highlights the potential benefits of integrating multiple data sets. By augmenting sample sizes and enhancing analytical robustness, integration can lead to more insightful biological conclusions. However, challenges arise due to the inherent diversity and batch discrepancies within and across studies. **SCIntRuler**, a novel R package, addresses these challenges by guiding the integration of multiple scRNA-seq data sets.
 [SCIntRuler](https://github.com/yuelyu21/SCIntRuler) is an R package developed for single-cell RNA-seq analysis. It was designed using the [Seurat](https://satijalab.org/seurat/) framework, and offers existing and novel single-cell analytic work flows. 
 
-Integrating scRNA-seq datasets can be complex due to various factors, including batch effects and sample diversity. Key decisions – whether to integrate datasets, which method to choose for integration, and how to best handle inherent data discrepancies – are crucial. `SCIntRuler` offers a statistical metric to aid in these decisions, ensuring more robust and accurate analyses.
+Integrating scRNA-seq data sets can be complex due to various factors, including batch effects and sample diversity. Key decisions – whether to integrate data sets, which method to choose for integration, and how to best handle inherent data discrepancies – are crucial. `SCIntRuler` offers a statistical metric to aid in these decisions, ensuring more robust and accurate analyses.
 
 - **Informed Decision Making**: Helps researchers decide on the necessity of data integration and the most suitable method.
 - **Flexibility**: Suitable for various scenarios, accommodating different levels of data heterogeneity.
-- **Robustness**: Enhances analytical robustness in joint analyses of merged or integrated scRNA-seq datasets.
+- **Robustness**: Enhances analytical robustness in joint analyses of merged or integrated scRNA-seq data sets.
 - **User-Friendly**: Streamlines decision-making processes, simplifying the complexities involved in scRNA-seq data integration.
 
 ## 1. Installation
 
 To install the package, you need to install the `batchelor` and `MatrixGenerics` package from Bioconductor.
-```{r}
+```{r install Depedency, eval = FALSE}
 
-# # Check if BioManager is installed, install if not
-# if (!requireNamespace("BiocManager", quietly = TRUE))
-#     install.packages("BiocManager")
-# 
-# # Check if 'batchelor' is installed, install if not
-# if (!requireNamespace("batchelor", quietly = TRUE)) 
-#     BiocManager::install("batchelor")
-# 
-# # Check if 'MatrixGenerics' is installed, install if not
-# if (!requireNamespace("MatrixGenerics", quietly = TRUE)) 
-#     BiocManager::install("MatrixGenerics")
+# Check if BioManager is installed, install if not
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+# Check if 'batchelor' is installed, install if not
+if (!requireNamespace("batchelor", quietly = TRUE))
+    BiocManager::install("batchelor")
+
+# Check if 'MatrixGenerics' is installed, install if not
+if (!requireNamespace("MatrixGenerics", quietly = TRUE))
+    BiocManager::install("MatrixGenerics")
 
 ```
 
-The `SCIntRuler` can be installed using `devtools` by the following commands, the source code can be found at [GitHub](https://github.com/yuelyu21/SCIntRuler).
+The `SCIntRuler` can be installed by the following commands, the source code can be found at [GitHub](https://github.com/yuelyu21/SCIntRuler).
 
-```{r}
-# devtools::install_github("yuelyu21/SCIntRuler") 
+```{r install SCIntRuler, eval = FALSE}
+BiocManager::install("SCIntRuler") 
 ```
 
 After the installation, the package can be loaded with
@@ -70,35 +70,14 @@ library(ggplot2)
 
 ## 2. Explore with an example data
 
-Let's start with an example data. We conducted a series of simulation studies to assess the efficacy of `SCIntRuler` in guiding the integration selection under different scenarios with varying degrees of shared information among datasets. We generated the simulation data based on a real `Peripheral Blood Mononuclear Cells (PBMC)` scRNA-seq dataset. 
+Let's start with an example data. We conducted a series of simulation studies to assess the efficacy of `SCIntRuler` in guiding the integration selection under different scenarios with varying degrees of shared information among data sets. We generated the simulation data based on a real `Peripheral Blood Mononuclear Cells (PBMC)` scRNA-seq dataset. 
 
 ### Overview of the data
 This dataset is a subset of what we used in our **Simulation 2**, where we have three studies. In each study, we randomly drew different numbers of CD4 T helper cells, B cells, CD14 monocytes, and CD56 NK cells to mimic four real-world scenarios with three data sources **Simulation 2** introduces a moderate overlap, with 20.3% cells sharing the same cell type identity. There are 2000 B cells and 400 CD4T cells in the first study, 700 CD14Mono cells and 400 CD4T cells in the second study, 2000 CD56NK cells and 400 CD4T cells in the third study. This data is already in `Seurat` format and can be found under `/data`. There are 32738 genes and 5900 cells in simulation 2. Here, we subset 800 cells with 3000 genes.
 
 ```{r load the data, message=FALSE, warning=FALSE}
-# SCIntRuler::sim_data
-SCIntRuler::sim_data_sce
-
-data("sim_data_sce")
+data("sim_data_sce", package = "SCIntRuler")
 sim_data <- as.Seurat(sim_data_sce)
-
-# labels <- c(rep("Bcell", 2000), rep("CD4T", 400),
-#             rep("CD14Mono", 700), rep("CD4T", 400),
-#             rep("CD56NK", 2000), rep("CD4T", 400))
-# study <- c(rep("Study1", 2400),
-#           rep("Study2", 1100),
-#           rep("Study3", 2400))
-# 
-# tmpMeta <- sim_data[[]]
-# tmpMeta["CellType"] <- labels
-# tmpMeta["Study"] <- study
-# # Add the metadata
-# sim_data <- AddMetaData(sim_data, tmpMeta)
-# sim_s <- subset(x = sim_data, downsample = 800)
-# sim_cs <- sim_s@assays$RNA@counts[sample(32738,3000),]
-# sim_data <- CreateSeuratObject(counts = sim_cs)
-# sim_data <- AddMetaData(sim_data, sim_s[[]])
-# sim_data <- sim_data_se
 ```
 
 
@@ -119,7 +98,7 @@ sim_data <- FindVariableFeatures(sim_data, selection.method = "vst", nfeatures =
 # Scale the data
 all.genes <- rownames(sim_data)
 sim_data <- ScaleData(sim_data, features = all.genes)
-# Perfom linear dimensional reduction
+# Perform linear dimensional reduction
 sim_data <- RunPCA(sim_data, features = VariableFeatures(object = sim_data))
 # Cluster the cells
 sim_data <- FindNeighbors(sim_data, dims = 1:20)
@@ -157,7 +136,7 @@ sim.list <- SplitObject(sim_data, split.by = "Study")
 sim.anchors <- FindIntegrationAnchors(object.list = sim.list, dims = 1:30, reduction = "cca")
 
 sim.int <- IntegrateData(anchorset = sim.anchors, dims = 1:30, new.assay.name = "CCA")
-# run standard anlaysis workflow
+# run standard analysis workflow
 sim.int <- ScaleData(sim.int, verbose = FALSE)
 sim.int <- RunPCA(sim.int, npcs = 30, verbose = FALSE)
 sim.int <- RunUMAP(sim.int, dims = 1:30, reduction.name = "umap_cca")
@@ -165,7 +144,7 @@ sim.int <- RunUMAP(sim.int, dims = 1:30, reduction.name = "umap_cca")
 ```
 
 #### Run Harmony
-Harmony is an algorithm for performing integration of single cell genomics datasets. To run harmony, we need to install `harmony` package. For more information, please see [Quick start to Harmony](https://portals.broadinstitute.org/harmony/articles/quickstart.html).
+Harmony is an algorithm for performing integration of single cell genomics data sets. To run harmony, we need to install `harmony` package. For more information, please see [Quick start to Harmony](https://portals.broadinstitute.org/harmony/articles/quickstart.html).
 
 
 ```{r harmony, message=FALSE, warning=FALSE}
@@ -178,53 +157,6 @@ sim.harmony <- harmony::RunHarmony(sim_data, group.by.vars = "Study", reduction.
 
 sim.int[["harmony"]] <- sim.harmony[["harmony"]]
 sim.int <- RunUMAP(sim.int, dims = 1:20, reduction = "harmony", reduction.name = "umap_harmony")
-
-```
-#### Run Scanorama
-To run Scanorama, we need to first load an virtual environment and install `scanorama` which can be directly imported in `R`. Then, we can run scanorama integration and UMAP based on scanorama projection. 
-
-```{r reticulate, message=FALSE, warning=FALSE}
-# # create a new environment 
-# reticulate::virtualenv_create("r-reticulate")
-# 
-# # install SciPy
-# reticulate::virtualenv_install("r-reticulate", "scanorama")
-# 
-# reticulate::use_virtualenv("r-reticulate")
-# 
-# # library(reticulate)
-# scanorama <- reticulate::import('scanorama')
-```
-
-
-```{r scanorama, message=FALSE, warning=FALSE}
-### Scanorama
-# counts <- sim_data@assays$RNA@counts
-# dim(counts)
-# sim_Dat1 <- counts[,1:2400]
-# sim_Dat2 <- counts[,2400+1:1100]
-# sim_Dat3 <- counts[,3500+1:2400]
-# 
-# datasets <- list( t(as.matrix(sim_Dat1)), t(as.matrix(sim_Dat2)) ,t(as.matrix(sim_Dat3)))
-# # List of gene lists:
-# genes_list <- list()
-# for(i in 1:3) {
-#     genes_list[[i]] <- colnames(datasets[[i]])
-# }
-# 
-# integrated.data <- scanorama$integrate(datasets, genes_list)
-# 
-# intdimred <- do.call(rbind, integrated.data[[1]])
-# colnames(intdimred) <- paste0("PC_", 1:100)
-# rownames(intdimred) <- colnames(sim.int)
-# 
-# # Add standard deviations in order to draw Elbow Plots in Seurat
-# stdevs <- apply(intdimred, MARGIN = 2, FUN = sd)
-# 
-# sim.int[["scanorama"]] <- CreateDimReducObject(embeddings = intdimred, stdev = stdevs,
-#     key = "scanorama_", assay = "RNA")
-# 
-# sim.int <- RunUMAP(sim.int, dims = 1:100, reduction = "scanorama", reduction.name = "umap_scanorama")
 
 ```
 
@@ -256,14 +188,6 @@ p7 <- DimPlot(sim.int, reduction = "umap_harmony", group.by = "Study") +
         axis.title.y = element_text(color="black", size=20),
         axis.text.x = element_text( color="black", size=20),
         axis.title.x = element_text(color="black", size=20))
-# p8 <- DimPlot(sim.int, reduction = "umap_scanorama", group.by = "Study") +
-#   theme(legend.position = "none",
-#         # axis.line.y = element_line( size = 2, linetype = "solid"),
-#         # axis.line.x = element_line( size = 2, linetype = "solid"),
-#         axis.text.y = element_text( color="black", size=20),
-#         axis.title.y = element_text(color="black", size=20),
-#         axis.text.x = element_text( color="black", size=20),
-#         axis.title.x = element_text(color="black", size=20))
 
 leg <- cowplot::get_legend(p5)
 gridExtra::grid.arrange(gridExtra::arrangeGrob(p5 + NoLegend() + ggtitle("Unintegrated"), 
@@ -297,7 +221,7 @@ distmat <- FindNNDistC(fullcluster, normCount, 20)
 
 ### Calculate SCIntRuler and and an associated visualization
 
-In this example data, we got a SCIntRuler score of 0.57, there is a noticeable but not large overlap of cell types across the datasets, showing a moderate level of shared information. The integration is essential to adjust for these effects and align the shared cell populations, ensuring that the integrated dataset accurately reflects the biological composition. Thus, the methods which can offer a balance between correcting for batch effects and maintaining biological variation would be the best. The UMAP visualizations across the simulations indicate that the choice of integration method significantly impacts the resulting data integration. 
+In this example data, we got a SCIntRuler score of 0.57, there is a noticeable but not large overlap of cell types across the data sets, showing a moderate level of shared information. The integration is essential to adjust for these effects and align the shared cell populations, ensuring that the integrated dataset accurately reflects the biological composition. Thus, the methods which can offer a balance between correcting for batch effects and maintaining biological variation would be the best. The UMAP visualizations across the simulations indicate that the choice of integration method significantly impacts the resulting data integration. 
 
 ```{r step 2, warning=FALSE,message=FALSE}
 
@@ -311,101 +235,10 @@ sim_result <- list(fullcluster,normCount,distmat,testres)
 
 ## SessionInfo
 ```{r,echo=FALSE}
-devtools::session_info()
-```
-
-
-```{r, echo=FALSE}
-
-# # library(showtext)
-# library(hexSticker)
-# ## Loading Google fonts (http://www.google.com/fonts)
-# # font_add_google("Gochi Hand", "gochi")
-# # font_add_google("Bebas Neue", "bebas")
-# 
-# ## Automatically use showtext to render text for future devices
-# # showtext_auto()
-# 
-# 
-#   SCout <- SummCluster(fullcluster)
-#   refindClust <- SCout$refindClust
-#   nbroad <- SCout$nbroad
-#   allrevDiff <- outres$allrevDiff
-#   allP <- outres$allP
-# 
-# 
-#   Sample <- c()
-#   for (i in 1:length(allP)){
-#     l <- length(allP[[i]])
-#     ll <- rep(names(sim.list)[i],l)
-#     Sample <- c(Sample,ll)
-#   }
-# 
-#   res <- data.frame("P value"=unlist(allP), revDiff = na.omit(c(allrevDiff)), Sample)
-#   ratio <- dim(subset(res, P.value <0.1 & revDiff >0))[1]/length(Sample)
-# 
-#   plot <- res %>%
-#     ggplot2::ggplot() +
-#     ggplot2::geom_point(ggplot2::aes(revDiff,`P.value`,color = factor(Sample)), size = 1, alpha = 0.9) +
-#     ggplot2::theme_test()+
-#     ggplot2::scale_color_brewer(palette= "Dark2") +
-#     ggplot2::geom_hline(yintercept=0.1, linetype="dashed", color = "blue") +
-#     ggplot2::geom_vline(xintercept=0, linetype="dashed", color = "red")+
-#     ggplot2::ylab("P-value") + ggplot2::xlab("Within-between Cluster Relative Distance")+
-#     # ggplot2::annotate("text", x = max(allrevDiff, na.rm = T), y = max(unlist(allP)/2, na.rm = T),
-#     #          label= paste("=",round(ratio,2)),hjust=1, vjust= 1.5, fontface="bold", size = 8)+
-#     ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(size=2)))+
-#     ggplot2::theme(
-#      #axis.line.y = element_line(size = 2, linetype = "solid"),
-#      #axis.line.x = element_line(size = 2, linetype = "solid"),
-#     axis.text.y = ggplot2::element_text( color="black", size=15, face="bold"),
-#     axis.title.y = ggplot2::element_text(color="black", size=15, face="bold"),
-#     axis.text.x = ggplot2::element_text( color="black", size=15, face="bold"),
-#     axis.title.x = ggplot2::element_text(color="black", size=15, face="bold") )+
-#     ggplot2::theme(legend.position = "none")+ theme_transparent()
-# 
-# sticker(plot, package="SCIntRuler", p_size=20, p_x = 1.05,p_y = 1,p_color = "#5F9EA0",
-#         s_x=0.88, s_y=0.9, s_width=1.5, s_height=1.5,
-#         p_fontface = "plain",
-#         h_fill="#C1E1C1", h_color="#5F9EA0",dpi = 600,
-#         # url = "https://github.com/yuelyu21/SCIntRuler",u_color = "grey",u_size = 4,
-#         # p_family = "gochi",  spotlight = T
-#         filename="inst/figures/SCIntRuler.png")
-
-```
-
-
-```{r echo=FALSE}
-mat1 <- matrix(1:4, ncol = 2)
-mat2 <- matrix(5:8, ncol = 2)
-dist_matrix <- crossdist(mat1, mat2)
-#dist_matrix <- crossdist2(mat1, mat2)
-```
-
-
-```{r echo=FALSE}
-# cell_names <- colnames(sim_data)
-# set.seed(123)  # Setting a seed for reproducibility
-# selected_cells <- sample(cell_names, size = 2000)
-# sim_data <- subset(sim_data, cells = selected_cells)
+sessionInfo()
 ```
 
 
 
-```{r, echo=FALSE}
-
-
-# library(hexSticker)
-# i <- magick::image_read("~/Desktop/SCIntegration/SCIntRuler/inst/figures/ruler2.png")
-# 
-# 
-# sticker(i, package="SCIntRuler", p_size=20, p_x = 1.05,p_y = 1.5,p_color = "#5F9EA0",
-#         s_x=0.93, s_y=0.8, s_width=1.5, s_height=1.5,
-#         p_fontface = "plain",
-#         h_fill="#C1E1C1", h_color="#5F9EA0",
-#         # url = "https://github.com/yuelyu21/SCIntRuler",u_color = "grey",u_size = 4,
-#         # p_family = "gochi",  spotlight = T
-#         filename="inst/figures/SCIntRuler2.png")
-```
 
 

@@ -1,6 +1,5 @@
 useDynLib(SCIntRuler, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
-exportPattern("^[[:alpha:]]+")
 export(CalcuSCIR)
 export(FindCell)
 export(FindNNDist)

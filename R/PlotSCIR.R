@@ -46,8 +46,7 @@ PlotSCIR <- function(fullcluster,seuratlist,testres,legendtitle= NULL,title = NU
   res <- data.frame("P value"=unlist(allP), revDiff = na.omit(c(allrevDiff)), Sample)
   ratio <- dim(subset(res, P.value <0.1 & revDiff >0))[1]/length(Sample)
 
-  plot <- res %>%
-    ggplot2::ggplot() +
+  plot <- ggplot2::ggplot(res) +
     ggplot2::geom_point(ggplot2::aes(revDiff,`P.value`,color = factor(Sample)), size = 3, alpha = 0.7) +
     ggplot2::theme_test()+
     ggplot2::scale_color_brewer(palette= "Dark2") +
