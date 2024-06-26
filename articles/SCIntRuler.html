@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.3</span>
       </span>
     </div>
 
@@ -94,20 +94,20 @@ Lyu
 <h2 id="introducrtion">Introducrtion<a class="anchor" aria-label="anchor" href="#introducrtion"></a>
 </h2>
 <p>The accumulation of single-cell RNA-seq (scRNA-seq) studies
-highlights the potential benefits of integrating multiple datasets. By
+highlights the potential benefits of integrating multiple data sets. By
 augmenting sample sizes and enhancing analytical robustness, integration
 can lead to more insightful biological conclusions. However, challenges
 arise due to the inherent diversity and batch discrepancies within and
 across studies. <strong>SCIntRuler</strong>, a novel R package,
 addresses these challenges by guiding the integration of multiple
-scRNA-seq datasets. <a href="https://github.com/yuelyu21/SCIntRuler">SCIntRuler</a> is an R
+scRNA-seq data sets. <a href="https://github.com/yuelyu21/SCIntRuler">SCIntRuler</a> is an R
 package developed for single-cell RNA-seq analysis. It was designed
 using the <a href="https://satijalab.org/seurat/" class="external-link">Seurat</a> framework,
 and offers existing and novel single-cell analytic work flows.</p>
-<p>Integrating scRNA-seq datasets can be complex due to various factors,
-including batch effects and sample diversity. Key decisions – whether to
-integrate datasets, which method to choose for integration, and how to
-best handle inherent data discrepancies – are crucial.
+<p>Integrating scRNA-seq data sets can be complex due to various
+factors, including batch effects and sample diversity. Key decisions –
+whether to integrate data sets, which method to choose for integration,
+and how to best handle inherent data discrepancies – are crucial.
 <code>SCIntRuler</code> offers a statistical metric to aid in these
 decisions, ensuring more robust and accurate analyses.</p>
 <ul>
@@ -119,7 +119,7 @@ on the necessity of data integration and the most suitable method.</li>
 accommodating different levels of data heterogeneity.</li>
 <li>
 <strong>Robustness</strong>: Enhances analytical robustness in joint
-analyses of merged or integrated scRNA-seq datasets.</li>
+analyses of merged or integrated scRNA-seq data sets.</li>
 <li>
 <strong>User-Friendly</strong>: Streamlines decision-making
 processes, simplifying the complexities involved in scRNA-seq data
@@ -134,22 +134,21 @@ integration.</li>
 Bioconductor.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># # Check if BioManager is installed, install if not</span></span>
-<span><span class="co"># if (!requireNamespace("BiocManager", quietly = TRUE))</span></span>
-<span><span class="co">#     install.packages("BiocManager")</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># # Check if 'batchelor' is installed, install if not</span></span>
-<span><span class="co"># if (!requireNamespace("batchelor", quietly = TRUE)) </span></span>
-<span><span class="co">#     BiocManager::install("batchelor")</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># # Check if 'MatrixGenerics' is installed, install if not</span></span>
-<span><span class="co"># if (!requireNamespace("MatrixGenerics", quietly = TRUE)) </span></span>
-<span><span class="co">#     BiocManager::install("MatrixGenerics")</span></span></code></pre></div>
-<p>The <code>SCIntRuler</code> can be installed using
-<code>devtools</code> by the following commands, the source code can be
-found at <a href="https://github.com/yuelyu21/SCIntRuler">GitHub</a>.</p>
+<span><span class="co"># Check if BioManager is installed, install if not</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Check if 'batchelor' is installed, install if not</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"batchelor"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"batchelor"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Check if 'MatrixGenerics' is installed, install if not</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"MatrixGenerics"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"MatrixGenerics"</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>SCIntRuler</code> can be installed by the following
+commands, the source code can be found at <a href="https://github.com/yuelyu21/SCIntRuler">GitHub</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># devtools::install_github("yuelyu21/SCIntRuler") </span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"SCIntRuler"</span><span class="op">)</span> </span></code></pre></div>
 <p>After the installation, the package can be loaded with</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yuelyu21/SCIntRuler">SCIntRuler</a></span><span class="op">)</span></span>
@@ -163,7 +162,7 @@ found at <a href="https://github.com/yuelyu21/SCIntRuler">GitHub</a>.</p>
 <p>Let’s start with an example data. We conducted a series of simulation
 studies to assess the efficacy of <code>SCIntRuler</code> in guiding the
 integration selection under different scenarios with varying degrees of
-shared information among datasets. We generated the simulation data
+shared information among data sets. We generated the simulation data
 based on a real <code>Peripheral Blood Mononuclear Cells (PBMC)</code>
 scRNA-seq dataset.</p>
 <div class="section level3">
@@ -181,44 +180,9 @@ study. This data is already in <code>Seurat</code> format and can be
 found under <code>/data</code>. There are 32738 genes and 5900 cells in
 simulation 2. Here, we subset 800 cells with 3000 genes.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># SCIntRuler::sim_data</span></span>
-<span><span class="fu">SCIntRuler</span><span class="fu">::</span><span class="va"><a href="../reference/sim_data_sce.html">sim_data_sce</a></span></span>
-<span><span class="co">#&gt; class: SingleCellExperiment </span></span>
-<span><span class="co">#&gt; dim: 3000 800 </span></span>
-<span><span class="co">#&gt; metadata(0):</span></span>
-<span><span class="co">#&gt; assays(3): counts logcounts scaledata</span></span>
-<span><span class="co">#&gt; rownames(3000): ENSG00000269089 AP003733.1 ENSG00000172733 PURG ...</span></span>
-<span><span class="co">#&gt;   ENSG00000087589 CASS4 ENSG00000213741 RPS29</span></span>
-<span><span class="co">#&gt; rowData names(0):</span></span>
-<span><span class="co">#&gt; colnames(800): AATTACGAATCGGT-1 AGAGCGGAGTCCTC-1 ... CAGTGATGGGGTGA-1</span></span>
-<span><span class="co">#&gt;   GCCACGGACATGAC-1</span></span>
-<span><span class="co">#&gt; colData names(8): orig.ident nCount_RNA ... seurat_clusters ident</span></span>
-<span><span class="co">#&gt; reducedDimNames(2): PCA UMAP</span></span>
-<span><span class="co">#&gt; mainExpName: RNA</span></span>
-<span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sim_data_sce"</span>, package <span class="op">=</span> <span class="st">"SCIntRuler"</span><span class="op">)</span></span>
+<span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mojaveazure.github.io/seurat-object/reference/as.Seurat.html" class="external-link">as.Seurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sim_data_sce"</span><span class="op">)</span></span>
-<span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mojaveazure.github.io/seurat-object/reference/as.Seurat.html" class="external-link">as.Seurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># labels &lt;- c(rep("Bcell", 2000), rep("CD4T", 400),</span></span>
-<span><span class="co">#             rep("CD14Mono", 700), rep("CD4T", 400),</span></span>
-<span><span class="co">#             rep("CD56NK", 2000), rep("CD4T", 400))</span></span>
-<span><span class="co"># study &lt;- c(rep("Study1", 2400),</span></span>
-<span><span class="co">#           rep("Study2", 1100),</span></span>
-<span><span class="co">#           rep("Study3", 2400))</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># tmpMeta &lt;- sim_data[[]]</span></span>
-<span><span class="co"># tmpMeta["CellType"] &lt;- labels</span></span>
-<span><span class="co"># tmpMeta["Study"] &lt;- study</span></span>
-<span><span class="co"># # Add the metadata</span></span>
-<span><span class="co"># sim_data &lt;- AddMetaData(sim_data, tmpMeta)</span></span>
-<span><span class="co"># sim_s &lt;- subset(x = sim_data, downsample = 800)</span></span>
-<span><span class="co"># sim_cs &lt;- sim_s@assays$RNA@counts[sample(32738,3000),]</span></span>
-<span><span class="co"># sim_data &lt;- CreateSeuratObject(counts = sim_cs)</span></span>
-<span><span class="co"># sim_data &lt;- AddMetaData(sim_data, sim_s[[]])</span></span>
-<span><span class="co"># sim_data &lt;- sim_data_se</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sim_data</span><span class="op">[[</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                     orig.ident nCount_RNA nFeature_RNA CellType  Study</span></span>
 <span><span class="co">#&gt; AATTACGAATCGGT-1 SeuratProject       1035          365    Bcell Study1</span></span>
@@ -245,7 +209,7 @@ we first pre-processed the data by the functions
 <code>FinsClusters</code> and <code>RunUMAP</code> from
 <code>Seurat</code> and then draw the UMAP by using <code>DimPlot</code>
 stratified by <strong>Study</strong> and <strong>Cell Type</strong>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Normalize the data</span></span>
 <span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/NormalizeData.html" class="external-link">NormalizeData</a></span><span class="op">(</span><span class="va">sim_data</span><span class="op">)</span></span>
 <span><span class="co"># Identify highly variable features</span></span>
@@ -253,7 +217,7 @@ stratified by <strong>Study</strong> and <strong>Cell Type</strong>.</p>
 <span><span class="co"># Scale the data</span></span>
 <span><span class="va">all.genes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">sim_data</span><span class="op">)</span></span>
 <span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/ScaleData.html" class="external-link">ScaleData</a></span><span class="op">(</span><span class="va">sim_data</span>, features <span class="op">=</span> <span class="va">all.genes</span><span class="op">)</span></span>
-<span><span class="co"># Perfom linear dimensional reduction</span></span>
+<span><span class="co"># Perform linear dimensional reduction</span></span>
 <span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/RunPCA.html" class="external-link">RunPCA</a></span><span class="op">(</span><span class="va">sim_data</span>, features <span class="op">=</span> <span class="fu"><a href="https://mojaveazure.github.io/seurat-object/reference/VariableFeatures.html" class="external-link">VariableFeatures</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">sim_data</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Cluster the cells</span></span>
 <span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/FindNeighbors.html" class="external-link">FindNeighbors</a></span><span class="op">(</span><span class="va">sim_data</span>, dims <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span></span>
@@ -267,12 +231,12 @@ stratified by <strong>Study</strong> and <strong>Cell Type</strong>.</p>
 <span><span class="co">#&gt; Maximum modularity in 10 random starts: 0.7653</span></span>
 <span><span class="co">#&gt; Number of communities: 4</span></span>
 <span><span class="co">#&gt; Elapsed time: 0 seconds</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/RunUMAP.html" class="external-link">RunUMAP</a></span><span class="op">(</span><span class="va">sim_data</span>, dims <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="umap-separated-by-study">UMAP separated by Study<a class="anchor" aria-label="anchor" href="#umap-separated-by-study"></a>
 </h4>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/DimPlot.html" class="external-link">DimPlot</a></span><span class="op">(</span><span class="va">sim_data</span>, reduction <span class="op">=</span> <span class="st">"umap"</span>, label <span class="op">=</span> <span class="cn">FALSE</span>, pt.size <span class="op">=</span> <span class="fl">.5</span>, group.by <span class="op">=</span> <span class="st">"Study"</span>, repel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">p1</span></span></code></pre></div>
 <p><img src="SCIntRuler_files/figure-html/UMAP%20-1.png" width="700"></p>
@@ -280,7 +244,7 @@ stratified by <strong>Study</strong> and <strong>Cell Type</strong>.</p>
 <div class="section level4">
 <h4 id="umap-separated-by-cell-type">UMAP separated by cell type<a class="anchor" aria-label="anchor" href="#umap-separated-by-cell-type"></a>
 </h4>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/DimPlot.html" class="external-link">DimPlot</a></span><span class="op">(</span><span class="va">sim_data</span>, reduction <span class="op">=</span> <span class="st">"umap"</span>, label <span class="op">=</span> <span class="cn">TRUE</span>, pt.size <span class="op">=</span> <span class="fl">.8</span>, group.by <span class="op">=</span> <span class="st">"CellType"</span>, repel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">p2</span></span></code></pre></div>
@@ -303,13 +267,13 @@ significantly impacts the resulting data integration.</p>
 <code>FindIntegrationAnchors</code> and <code>IntegrateData</code> in
 <code>Seurat</code> package. For more information, please see<a href="https://satijalab.org/seurat/articles/integration_introduction.html" class="external-link">Tutorial
 of SeuratCCA</a>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">### CCA</span></span>
 <span><span class="va">sim.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/SplitObject.html" class="external-link">SplitObject</a></span><span class="op">(</span><span class="va">sim_data</span>, split.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span></span>
 <span><span class="va">sim.anchors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/FindIntegrationAnchors.html" class="external-link">FindIntegrationAnchors</a></span><span class="op">(</span>object.list <span class="op">=</span> <span class="va">sim.list</span>, dims <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, reduction <span class="op">=</span> <span class="st">"cca"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sim.int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/IntegrateData.html" class="external-link">IntegrateData</a></span><span class="op">(</span>anchorset <span class="op">=</span> <span class="va">sim.anchors</span>, dims <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, new.assay.name <span class="op">=</span> <span class="st">"CCA"</span><span class="op">)</span></span>
-<span><span class="co"># run standard anlaysis workflow</span></span>
+<span><span class="co"># run standard analysis workflow</span></span>
 <span><span class="va">sim.int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/ScaleData.html" class="external-link">ScaleData</a></span><span class="op">(</span><span class="va">sim.int</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">sim.int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/RunPCA.html" class="external-link">RunPCA</a></span><span class="op">(</span><span class="va">sim.int</span>, npcs <span class="op">=</span> <span class="fl">30</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">sim.int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/RunUMAP.html" class="external-link">RunUMAP</a></span><span class="op">(</span><span class="va">sim.int</span>, dims <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, reduction.name <span class="op">=</span> <span class="st">"umap_cca"</span><span class="op">)</span></span></code></pre></div>
@@ -318,10 +282,10 @@ of SeuratCCA</a>.</p>
 <h4 id="run-harmony">Run Harmony<a class="anchor" aria-label="anchor" href="#run-harmony"></a>
 </h4>
 <p>Harmony is an algorithm for performing integration of single cell
-genomics datasets. To run harmony, we need to install
+genomics data sets. To run harmony, we need to install
 <code>harmony</code> package. For more information, please see <a href="https://portals.broadinstitute.org/harmony/articles/quickstart.html" class="external-link">Quick
 start to Harmony</a>.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">### Harmony</span></span>
 <span><span class="co"># install.packages("harmony")</span></span>
 <span></span>
@@ -333,56 +297,9 @@ start to Harmony</a>.</p>
 <span><span class="va">sim.int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/RunUMAP.html" class="external-link">RunUMAP</a></span><span class="op">(</span><span class="va">sim.int</span>, dims <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, reduction <span class="op">=</span> <span class="st">"harmony"</span>, reduction.name <span class="op">=</span> <span class="st">"umap_harmony"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
-<h4 id="run-scanorama">Run Scanorama<a class="anchor" aria-label="anchor" href="#run-scanorama"></a>
-</h4>
-<p>To run Scanorama, we need to first load an virtual environment and
-install <code>scanorama</code> which can be directly imported in
-<code>R</code>. Then, we can run scanorama integration and UMAP based on
-scanorama projection.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># # create a new environment </span></span>
-<span><span class="co"># reticulate::virtualenv_create("r-reticulate")</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># # install SciPy</span></span>
-<span><span class="co"># reticulate::virtualenv_install("r-reticulate", "scanorama")</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># reticulate::use_virtualenv("r-reticulate")</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># # library(reticulate)</span></span>
-<span><span class="co"># scanorama &lt;- reticulate::import('scanorama')</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">### Scanorama</span></span>
-<span><span class="co"># counts &lt;- sim_data@assays$RNA@counts</span></span>
-<span><span class="co"># dim(counts)</span></span>
-<span><span class="co"># sim_Dat1 &lt;- counts[,1:2400]</span></span>
-<span><span class="co"># sim_Dat2 &lt;- counts[,2400+1:1100]</span></span>
-<span><span class="co"># sim_Dat3 &lt;- counts[,3500+1:2400]</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># datasets &lt;- list( t(as.matrix(sim_Dat1)), t(as.matrix(sim_Dat2)) ,t(as.matrix(sim_Dat3)))</span></span>
-<span><span class="co"># # List of gene lists:</span></span>
-<span><span class="co"># genes_list &lt;- list()</span></span>
-<span><span class="co"># for(i in 1:3) {</span></span>
-<span><span class="co">#     genes_list[[i]] &lt;- colnames(datasets[[i]])</span></span>
-<span><span class="co"># }</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># integrated.data &lt;- scanorama$integrate(datasets, genes_list)</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># intdimred &lt;- do.call(rbind, integrated.data[[1]])</span></span>
-<span><span class="co"># colnames(intdimred) &lt;- paste0("PC_", 1:100)</span></span>
-<span><span class="co"># rownames(intdimred) &lt;- colnames(sim.int)</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># # Add standard deviations in order to draw Elbow Plots in Seurat</span></span>
-<span><span class="co"># stdevs &lt;- apply(intdimred, MARGIN = 2, FUN = sd)</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># sim.int[["scanorama"]] &lt;- CreateDimReducObject(embeddings = intdimred, stdev = stdevs,</span></span>
-<span><span class="co">#     key = "scanorama_", assay = "RNA")</span></span>
-<span><span class="co"># </span></span>
-<span><span class="co"># sim.int &lt;- RunUMAP(sim.int, dims = 1:100, reduction = "scanorama", reduction.name = "umap_scanorama")</span></span></code></pre></div>
-</div>
-<div class="section level4">
 <h4 id="umap-figures-for-all-integrated-data">UMAP figures for all integrated data<a class="anchor" aria-label="anchor" href="#umap-figures-for-all-integrated-data"></a>
 </h4>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/DimPlot.html" class="external-link">DimPlot</a></span><span class="op">(</span><span class="va">sim_data</span>, reduction <span class="op">=</span> <span class="st">"umap"</span>, group.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
 <span>        <span class="co"># axis.line.y = element_line( size = 2, linetype = "solid"),</span></span>
@@ -407,19 +324,11 @@ scanorama projection.</p>
 <span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span>, size<span class="op">=</span><span class="fl">20</span><span class="op">)</span>,</span>
 <span>        axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span> color<span class="op">=</span><span class="st">"black"</span>, size<span class="op">=</span><span class="fl">20</span><span class="op">)</span>,</span>
 <span>        axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span>, size<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># p8 &lt;- DimPlot(sim.int, reduction = "umap_scanorama", group.by = "Study") +</span></span>
-<span><span class="co">#   theme(legend.position = "none",</span></span>
-<span><span class="co">#         # axis.line.y = element_line( size = 2, linetype = "solid"),</span></span>
-<span><span class="co">#         # axis.line.x = element_line( size = 2, linetype = "solid"),</span></span>
-<span><span class="co">#         axis.text.y = element_text( color="black", size=20),</span></span>
-<span><span class="co">#         axis.title.y = element_text(color="black", size=20),</span></span>
-<span><span class="co">#         axis.text.x = element_text( color="black", size=20),</span></span>
-<span><span class="co">#         axis.title.x = element_text(color="black", size=20))</span></span>
 <span></span>
 <span><span class="va">leg</span> <span class="op">&lt;-</span> <span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/get_legend.html" class="external-link">get_legend</a></span><span class="op">(</span><span class="va">p5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in get_plot_component(plot, "guide-box"): Multiple components found;</span></span>
 <span><span class="co">#&gt; returning the first one. To return all, use `return_all = TRUE`.</span></span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html" class="external-link">grid.arrange</a></span><span class="op">(</span><span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html" class="external-link">arrangeGrob</a></span><span class="op">(</span><span class="va">p5</span> <span class="op">+</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/SeuratTheme.html" class="external-link">NoLegend</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Unintegrated"</span><span class="op">)</span>, </span>
 <span>                                               <span class="va">p6</span> <span class="op">+</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/SeuratTheme.html" class="external-link">NoLegend</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Seurat CCA"</span><span class="op">)</span> , </span>
 <span>                                               <span class="va">p7</span> <span class="op">+</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/SeuratTheme.html" class="external-link">NoLegend</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Harmony"</span><span class="op">)</span>,</span>
@@ -441,7 +350,7 @@ distance, <code>FindNNDist</code> can be then applied. We also have
 another function <code>FindNNDistC</code> that based on
 <code>Rcpp</code> and <code>C++</code> for faster matrix
 calculation.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">sim.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/SplitObject.html" class="external-link">SplitObject</a></span><span class="op">(</span><span class="va">sim_data</span>, split.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span></span>
 <span><span class="va">fullcluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/GetCluster.html">GetCluster</a></span><span class="op">(</span><span class="va">sim.list</span>,<span class="fl">50</span>,<span class="fl">200</span><span class="op">)</span></span>
@@ -472,7 +381,7 @@ calculation.</p>
 <span><span class="co">#&gt; Maximum modularity in 10 random starts: 0.5141</span></span>
 <span><span class="co">#&gt; Number of communities: 2</span></span>
 <span><span class="co">#&gt; Elapsed time: 0 seconds</span></span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">normCount</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NormData.html">NormData</a></span><span class="op">(</span><span class="va">sim.list</span><span class="op">)</span></span>
 <span></span>
@@ -483,7 +392,7 @@ calculation.</p>
 <h3 id="calculate-scintruler-and-and-an-associated-visualization">Calculate SCIntRuler and and an associated visualization<a class="anchor" aria-label="anchor" href="#calculate-scintruler-and-and-an-associated-visualization"></a>
 </h3>
 <p>In this example data, we got a SCIntRuler score of 0.57, there is a
-noticeable but not large overlap of cell types across the datasets,
+noticeable but not large overlap of cell types across the data sets,
 showing a moderate level of shared information. The integration is
 essential to adjust for these effects and align the shared cell
 populations, ensuring that the integrated dataset accurately reflects
@@ -492,12 +401,12 @@ between correcting for batch effects and maintaining biological
 variation would be the best. The UMAP visualizations across the
 simulations indicate that the choice of integration method significantly
 impacts the resulting data integration.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">testres</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PermTest.html">PermTest</a></span><span class="op">(</span><span class="va">fullcluster</span>,<span class="va">distmat</span>,<span class="fl">15</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/PlotSCIR.html">PlotSCIR</a></span><span class="op">(</span><span class="va">fullcluster</span>,<span class="va">sim.list</span>,<span class="va">testres</span>,<span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SCIntRuler_files/figure-html/step%202-1.png" width="700"></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">sim_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">fullcluster</span>,<span class="va">normCount</span>,<span class="va">distmat</span>,<span class="va">testres</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -505,198 +414,112 @@ impacts the resulting data integration.</p>
 <div class="section level2">
 <h2 id="sessioninfo">SessionInfo<a class="anchor" aria-label="anchor" href="#sessioninfo"></a>
 </h2>
-<pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
-<span><span class="co">#&gt;  version  R version 4.4.0 (2024-04-24)</span></span>
-<span><span class="co">#&gt;  os       Ubuntu 22.04.4 LTS</span></span>
-<span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
-<span><span class="co">#&gt;  ui       X11</span></span>
-<span><span class="co">#&gt;  language en</span></span>
-<span><span class="co">#&gt;  collate  C.UTF-8</span></span>
-<span><span class="co">#&gt;  ctype    C.UTF-8</span></span>
-<span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2024-06-03</span></span>
-<span><span class="co">#&gt;  pandoc   3.1.11 @ /opt/hostedtoolcache/pandoc/3.1.11/x64/ (via rmarkdown)</span></span>
+<pre><code><span><span class="co">#&gt; R version 4.4.1 (2024-06-14)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 22.04.4 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package             </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version </span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
-<span><span class="co">#&gt;  abind                  1.4-5    <span style="color: #555555;">2016-07-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  batchelor              1.20.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  beachmat               2.20.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  Biobase                2.64.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  BiocGenerics           0.50.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  BiocManager            1.30.23  <span style="color: #555555;">2024-05-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  BiocNeighbors          1.22.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  BiocParallel           1.38.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  BiocSingular           1.20.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  BiocStyle            * 2.32.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  bookdown               0.39     <span style="color: #555555;">2024-04-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  bslib                  0.7.0    <span style="color: #555555;">2024-03-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  cachem                 1.1.0    <span style="color: #555555;">2024-05-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  cli                    3.6.2    <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  cluster                2.1.6    <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  codetools              0.2-20   <span style="color: #555555;">2024-03-31</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  coin                   1.4-3    <span style="color: #555555;">2023-09-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  colorspace             2.1-0    <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  cowplot                1.1.3    <span style="color: #555555;">2024-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  crayon                 1.5.2    <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  data.table             1.15.4   <span style="color: #555555;">2024-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  DelayedArray           0.30.1   <span style="color: #555555;">2024-05-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  DelayedMatrixStats     1.26.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  deldir                 2.0-4    <span style="color: #555555;">2024-02-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  desc                   1.4.3    <span style="color: #555555;">2023-12-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  devtools               2.4.5    <span style="color: #555555;">2022-10-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  digest                 0.6.35   <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  dotCall64              1.1-1    <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  dplyr                * 1.1.4    <span style="color: #555555;">2023-11-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ellipsis               0.3.2    <span style="color: #555555;">2021-04-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  evaluate               0.23     <span style="color: #555555;">2023-11-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  fansi                  1.0.6    <span style="color: #555555;">2023-12-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  farver                 2.1.2    <span style="color: #555555;">2024-05-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  fastDummies            1.7.3    <span style="color: #555555;">2023-07-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  fastmap                1.2.0    <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  fitdistrplus           1.1-11   <span style="color: #555555;">2023-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  fs                     1.6.4    <span style="color: #555555;">2024-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  future                 1.33.2   <span style="color: #555555;">2024-03-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  future.apply           1.11.2   <span style="color: #555555;">2024-03-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  generics               0.1.3    <span style="color: #555555;">2022-07-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  GenomeInfoDb           1.40.1   <span style="color: #555555;">2024-05-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  GenomeInfoDbData       1.2.12   <span style="color: #555555;">2024-05-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  GenomicRanges          1.56.0   <span style="color: #555555;">2024-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  ggplot2              * 3.5.1    <span style="color: #555555;">2024-04-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ggrepel                0.9.5    <span style="color: #555555;">2024-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ggridges               0.5.6    <span style="color: #555555;">2024-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  globals                0.16.3   <span style="color: #555555;">2024-03-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  glue                   1.7.0    <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  goftest                1.2-3    <span style="color: #555555;">2021-10-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  gridExtra              2.3      <span style="color: #555555;">2017-09-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  gtable                 0.3.5    <span style="color: #555555;">2024-04-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  harmony                1.2.0    <span style="color: #555555;">2023-11-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  highr                  0.11     <span style="color: #555555;">2024-05-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  htmltools              0.5.8.1  <span style="color: #555555;">2024-04-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  htmlwidgets            1.6.4    <span style="color: #555555;">2023-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  httpuv                 1.6.15   <span style="color: #555555;">2024-03-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  httr                   1.4.7    <span style="color: #555555;">2023-08-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ica                    1.0-3    <span style="color: #555555;">2022-07-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  igraph                 2.0.3    <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  IRanges                2.38.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  irlba                  2.3.5.1  <span style="color: #555555;">2022-10-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  jquerylib              0.1.4    <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  jsonlite               1.8.8    <span style="color: #555555;">2023-12-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  KernSmooth             2.23-22  <span style="color: #555555;">2023-07-10</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  knitr                  1.47     <span style="color: #555555;">2024-05-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  labeling               0.4.3    <span style="color: #555555;">2023-08-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  later                  1.3.2    <span style="color: #555555;">2023-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  lattice                0.22-6   <span style="color: #555555;">2024-03-20</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  lazyeval               0.2.2    <span style="color: #555555;">2019-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  leiden                 0.4.3.1  <span style="color: #555555;">2023-11-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  libcoin                1.0-10   <span style="color: #555555;">2023-09-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  lifecycle              1.0.4    <span style="color: #555555;">2023-11-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  listenv                0.9.1    <span style="color: #555555;">2024-01-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  lmtest                 0.9-40   <span style="color: #555555;">2022-03-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  magrittr               2.0.3    <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  MASS                   7.3-60.2 <span style="color: #555555;">2024-05-25</span> <span style="color: #555555;">[3]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
-<span><span class="co">#&gt;  Matrix                 1.7-0    <span style="color: #555555;">2024-03-22</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  MatrixGenerics         1.16.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  matrixStats            1.3.0    <span style="color: #555555;">2024-04-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  memoise                2.0.1    <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  mime                   0.12     <span style="color: #555555;">2021-09-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  miniUI                 0.1.1.1  <span style="color: #555555;">2018-05-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  modeltools             0.2-23   <span style="color: #555555;">2020-03-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  multcomp               1.4-25   <span style="color: #555555;">2023-06-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  munsell                0.5.1    <span style="color: #555555;">2024-04-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  mvtnorm                1.2-5    <span style="color: #555555;">2024-05-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  nlme                   3.1-164  <span style="color: #555555;">2023-11-27</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  parallelly             1.37.1   <span style="color: #555555;">2024-02-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  patchwork              1.2.0    <span style="color: #555555;">2024-01-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  pbapply                1.7-2    <span style="color: #555555;">2023-06-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  pillar                 1.9.0    <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  pkgbuild               1.4.4    <span style="color: #555555;">2024-03-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  pkgconfig              2.0.3    <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  pkgdown                2.0.9    <span style="color: #555555;">2024-04-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  pkgload                1.3.4    <span style="color: #555555;">2024-01-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  plotly                 4.10.4   <span style="color: #555555;">2024-01-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  plyr                   1.8.9    <span style="color: #555555;">2023-10-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  png                    0.1-8    <span style="color: #555555;">2022-11-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  polyclip               1.10-6   <span style="color: #555555;">2023-09-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  profvis                0.3.8    <span style="color: #555555;">2023-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  progressr              0.14.0   <span style="color: #555555;">2023-08-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  promises               1.3.0    <span style="color: #555555;">2024-04-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  purrr                  1.0.2    <span style="color: #555555;">2023-08-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  R6                     2.5.1    <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ragg                   1.3.2    <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  RANN                   2.6.1    <span style="color: #555555;">2019-01-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  RColorBrewer           1.1-3    <span style="color: #555555;">2022-04-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  Rcpp                   1.0.12   <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  RcppAnnoy              0.0.22   <span style="color: #555555;">2024-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  RcppHNSW               0.6.0    <span style="color: #555555;">2024-02-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  remotes                2.5.0    <span style="color: #555555;">2024-03-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  reshape2               1.4.4    <span style="color: #555555;">2020-04-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ResidualMatrix         1.14.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  reticulate             1.37.0   <span style="color: #555555;">2024-05-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  RhpcBLASctl            0.23-42  <span style="color: #555555;">2023-02-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  rlang                  1.1.3    <span style="color: #555555;">2024-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  rmarkdown              2.27     <span style="color: #555555;">2024-05-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ROCR                   1.0-11   <span style="color: #555555;">2020-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  RSpectra               0.16-1   <span style="color: #555555;">2022-04-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  rsvd                   1.0.5    <span style="color: #555555;">2021-04-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  Rtsne                  0.17     <span style="color: #555555;">2023-12-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  S4Arrays               1.4.1    <span style="color: #555555;">2024-05-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  S4Vectors              0.42.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  sandwich               3.1-0    <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  sass                   0.4.9    <span style="color: #555555;">2024-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  ScaledMatrix           1.12.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  scales                 1.3.0    <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  scattermore            1.2      <span style="color: #555555;">2023-06-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  SCIntRuler           * 0.99.0   <span style="color: #555555;">2024-06-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
-<span><span class="co">#&gt;  sctransform            0.4.1    <span style="color: #555555;">2023-10-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  scuttle                1.14.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  sessioninfo            1.2.2    <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  Seurat               * 5.1.0    <span style="color: #555555;">2024-05-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  SeuratObject         * 5.0.2    <span style="color: #555555;">2024-05-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  shiny                  1.8.1.1  <span style="color: #555555;">2024-04-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  SingleCellExperiment   1.26.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  sp                   * 2.1-4    <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  spam                   2.10-0   <span style="color: #555555;">2023-10-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  SparseArray            1.4.8    <span style="color: #555555;">2024-05-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  sparseMatrixStats      1.16.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  spatstat.data          3.0-4    <span style="color: #555555;">2024-01-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  spatstat.explore       3.2-7    <span style="color: #555555;">2024-03-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  spatstat.geom          3.2-9    <span style="color: #555555;">2024-02-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  spatstat.random        3.2-3    <span style="color: #555555;">2024-02-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  spatstat.sparse        3.0-3    <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  spatstat.utils         3.0-4    <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  stringi                1.8.4    <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  stringr                1.5.1    <span style="color: #555555;">2023-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  SummarizedExperiment   1.34.0   <span style="color: #555555;">2024-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  survival               3.5-8    <span style="color: #555555;">2024-02-14</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  systemfonts            1.1.0    <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  tensor                 1.5      <span style="color: #555555;">2012-05-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  textshaping            0.4.0    <span style="color: #555555;">2024-05-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  TH.data                1.1-2    <span style="color: #555555;">2023-04-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  tibble                 3.2.1    <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  tidyr                  1.3.1    <span style="color: #555555;">2024-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  tidyselect             1.2.1    <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  UCSC.utils             1.0.0    <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  urlchecker             1.0.1    <span style="color: #555555;">2021-11-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  usethis                2.2.3    <span style="color: #555555;">2024-02-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  utf8                   1.2.4    <span style="color: #555555;">2023-10-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  uwot                   0.2.2    <span style="color: #555555;">2024-04-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  vctrs                  0.6.5    <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  viridisLite            0.4.2    <span style="color: #555555;">2023-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  withr                  3.0.0    <span style="color: #555555;">2024-01-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  xfun                   0.44     <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  xtable                 1.8-4    <span style="color: #555555;">2019-04-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  XVector                0.44.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  yaml                   2.3.8    <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  zlibbioc               1.50.0   <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Bioconduc~</span></span></span>
-<span><span class="co">#&gt;  zoo                    1.8-12   <span style="color: #555555;">2023-04-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt; Matrix products: default</span></span>
+<span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
+<span><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> [1] /home/runner/work/_temp/Library</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> [2] /opt/R/4.4.0/lib/R/site-library</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> [3] /opt/R/4.4.0/lib/R/library</span></span></span>
+<span><span class="co">#&gt; locale:</span></span>
+<span><span class="co">#&gt;  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       </span></span>
+<span><span class="co">#&gt;  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   </span></span>
+<span><span class="co">#&gt;  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          </span></span>
+<span><span class="co">#&gt; [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
+<span><span class="co">#&gt; time zone: UTC</span></span>
+<span><span class="co">#&gt; tzcode source: system (glibc)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attached base packages:</span></span>
+<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt; [1] ggplot2_3.5.1      dplyr_1.1.4        Seurat_5.1.0       SeuratObject_5.0.2</span></span>
+<span><span class="co">#&gt; [5] sp_2.1-4           SCIntRuler_0.99.3  BiocStyle_2.32.1  </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span><span class="co">#&gt;   [1] RcppAnnoy_0.0.22            splines_4.4.1              </span></span>
+<span><span class="co">#&gt;   [3] later_1.3.2                 batchelor_1.20.0           </span></span>
+<span><span class="co">#&gt;   [5] tibble_3.2.1                polyclip_1.10-6            </span></span>
+<span><span class="co">#&gt;   [7] fastDummies_1.7.3           lifecycle_1.0.4            </span></span>
+<span><span class="co">#&gt;   [9] globals_0.16.3              lattice_0.22-6             </span></span>
+<span><span class="co">#&gt;  [11] MASS_7.3-60.2               magrittr_2.0.3             </span></span>
+<span><span class="co">#&gt;  [13] plotly_4.10.4               sass_0.4.9                 </span></span>
+<span><span class="co">#&gt;  [15] rmarkdown_2.27              jquerylib_0.1.4            </span></span>
+<span><span class="co">#&gt;  [17] yaml_2.3.8                  httpuv_1.6.15              </span></span>
+<span><span class="co">#&gt;  [19] sctransform_0.4.1           spam_2.10-0                </span></span>
+<span><span class="co">#&gt;  [21] spatstat.sparse_3.1-0       reticulate_1.38.0          </span></span>
+<span><span class="co">#&gt;  [23] cowplot_1.1.3               pbapply_1.7-2              </span></span>
+<span><span class="co">#&gt;  [25] RColorBrewer_1.1-3          ResidualMatrix_1.14.1      </span></span>
+<span><span class="co">#&gt;  [27] multcomp_1.4-25             abind_1.4-5                </span></span>
+<span><span class="co">#&gt;  [29] zlibbioc_1.50.0             Rtsne_0.17                 </span></span>
+<span><span class="co">#&gt;  [31] GenomicRanges_1.56.1        purrr_1.0.2                </span></span>
+<span><span class="co">#&gt;  [33] BiocGenerics_0.50.0         TH.data_1.1-2              </span></span>
+<span><span class="co">#&gt;  [35] sandwich_3.1-0              GenomeInfoDbData_1.2.12    </span></span>
+<span><span class="co">#&gt;  [37] IRanges_2.38.0              S4Vectors_0.42.0           </span></span>
+<span><span class="co">#&gt;  [39] ggrepel_0.9.5               irlba_2.3.5.1              </span></span>
+<span><span class="co">#&gt;  [41] listenv_0.9.1               spatstat.utils_3.0-5       </span></span>
+<span><span class="co">#&gt;  [43] goftest_1.2-3               RSpectra_0.16-1            </span></span>
+<span><span class="co">#&gt;  [45] spatstat.random_3.2-3       fitdistrplus_1.1-11        </span></span>
+<span><span class="co">#&gt;  [47] parallelly_1.37.1           DelayedMatrixStats_1.26.0  </span></span>
+<span><span class="co">#&gt;  [49] pkgdown_2.0.9               coin_1.4-3                 </span></span>
+<span><span class="co">#&gt;  [51] leiden_0.4.3.1              codetools_0.2-20           </span></span>
+<span><span class="co">#&gt;  [53] DelayedArray_0.30.1         scuttle_1.14.0             </span></span>
+<span><span class="co">#&gt;  [55] tidyselect_1.2.1            UCSC.utils_1.0.0           </span></span>
+<span><span class="co">#&gt;  [57] farver_2.1.2                ScaledMatrix_1.12.0        </span></span>
+<span><span class="co">#&gt;  [59] matrixStats_1.3.0           stats4_4.4.1               </span></span>
+<span><span class="co">#&gt;  [61] spatstat.explore_3.2-7      jsonlite_1.8.8             </span></span>
+<span><span class="co">#&gt;  [63] BiocNeighbors_1.22.0        progressr_0.14.0           </span></span>
+<span><span class="co">#&gt;  [65] ggridges_0.5.6              survival_3.6-4             </span></span>
+<span><span class="co">#&gt;  [67] systemfonts_1.1.0           tools_4.4.1                </span></span>
+<span><span class="co">#&gt;  [69] ragg_1.3.2                  ica_1.0-3                  </span></span>
+<span><span class="co">#&gt;  [71] Rcpp_1.0.12                 glue_1.7.0                 </span></span>
+<span><span class="co">#&gt;  [73] gridExtra_2.3               SparseArray_1.4.8          </span></span>
+<span><span class="co">#&gt;  [75] xfun_0.45                   MatrixGenerics_1.16.0      </span></span>
+<span><span class="co">#&gt;  [77] GenomeInfoDb_1.40.1         withr_3.0.0                </span></span>
+<span><span class="co">#&gt;  [79] BiocManager_1.30.23         fastmap_1.2.0              </span></span>
+<span><span class="co">#&gt;  [81] fansi_1.0.6                 rsvd_1.0.5                 </span></span>
+<span><span class="co">#&gt;  [83] digest_0.6.36               R6_2.5.1                   </span></span>
+<span><span class="co">#&gt;  [85] mime_0.12                   textshaping_0.4.0          </span></span>
+<span><span class="co">#&gt;  [87] colorspace_2.1-0            scattermore_1.2            </span></span>
+<span><span class="co">#&gt;  [89] tensor_1.5                  spatstat.data_3.1-2        </span></span>
+<span><span class="co">#&gt;  [91] RhpcBLASctl_0.23-42         utf8_1.2.4                 </span></span>
+<span><span class="co">#&gt;  [93] tidyr_1.3.1                 generics_0.1.3             </span></span>
+<span><span class="co">#&gt;  [95] data.table_1.15.4           httr_1.4.7                 </span></span>
+<span><span class="co">#&gt;  [97] htmlwidgets_1.6.4           S4Arrays_1.4.1             </span></span>
+<span><span class="co">#&gt;  [99] uwot_0.2.2                  pkgconfig_2.0.3            </span></span>
+<span><span class="co">#&gt; [101] gtable_0.3.5                modeltools_0.2-23          </span></span>
+<span><span class="co">#&gt; [103] lmtest_0.9-40               SingleCellExperiment_1.26.0</span></span>
+<span><span class="co">#&gt; [105] XVector_0.44.0              htmltools_0.5.8.1          </span></span>
+<span><span class="co">#&gt; [107] dotCall64_1.1-1             bookdown_0.39              </span></span>
+<span><span class="co">#&gt; [109] scales_1.3.0                Biobase_2.64.0             </span></span>
+<span><span class="co">#&gt; [111] png_0.1-8                   harmony_1.2.0              </span></span>
+<span><span class="co">#&gt; [113] knitr_1.47                  reshape2_1.4.4             </span></span>
+<span><span class="co">#&gt; [115] nlme_3.1-164                cachem_1.1.0               </span></span>
+<span><span class="co">#&gt; [117] zoo_1.8-12                  stringr_1.5.1              </span></span>
+<span><span class="co">#&gt; [119] KernSmooth_2.23-24          libcoin_1.0-10             </span></span>
+<span><span class="co">#&gt; [121] parallel_4.4.1              miniUI_0.1.1.1             </span></span>
+<span><span class="co">#&gt; [123] desc_1.4.3                  pillar_1.9.0               </span></span>
+<span><span class="co">#&gt; [125] grid_4.4.1                  vctrs_0.6.5                </span></span>
+<span><span class="co">#&gt; [127] RANN_2.6.1                  promises_1.3.0             </span></span>
+<span><span class="co">#&gt; [129] BiocSingular_1.20.0         beachmat_2.20.0            </span></span>
+<span><span class="co">#&gt; [131] xtable_1.8-4                cluster_2.1.6              </span></span>
+<span><span class="co">#&gt; [133] evaluate_0.24.0             mvtnorm_1.2-5              </span></span>
+<span><span class="co">#&gt; [135] cli_3.6.3                   compiler_4.4.1             </span></span>
+<span><span class="co">#&gt; [137] rlang_1.1.4                 crayon_1.5.3               </span></span>
+<span><span class="co">#&gt; [139] future.apply_1.11.2         labeling_0.4.3             </span></span>
+<span><span class="co">#&gt; [141] plyr_1.8.9                  fs_1.6.4                   </span></span>
+<span><span class="co">#&gt; [143] stringi_1.8.4               viridisLite_0.4.2          </span></span>
+<span><span class="co">#&gt; [145] deldir_2.0-4                BiocParallel_1.38.0        </span></span>
+<span><span class="co">#&gt; [147] munsell_0.5.1               lazyeval_0.2.2             </span></span>
+<span><span class="co">#&gt; [149] spatstat.geom_3.2-9         Matrix_1.7-0               </span></span>
+<span><span class="co">#&gt; [151] RcppHNSW_0.6.0              patchwork_1.2.0            </span></span>
+<span><span class="co">#&gt; [153] sparseMatrixStats_1.16.0    future_1.33.2              </span></span>
+<span><span class="co">#&gt; [155] shiny_1.8.1.1               SummarizedExperiment_1.34.0</span></span>
+<span><span class="co">#&gt; [157] highr_0.11                  ROCR_1.0-11                </span></span>
+<span><span class="co">#&gt; [159] igraph_2.0.3                memoise_2.0.1              </span></span>
+<span><span class="co">#&gt; [161] bslib_0.7.0</span></span></code></pre>
 </div>
   </div>
 

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.3</span>
       </span>
     </div>
 
@@ -100,8 +100,9 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_result</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Create example list of Seurat objects</span></span></span>
 <span class="r-in"><span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="SCEtoSeurat.html">SCEtoSeurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No gene metadata columns found to add to Seurat object.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in SCEtoSeurat(sim_data_sce):</span> could not find function "SCEtoSeurat"</span>
 <span class="r-in"><span><span class="va">seuratlist</span> <span class="op">&lt;-</span> <span class="fu">Seurat</span><span class="fu">::</span><span class="fu"><a href="https://satijalab.org/seurat/reference/SplitObject.html" class="external-link">SplitObject</a></span><span class="op">(</span><span class="va">sim_data</span>, split.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'sim_data' not found</span>
 <span class="r-in"><span><span class="co"># seuratlist &lt;- InputData(sim_data_sce,"Study")</span></span></span>
 <span class="r-in"><span><span class="co"># Create example fullcluster (mock data)</span></span></span>
 <span class="r-in"><span><span class="co"># fullcluster &lt;- GetCluster(seuratlist)</span></span></span>
@@ -109,79 +110,7 @@
 <span class="r-in"><span><span class="co"># distmat &lt;- FindNNDist( fullcluster, distmat, meaningn = 20)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">FindCell</span><span class="op">(</span><span class="va">sim_data</span>, <span class="va">seuratlist</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>, <span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Sample2_1" "Sample2_2" "Sample2_3" "Sample2_4" "Sample3_4" "Sample3_5"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "TCTATGTGCGTGTA-1"   "AACTGTCTTCTAGG-1"   "CCTCTACTACCAAC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [4] "CTTTAGACTGTCAG-1"   "ACTTGACTAACTGC-1"   "GCCAAATGTTGCAG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "AAGAAGACCTTGGA-1"   "GTGCAAACACTACG-1"   "ATTGCACTGGGACA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [10] "AGAGGTCTCTTTAC-1"   "AAACATTGTTTGTC-1"   "CAATAATGGAAAGT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "GGAGACGAGCTGAT-1"   "CCATAGGACTTATC-1"   "ATGTCACTAACTGC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [16] "AAGTAACTGATAGA-1"   "TCCATCCTACTGTG-1"   "GGAGGATGGGACTT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "TGCTGAGATGAGCT-1"   "TCATCATGGCGGAA-1"   "GACAACACCTCTTA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "CCAGCACTTAGACC-1"   "TATACAGACTCAGA-1"   "TCCACTCTACTAGC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "AGAACAGAGCTTAG-1"   "CGTCCAACGGTTTG-1"   "GTGGATTGTGCATG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [28] "CCTCATCTGATGAA-1.1" "CAAGAAGACATACG-1"   "ACTTTGTGCCTCCA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "TTCTACGAGCGATT-1"   "AGGACACTCAGATC-1"   "ATTTCGTGAACAGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] "GATTCTACACCTGA-1"   "ATCGGAACTACGCA-1"   "ACGTTTACCTTAGG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "GCGAGCACCTGAAC-1"   "GGCGGACTTATCGG-1"   "ACTCAGGATGCTAG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [40] "ATTGCTTGCAAGCT-1"   "CAAATTGAAGAACA-1"   "ACGATCGATGCGTA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "AATAGGGAGGTTAC-1"   "TGAACCGATGAGAA-1"   "CTTGAACTGAAACA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [46] "ACAAATTGAACCAC-1"   "ATAGCCGATTTGGG-1"   "CTTGTATGGTTTCT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "GGACCCGACACTGA-1"   "GACTGAACCGTAAC-1"   "ATTGATGAAGAACA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [52] "ATCTCAACAGAGTA-1"   "AGTTAAACTCCGTC-1"   "GAGCGCTGGGTCTA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "ACTCGAGACCTGTC-1"   "AGGACTTGTCGACA-1"   "TCAATCACCTAGAC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [58] "GGAGGCCTTGAGAA-1"   "CACCGGGATGGCAT-1"   "AAGTTCCTAGATCC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "CGGTCACTTCACGA-1"   "CGCTACACACACGT-1"   "TGTTAAGAGTAGCT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "CCCATGTGACACGT-1"   "AGCGCCGATAGCCA-1"   "TACGCGCTCGCATA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "CTGAATCTGCTAAC-1"   "CTAACTACATTCTC-1"   "TTATGAGAGACGAG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [70] "TAGGCTGAGGACGA-1"   "AGGTTGTGCCTAAG-1"   "ATTCAAGACCATGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "TGGAGACTGTCTTT-1"   "TACGTACTGTCGAT-1"   "CGCAACCTAGGGTG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] "GGCAAGGACCCTAC-1"   "TGCGAAACTCGACA-1"   "ATCACTTGTGTTTC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "GACACTGACGTAGT-1"   "ATTCGGGATCTTAC-1"   "CCACTTCTAAGTAG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [82] "ACAGTGTGGGTGAG-1"   "GACAACTGGTCGTA-1"   "AAAGATCTGTTGCA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "AGCGCTCTGAGGCA-1"   "CCAGTGCTGGTGAG-1"   "ATGTCACTGGTACT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [88] "ACAGTTCTGGACGA-1"   "GTATTCACCAGGAG-1"   "TGACACGACTGACA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "TACGGAACTGGCAT-1"   "GCTACGCTTGCCTC-1.1" "CCAGCACTCCATGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [94] "CGAGAACTGGAGGT-1"   "CATAGTCTGACGAG-1"   "GCAGTTGATCAAGC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "CGGTCACTTACAGC-1"   "CATTGACTGTATGC-1"   "CCACTGTGGCGAGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [100] "TGTGACGAATGCCA-1"   "AGACGTACCTACGA-1"   "GTGTGATGGTTGAC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "CCGGAGACAGAGGC-1"   "TAACCGGAACCCTC-1"   "GAAAGTGACGTACA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [106] "TTGAGGACTTGAGC-1"   "GGAGTTACTGCCAA-1"   "ACTACTACGTGTAC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "CTTACATGTGGGAG-1"   "CGTGATGAATAAGG-1"   "CAGCTCACAACGAA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [112] "GCGCACGAGAGATA-1"   "CAAGGTTGAGATCC-1"   "TCCACGTGGGAGTG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "GGGAAGACCGTAGT-1"   "ACAGACACTTTGGG-1"   "CGAGGCTGATTTCC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [118] "CCCGGAGATTGAGC-1"   "GACCATGACTGGAT-1"   "GAAGTGCTTCTCAT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "GCGAGAGAAGCCAT-1"   "TCCATAACAAGGCG-1"   "CCAGTGCTGTGCTA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [124] "TAGAGCACCCTTTA-1"   "GATCATCTTTCCAT-1"   "CAGACATGACCTCC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "ACCACAGACCTTGC-1"   "CGAGAACTCTGTAG-1"   "CATACTACAACGAA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [130] "TATCACTGGCATCA-1"   "CGTTAACTGGGAGT-1"   "AGTTTGCTATCACG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "TATAAGTGGTGTCA-1"   "TACTACACTTGTCT-1"   "TTCTAGTGGGAAAT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [136] "CTCTAAACAGGAGC-1"   "ACCATTACAACCAC-1"   "ATGTAAACGAGCAG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "AACATTGACATTCT-1"   "CAAGCATGGACAAA-1"   "TTTCACGAGGAACG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [142] "CCCTGAACGGAACG-1"   "AGAACAGAGGATTC-1"   "TGACTTACTTGCTT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "TCGAGCCTGGGACA-1"   "GTGGATTGTCTTAC-1"   "TTAGGTCTTATGCG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [148] "AAGAAGACTGACTG-1"   "TCGAGCCTTGGTGT-1"   "AGCGATACGCGAGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "ATACGGACCATGGT-1"   "GTATTCACTGTCAG-1"   "ATATACGACCTCCA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [154] "TCTTCAGACAGTTG-1"   "CTCAGCTGGACACT-1"   "GGAGAGACCCTAAG-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "AAGATGGAACCACA-1"   "CATCCCGACACTCC-1"   "CATCCCGAGGATCT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [160] "TCAGTTACGGGAGT-1"   "GATAGCACATAAGG-1"   "CATTGTTGTCACCC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "CTGGAAACGATAGA-1"   "CTCGACTGATTTCC-1"   "AACAATACCCCTAC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [166] "TTCCAAACGATGAA-1"   "CCAGCGGACTGAAC-1"   "GTGATCGAGTCTGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "TATTGCTGCGTAGT-1"   "TAGGAGCTCGTGTA-1"   "ACCCGTTGGCTTCC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [172] "AATAGGGAGTTCGA-1"   "GGAGGATGAGCTAC-1"   "TACTACTGTAAGGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "CTATACTGCCCTTG-1"   "CCAGCGGATCCTAT-1"   "TGAATAACGAATGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [178] "CATCATACGGACAG-1"   "CCCTCAGAGAGACG-1"   "GGCGACACAAGTGA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "AGCTTTACTTACCT-1"   "CTTCTAGAGCGAGA-1"   "ACTCCTCTCCACAA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [184] "CATGTTACGAATGA-1"   "CAGGAACTTGGGAG-1"   "CAATAAACGCTGTA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "AATTGATGCTAGTG-1"   "AGCACAACGCCAAT-1"   "AGTTCTACATTCTC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [190] "GGGACCACTTTCAC-1"   "ACGCCGGACAGCTA-1"   "TTCCCACTTTGAGC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "ACCTGAGAGTCTTT-1"   "GGCCGAACGTGCAT-1"   "TATACGCTCGTGAT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [196] "GTTGGATGTTGCGA-1"   "AAGGCTTGCCACAA-1"   "AGGGCCACAACCGT-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "CTATGACTGCAAGG-1"   "GCGTAAACCTCGAA-1"   "CTGAACGATACGCA-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [202] "CAGTGATGGGGTGA-1"   "GCCACGGACATGAC-1"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'seuratlist' not found</span>
 </code></pre></div>
     </div>
   </div>
