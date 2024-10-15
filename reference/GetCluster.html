@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -25,7 +25,7 @@
       <ul class="nav navbar-nav"><li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Getting Started
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li class="dropdown-header">Computational Resources</li>
@@ -39,20 +39,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/yuelyu21/SCIntRuler">
     <span class="fa fa-github"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get broad and fine clusters</h1>
-    <small class="dont-index">Source: <a href="https://github.com/yuelyu21/SCIntRuler/blob/HEAD/R/GetCluster.R"><code>R/GetCluster.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/yuelyu21/SCIntRuler/blob/master/R/GetCluster.R"><code>R/GetCluster.R</code></a></small>
     <div class="hidden name"><code>GetCluster.Rd</code></div>
     </div>
 
@@ -66,23 +66,23 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>seuratlist</dt>
+
+
+<dl><dt id="arg-seuratlist">seuratlist<a class="anchor" aria-label="anchor" href="#arg-seuratlist"></a></dt>
 <dd><p>A list of Seurat objects, usually can be got by SplitObject(). We also accept the SingleCellExperiment object input.</p></dd>
 
 
-<dt>n1</dt>
+<dt id="arg-n-">n1<a class="anchor" aria-label="anchor" href="#arg-n-"></a></dt>
 <dd><p>If the number of cells was smaller than n1, then the cluster will remain unchanged called rare cluster. The default value of n1 is 50.</p></dd>
 
 
-<dt>n2</dt>
+<dt id="arg-n-">n2<a class="anchor" aria-label="anchor" href="#arg-n-"></a></dt>
 <dd><p>If the count of cells within a broad cluster is more than n2, the cluster is subdivided randomly into three fine clusters. If the cell count falls within the range of n1 to n2, two fine clusters are generated randomly. Default value is 200.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>A list of data frames.</p>
+    <p>A list of data frames.</p>
     </div>
 
     <div id="ref-examples">
@@ -93,10 +93,10 @@
 <span class="r-in"><span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="SCEtoSeurat.html">SCEtoSeurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in SCEtoSeurat(sim_data_sce):</span> could not find function "SCEtoSeurat"</span>
 <span class="r-in"><span><span class="va">seuratlist</span> <span class="op">&lt;-</span> <span class="fu">Seurat</span><span class="fu">::</span><span class="fu"><a href="https://satijalab.org/seurat/reference/SplitObject.html" class="external-link">SplitObject</a></span><span class="op">(</span><span class="va">sim_data</span>, split.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'sim_data' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sim_data' not found</span>
 <span class="r-in"><span><span class="co"># seuratlist &lt;- InputData(sim_data_sce,"Study")</span></span></span>
 <span class="r-in"><span><span class="va">fullcluster</span> <span class="op">&lt;-</span> <span class="fu">GetCluster</span><span class="op">(</span><span class="va">seuratlist</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'seuratlist' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'seuratlist' not found</span>
 </code></pre></div>
     </div>
   </div>
@@ -111,15 +111,15 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 

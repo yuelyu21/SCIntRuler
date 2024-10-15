@@ -1,69 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/404.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/articles/SCIntRuler.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/CalcuSCIR.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/FindCell.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/FindNNDist.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/FindNNDistC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/GetCluster.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/NormData.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/PermTest.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/PlotSCIR.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/SCEtoSeurat.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/SCIntRuler-package.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/SummCluster.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/crossdist.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/sim_data_sce.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/yuelyu21/SCIntRuler/reference/sim_result.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/404.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/LICENSE-text.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/LICENSE.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/articles/SCIntRuler.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/articles/index.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/authors.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/index.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/CalcuSCIR.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/FindCell.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/FindNNDist.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/FindNNDistC.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/GetCluster.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/NormData.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/PermTest.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/PlotSCIR.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/SCEtoSeurat.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/SCIntRuler-package.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/SummCluster.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/crossdist.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/index.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/sim_data_sce.html</loc></url>
+<url><loc>https://github.com/yuelyu21/SCIntRuler/reference/sim_result.html</loc></url>
 </urlset>
+
