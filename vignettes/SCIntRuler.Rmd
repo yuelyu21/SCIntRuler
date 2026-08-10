@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+set.seed(123)
 ```
 
 ## Introducrtion
@@ -36,27 +37,22 @@ Integrating scRNA-seq data sets can be complex due to various factors, including
 
 ## 1. Installation
 
-To install the package, you need to install the `batchelor` and `MatrixGenerics` package from Bioconductor.
+To install the package, install its Bioconductor dependencies first.
 ```{r install Depedency, eval = FALSE}
 
 # Check if BioManager is installed, install if not
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-# Check if 'batchelor' is installed, install if not
-if (!requireNamespace("batchelor", quietly = TRUE))
-    BiocManager::install("batchelor")
-
-# Check if 'MatrixGenerics' is installed, install if not
-if (!requireNamespace("MatrixGenerics", quietly = TRUE))
-    BiocManager::install("MatrixGenerics")
+BiocManager::install(c("MatrixGenerics", "SingleCellExperiment",
+                       "SummarizedExperiment"))
 
 ```
 
-The `SCIntRuler` can be installed by the following commands, the source code can be found at [GitHub](https://github.com/yuelyu21/SCIntRuler).
+`SCIntRuler` can be installed from CRAN. The development source is available at [GitHub](https://github.com/yuelyu21/SCIntRuler).
 
 ```{r install SCIntRuler, eval = FALSE}
-BiocManager::install("SCIntRuler") 
+install.packages("SCIntRuler")
 ```
 
 After the installation, the package can be loaded with
@@ -189,7 +185,7 @@ p7 <- DimPlot(sim.int, reduction = "umap_harmony", group.by = "Study") +
         axis.text.x = element_text( color="black", size=20),
         axis.title.x = element_text(color="black", size=20))
 
-leg <- cowplot::get_legend(p5)
+leg <- cowplot::get_legend(p5 + theme(legend.position = "right"))
 gridExtra::grid.arrange(gridExtra::arrangeGrob(p5 + NoLegend() + ggtitle("Unintegrated"), 
                                                p6 + NoLegend() + ggtitle("Seurat CCA") , 
                                                p7 + NoLegend() + ggtitle("Harmony"),
@@ -237,8 +233,5 @@ sim_result <- list(fullcluster,normCount,distmat,testres)
 ```{r,echo=FALSE}
 sessionInfo()
 ```
-
-
-
 
 

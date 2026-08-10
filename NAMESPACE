@@ -9,6 +9,7 @@ export(NormData)
 export(PermTest)
 export(PlotSCIR)
 export(SummCluster)
+export(SCEtoSeurat)
 export(crossdist)
 importFrom(magrittr,"%>%")
 importFrom(stats,na.omit)
@@ -17,5 +18,4 @@ importFrom(SeuratObject,as.Seurat)
 importFrom(gridExtra,grid.arrange)
 importFrom(cowplot,get_legend)
 importClassesFrom(SingleCellExperiment,SingleCellExperiment)
-
 

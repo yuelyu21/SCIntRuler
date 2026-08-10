@@ -17,5 +17,6 @@
 ^.*\.Rproj\.user$
 ^\.git$
 ^\.gitignore$
-
+^cran-comments\.md$
+^CRAN-SUBMISSION$
 
