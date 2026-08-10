@@ -20,17 +20,34 @@ NormData <- function(seuratlist) {
 
   genelist <- c()
   for(i in seq_along(seuratlist)) {
-    onecount <- Seurat::GetAssayData(seuratlist[[i]], slot = "counts")
+    onecount <- .get_assay_counts(seuratlist[[i]])
+    expressed_genes <- rownames(onecount)[
+      MatrixGenerics::rowSums(onecount > 0) >= 3
+    ]
     if(i == 1) {
-      genelist <- rownames(onecount[(MatrixGenerics::rowSums(onecount>0) >= 3),])
+      genelist <- expressed_genes
     } else {
-      genelist <- base::intersect(genelist, rownames(onecount[which(MatrixGenerics::rowSums(onecount>0) >= 3),]))
+      genelist <- base::intersect(genelist, expressed_genes)
     }
+  }
+  if (length(genelist) == 0L) {
+    stop("No genes are expressed in at least three cells in every dataset.",
+         call. = FALSE)
   }
   normCount <- list()
   for(i in seq_along(seuratlist)) {
-    onecount <- Seurat::GetAssayData(seuratlist[[i]], slot = "counts")[genelist, ]
+    onecount <- .get_assay_counts(seuratlist[[i]])[genelist, , drop = FALSE]
     normCount[[i]] <- batchelor::cosineNorm(onecount, mode = "matrix")
   }
   return(normCount)
+}
+
+.get_assay_counts <- function(object) {
+  args <- list(object = object)
+  if (utils::packageVersion("SeuratObject") >= "5.0.0") {
+    args$layer <- "counts"
+  } else {
+    args$slot <- "counts"
+  }
+  do.call(SeuratObject::GetAssayData, args)
 }
