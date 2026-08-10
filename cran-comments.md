@@ -23,4 +23,6 @@ The update also:
 
 0 errors | 0 warnings | 1 note
 
-The note was environmental: `unable to verify current time`.
+The note records that this is a new submission of a package archived on
+2025-07-23 because issues were not corrected in time. Those archived check
+issues are addressed in this release.
