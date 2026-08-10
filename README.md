@@ -15,12 +15,13 @@ Integrating scRNA-seq datasets can be complex due to various factors, including 
 
 ## Installation
 
-Install the Bioconductor dependency first:
+Install the Bioconductor dependencies first:
 
 ```R
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install("batchelor")
+BiocManager::install(c("MatrixGenerics", "SingleCellExperiment",
+                       "SummarizedExperiment"))
 
 # Install the CRAN release
 install.packages("SCIntRuler")
@@ -40,4 +41,3 @@ To try our new method, please refer to our [getting started with SCIntRuler](htt
 Lyu Y, Sengupta S, Wang X (2024). SCIntRuler: guiding the integration of
 multiple single-cell RNA-seq datasets. *Bioinformatics*, 40(9), btae537.
 [doi:10.1093/bioinformatics/btae537](https://doi.org/10.1093/bioinformatics/btae537)
-

@@ -37,9 +37,17 @@ NormData <- function(seuratlist) {
   normCount <- list()
   for(i in seq_along(seuratlist)) {
     onecount <- .get_assay_counts(seuratlist[[i]])[genelist, , drop = FALSE]
-    normCount[[i]] <- batchelor::cosineNorm(onecount, mode = "matrix")
+    normCount[[i]] <- .cosine_normalize(onecount)
   }
   return(normCount)
+}
+
+.cosine_normalize <- function(x) {
+  l2_norm <- sqrt(MatrixGenerics::colSums(x ^ 2))
+  l2_norm <- pmax(1e-8, l2_norm)
+  normalized <- x %*% Matrix::Diagonal(x = 1 / l2_norm)
+  dimnames(normalized) <- dimnames(x)
+  normalized
 }
 
 .get_assay_counts <- function(object) {

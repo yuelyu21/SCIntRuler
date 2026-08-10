@@ -9,7 +9,9 @@ The update also:
 * replaces the defunct SeuratObject 5 `slot` interface with version-compatible
   count-layer access; and
 * fixes and tests the orientation used when `firstn` selects nearest-neighbor
-  distances, and ensures `FindNNDist()` processes every sampled cell.
+  distances, and ensures `FindNNDist()` processes every sampled cell; and
+* replaces the deprecated `batchelor::cosineNorm()` dependency path with the
+  equivalent direct column-wise L2 normalization.
 
 ## Test environments
 

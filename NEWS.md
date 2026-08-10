@@ -7,3 +7,5 @@
   rows, as defined in the published method, rather than sampled-cell columns.
 - Corrected `FindNNDist()` to calculate distances for every sampled cell.
 - Added validation and regression tests for `firstn`.
+- Replaced the deprecated `batchelor::cosineNorm()` dependency path with an
+  equivalent internal sparse-matrix cosine normalization.

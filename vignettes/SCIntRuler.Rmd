@@ -37,20 +37,15 @@ Integrating scRNA-seq data sets can be complex due to various factors, including
 
 ## 1. Installation
 
-To install the package, you need to install the `batchelor` and `MatrixGenerics` package from Bioconductor.
+To install the package, install its Bioconductor dependencies first.
 ```{r install Depedency, eval = FALSE}
 
 # Check if BioManager is installed, install if not
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-# Check if 'batchelor' is installed, install if not
-if (!requireNamespace("batchelor", quietly = TRUE))
-    BiocManager::install("batchelor")
-
-# Check if 'MatrixGenerics' is installed, install if not
-if (!requireNamespace("MatrixGenerics", quietly = TRUE))
-    BiocManager::install("MatrixGenerics")
+BiocManager::install(c("MatrixGenerics", "SingleCellExperiment",
+                       "SummarizedExperiment"))
 
 ```
 
@@ -238,6 +233,5 @@ sim_result <- list(fullcluster,normCount,distmat,testres)
 ```{r,echo=FALSE}
 sessionInfo()
 ```
-
 
 
