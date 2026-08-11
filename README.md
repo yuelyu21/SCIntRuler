@@ -15,7 +15,9 @@ Integrating scRNA-seq datasets can be complex due to various factors, including 
 
 ## Installation
 
-Install the Bioconductor dependencies first:
+Until the next CRAN release is published, install SCIntRuler 0.99.7 directly
+from GitHub. First install the Bioconductor dependencies, then install
+SCIntRuler:
 
 ```R
 if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -23,15 +25,17 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install(c("MatrixGenerics", "SingleCellExperiment",
                        "SummarizedExperiment"))
 
-# Install the CRAN release
-install.packages("SCIntRuler")
-
-# Or install the development version
-install.packages("remotes")
+# Install SCIntRuler 0.99.7 from GitHub
+if (!requireNamespace("remotes", quietly = TRUE))
+    install.packages("remotes")
 remotes::install_github("yuelyu21/SCIntRuler")
 
 library(SCIntRuler)
 ```
+
+After SCIntRuler returns to CRAN, the released version will again be available
+with `install.packages("SCIntRuler")`.
+
 ## Run an Example 
 
 To try our new method, please refer to our [getting started with SCIntRuler](https://yuelyu21.github.io/SCIntRuler/articles/SCIntRuler.html) article for user instructions.
