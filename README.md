@@ -42,6 +42,7 @@ To try our new method, please refer to our [getting started with SCIntRuler](htt
 
 ## Citation
 
-Lyu Y, Sengupta S, Wang X (2024). SCIntRuler: guiding the integration of
-multiple single-cell RNA-seq datasets. *Bioinformatics*, 40(9), btae537.
+Lyu Y, Lin SH, Wu H, Li Z (2024). SCIntRuler: guiding the integration of
+multiple single-cell RNA-seq datasets with a novel statistical metric.
+*Bioinformatics*, 40(9), btae537.
 [doi:10.1093/bioinformatics/btae537](https://doi.org/10.1093/bioinformatics/btae537)
