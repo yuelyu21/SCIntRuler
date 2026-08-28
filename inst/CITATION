@@ -1,0 +1,16 @@
+bibentry(
+  bibtype = "Article",
+  title = "SCIntRuler: guiding the integration of multiple single-cell RNA-seq datasets with a novel statistical metric",
+  author = c(
+    person("Yue", "Lyu"),
+    person("Steven H", "Lin"),
+    person("Hao", "Wu"),
+    person("Ziyi", "Li")
+  ),
+  journal = "Bioinformatics",
+  year = "2024",
+  volume = "40",
+  number = "9",
+  pages = "btae537",
+  doi = "10.1093/bioinformatics/btae537"
+)
