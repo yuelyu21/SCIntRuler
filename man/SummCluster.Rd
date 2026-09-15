@@ -17,7 +17,6 @@ Get maximum number of broad clusters
 }
 \examples{
 data(sim_result)
-# Assuming "fullcluster" is a list of clusters
-# fullcluster <- GetCluster(seuratlist)
-SCout <- SummCluster(sim_result[[1]])
+cluster_summary <- SummCluster(sim_result[[1]])
+cluster_summary$nbroad
 }

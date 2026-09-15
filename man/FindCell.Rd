@@ -26,17 +26,12 @@ A list of two vectors: one is for which cluster of which sample will be highligh
 Find cells indicating shared biological features across conditions
 }
 \examples{
-# Create example Seurat object
 data(sim_data_sce)
 data(sim_result)
-# Create example list of Seurat objects
 sim_data <- SCEtoSeurat(sim_data_sce)
 seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
-# seuratlist <- InputData(sim_data_sce,"Study")
-# Create example fullcluster (mock data)
-# fullcluster <- GetCluster(seuratlist)
-# Create example distmat (mock data)
-# distmat <- FindNNDist( fullcluster, distmat, meaningn = 20)
-
-FindCell(sim_data, seuratlist, sim_result[[1]], sim_result[[3]], 15)
+result <- FindCell(
+  sim_data, seuratlist, sim_result[[1]], sim_result[[3]], firstn = 15
+)
+head(result[[2]])
 }

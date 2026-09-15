@@ -24,8 +24,6 @@ Permutation Test
 }
 \examples{
 data(sim_result)
-# fullcluster <- GetCluster(seuratlist)
-# Assuming 'distmat' is a list of normalized gene count matrix
-# distmat <- FindNNDist(fullcluster, normCount, meaningn = 20)
-testres <- PermTest(sim_result[[1]], sim_result[[3]], 15)
+test_result <- PermTest(sim_result[[1]], sim_result[[3]], firstn = 15)
+test_result$allrevDiff
 }

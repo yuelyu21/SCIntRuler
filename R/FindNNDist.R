@@ -10,14 +10,8 @@
 #'
 #' @examples
 #' data(sim_result)
-#' # Create example data for fullcluster (mock data)
-#' # fullcluster <- GetCluster(seuratlist)
-#' # Create example data for normCount (mock data)
-#' # normCount <- NormData(seuratlist)
-#' # Define meaningn
-#' meaningn <- 20
-#'
-#' FindNNDist(sim_result[[1]], sim_result[[2]], meaningn = meaningn)
+#' distances <- FindNNDist(sim_result[[1]], sim_result[[2]], meaningn = 20)
+#' length(distances)
 
 
 

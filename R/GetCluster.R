@@ -9,12 +9,11 @@
 #'
 #' @examples
 #' data(sim_data_sce)
-#' # Assuming "seuratlist" is a list of Seurat objects
-#' # if(is(sim_data_sce, "SingleCellExperiment")){ sim_data <- as.Seurat(sim_data_sce) }
 #' sim_data <- SCEtoSeurat(sim_data_sce)
 #' seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
-#' # seuratlist <- InputData(sim_data_sce,"Study")
+#' set.seed(1)
 #' fullcluster <- GetCluster(seuratlist)
+#' lengths(fullcluster)
 
 
 GetCluster <- function(seuratlist,n1 = 50,n2 = 200) {

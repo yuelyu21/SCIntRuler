@@ -23,7 +23,7 @@ Simulation data to examplify the usage of the method.
 An result example data with results from different functions.
 }
 \examples{
-# Load the data
 data("sim_result")
+names(sim_result)
 }
 \keyword{datasets}

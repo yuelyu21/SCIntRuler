@@ -11,7 +11,7 @@
 #' }
 #' @return Simulation data to examplify the usage of the method.
 #' @examples
-#' # Load the data
 #' data("sim_result")
+#' names(sim_result)
 #' @name sim_result
 "sim_result"

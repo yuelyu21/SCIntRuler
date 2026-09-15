@@ -10,8 +10,8 @@
 #'
 #' @examples
 #' data(sim_data_sce)
-#' # seuratlist <- InputData(sim_data_sce,"Study")
 #' seuratobj <- SCEtoSeurat(sim_data_sce)
+#' seuratobj
 
 
 
@@ -68,4 +68,3 @@ SCEtoSeurat <- function(sce) {
   # Return the Seurat object
   return(seurat)
 }
-

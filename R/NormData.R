@@ -7,11 +7,10 @@
 #'
 #' @examples
 #' data(sim_data_sce)
-#' # seuratlist <- InputData(sim_data_sce,"Study")
-#' # if(is(sim_data_sce, "SingleCellExperiment")){ sim_data <- as.Seurat(sim_data_sce) }
 #' sim_data <- SCEtoSeurat(sim_data_sce)
 #' seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
-#' normCount <- NormData(seuratlist)
+#' norm_count <- NormData(seuratlist)
+#' vapply(norm_count, ncol, integer(1))
 
 NormData <- function(seuratlist) {
   stopifnot(exprs = {

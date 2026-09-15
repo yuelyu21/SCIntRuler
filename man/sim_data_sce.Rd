@@ -35,6 +35,7 @@ testing and development of single-cell analysis methodologies.
 }
 \examples{
 data("sim_data_sce")
+c(features = nrow(sim_data_sce), cells = ncol(sim_data_sce))
 }
 \references{
 The data were generated using a combination of random number generation for expression values and curated sources for

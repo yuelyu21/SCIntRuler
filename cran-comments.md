@@ -1,7 +1,15 @@
 ## Resubmission
 
+This is a resubmission following CRAN's manual review of SCIntRuler 0.99.7.
+In response to the review, this update:
+
+* ensures that the package name in the Description field is written in single
+  quotes; and
+* replaces commented-out code in documentation examples with executable toy
+  examples that are run during package checks.
+
 SCIntRuler 0.99.6 was archived on 2025-07-23 after its vignette failed to
-rebuild with a newer cowplot release. This update corrects the legend
+rebuild with a newer cowplot release. Version 0.99.7 corrected the legend
 extraction that caused the archived check error.
 
 The update also:
