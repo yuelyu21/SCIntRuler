@@ -25,5 +25,5 @@ sim_data <- SCEtoSeurat(sim_data_sce)
 seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
 set.seed(1)
 fullcluster <- GetCluster(seuratlist)
-lengths(fullcluster)
+vapply(fullcluster, nrow, integer(1))
 }

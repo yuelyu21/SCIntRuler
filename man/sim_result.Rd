@@ -24,6 +24,6 @@ An result example data with results from different functions.
 }
 \examples{
 data("sim_result")
-names(sim_result)
+length(sim_result)
 }
 \keyword{datasets}

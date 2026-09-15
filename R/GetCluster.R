@@ -13,7 +13,7 @@
 #' seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
 #' set.seed(1)
 #' fullcluster <- GetCluster(seuratlist)
-#' lengths(fullcluster)
+#' vapply(fullcluster, nrow, integer(1))
 
 
 GetCluster <- function(seuratlist,n1 = 50,n2 = 200) {

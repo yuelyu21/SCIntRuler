@@ -12,6 +12,6 @@
 #' @return Simulation data to examplify the usage of the method.
 #' @examples
 #' data("sim_result")
-#' names(sim_result)
+#' length(sim_result)
 #' @name sim_result
 "sim_result"
