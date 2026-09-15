@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.7</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.8</span>
       </span>
     </div>
 
@@ -95,16 +95,13 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create example data for fullcluster (mock data)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_result</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># if(is(sim_data_sce, "SingleCellExperiment")){ sim_data &lt;- as.Seurat(sim_data_sce) }</span></span></span>
 <span class="r-in"><span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="SCEtoSeurat.html">SCEtoSeurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No gene metadata columns found to add to Seurat object.</span>
 <span class="r-in"><span><span class="va">seuratlist</span> <span class="op">&lt;-</span> <span class="fu">Seurat</span><span class="fu">::</span><span class="fu"><a href="https://satijalab.org/seurat/reference/SplitObject.html" class="external-link">SplitObject</a></span><span class="op">(</span><span class="va">sim_data</span>, split.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># fullcluster &lt;- GetCluster(seurat_object_list)</span></span></span>
-<span class="r-in"><span><span class="co"># testres &lt;- PermTest(fullcluster,distmat,15)</span></span></span>
-<span class="r-in"><span><span class="fu">PlotSCIR</span><span class="op">(</span><span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">seuratlist</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu">PlotSCIR</span><span class="op">(</span><span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">seuratlist</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">plot</span></span></span>
 <span class="r-plt img"><img src="PlotSCIR-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>

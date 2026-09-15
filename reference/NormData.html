@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.7</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.8</span>
       </span>
     </div>
 
@@ -80,12 +80,12 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># seuratlist &lt;- InputData(sim_data_sce,"Study")</span></span></span>
-<span class="r-in"><span><span class="co"># if(is(sim_data_sce, "SingleCellExperiment")){ sim_data &lt;- as.Seurat(sim_data_sce) }</span></span></span>
 <span class="r-in"><span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="SCEtoSeurat.html">SCEtoSeurat</a></span><span class="op">(</span><span class="va">sim_data_sce</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No gene metadata columns found to add to Seurat object.</span>
 <span class="r-in"><span><span class="va">seuratlist</span> <span class="op">&lt;-</span> <span class="fu">Seurat</span><span class="fu">::</span><span class="fu"><a href="https://satijalab.org/seurat/reference/SplitObject.html" class="external-link">SplitObject</a></span><span class="op">(</span><span class="va">sim_data</span>, split.by <span class="op">=</span> <span class="st">"Study"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">normCount</span> <span class="op">&lt;-</span> <span class="fu">NormData</span><span class="op">(</span><span class="va">seuratlist</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">norm_count</span> <span class="op">&lt;-</span> <span class="fu">NormData</span><span class="op">(</span><span class="va">seuratlist</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="va">norm_count</span>, <span class="va">ncol</span>, <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 336 136 328</span>
 </code></pre></div>
     </div>
   </div>

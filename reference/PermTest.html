@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.7</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.8</span>
       </span>
     </div>
 
@@ -91,10 +91,14 @@ to create <code>distmat</code>. The published method uses 15.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_result</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># fullcluster &lt;- GetCluster(seuratlist)</span></span></span>
-<span class="r-in"><span><span class="co"># Assuming 'distmat' is a list of normalized gene count matrix</span></span></span>
-<span class="r-in"><span><span class="co"># distmat &lt;- FindNNDist(fullcluster, normCount, meaningn = 20)</span></span></span>
-<span class="r-in"><span><span class="va">testres</span> <span class="op">&lt;-</span> <span class="fu">PermTest</span><span class="op">(</span><span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>, <span class="fl">15</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu">PermTest</span><span class="op">(</span><span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">sim_result</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>, firstn <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">test_result</span><span class="op">$</span><span class="va">allrevDiff</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]        [,2]        [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.13276641 -0.03874431  0.03967245</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 0.13293656 -0.04699051  0.03256041</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 0.13721054 -0.11762238  0.03202614</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 0.07999289 -0.13186684 -0.07533192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5,] 0.01698951          NA -0.07320267</span>
 </code></pre></div>
     </div>
   </div>

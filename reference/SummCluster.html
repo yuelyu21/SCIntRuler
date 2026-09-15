@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SCIntRuler</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.7</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.8</span>
       </span>
     </div>
 
@@ -80,9 +80,9 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sim_result</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># Assuming "fullcluster" is a list of clusters</span></span></span>
-<span class="r-in"><span><span class="co"># fullcluster &lt;- GetCluster(seuratlist)</span></span></span>
-<span class="r-in"><span><span class="va">SCout</span> <span class="op">&lt;-</span> <span class="fu">SummCluster</span><span class="op">(</span><span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cluster_summary</span> <span class="op">&lt;-</span> <span class="fu">SummCluster</span><span class="op">(</span><span class="va">sim_result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cluster_summary</span><span class="op">$</span><span class="va">nbroad</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2 2 2</span>
 </code></pre></div>
     </div>
   </div>
