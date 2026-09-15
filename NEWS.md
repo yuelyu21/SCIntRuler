@@ -1,3 +1,10 @@
+# SCIntRuler 0.99.8
+
+- Replaced commented-out documentation examples with executable examples that
+  are run during package checks.
+- Audited the `DESCRIPTION` text for CRAN's requested single-quote style for
+  package and software names.
+
 # SCIntRuler 0.99.7
 
 - Fixed vignette rendering with current `cowplot` releases.

@@ -18,6 +18,6 @@ converts it to a Seurat object, and then splits it according to the specified va
 }
 \examples{
 data(sim_data_sce)
-# seuratlist <- InputData(sim_data_sce,"Study")
 seuratobj <- SCEtoSeurat(sim_data_sce)
+seuratobj
 }

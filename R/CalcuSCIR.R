@@ -12,13 +12,10 @@ utils::globalVariables(c("P.value", "revDiff", "V2", "finecluster", "rarecluster
 #' @examples
 #' data(sim_result)
 #' data(sim_data_sce)
-#' # Create example data for fullcluster (mock data)
 #' sim_data <- SCEtoSeurat(sim_data_sce)
 #' seuratlist <- Seurat::SplitObject(sim_data, split.by = "Study")
-#' # seuratlist <- InputData(sim_data_sce,"Study")
-#' # fullcluster <- GetCluster(seuratlist)
-#' # testres <- PermTest(fullcluster,distmat,15)
-#' CalcuSCIR(sim_result[[1]], seuratlist, sim_result[[4]])
+#' result <- CalcuSCIR(sim_result[[1]], seuratlist, sim_result[[4]])
+#' result
 
 CalcuSCIR <- function(fullcluster, seuratlist, testres, p = 0.1){
 

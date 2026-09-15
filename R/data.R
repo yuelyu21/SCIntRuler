@@ -26,7 +26,7 @@
 #' @return Simulation data to exemplify the usage of the method.
 #' @examples
 #' data("sim_data_sce")
+#' c(features = nrow(sim_data_sce), cells = ncol(sim_data_sce))
 #' @name sim_data_sce
 "sim_data_sce"
-
 
